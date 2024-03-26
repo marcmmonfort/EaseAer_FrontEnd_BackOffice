@@ -14,7 +14,6 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent {
 
-  
   activityCount:string="0";
   applicationCount:string="0";
   commentCount:string="0";
@@ -45,5 +44,5 @@ export class HomeComponent {
     });
     
   }
-  
+
 }

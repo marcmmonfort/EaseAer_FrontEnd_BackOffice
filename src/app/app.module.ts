@@ -7,10 +7,8 @@ import { ListUserComponent } from './components/user-components/list-user/list-u
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AppComponent } from './components/app/app.component';
 import { HomeComponent } from './components/home/home.component';
-
 import { LocationComponent } from './components/location-components/location/location.component';
 import { CommentComponent } from './components/comment-components/comment/comment.component';
-
 import { UserDetailsComponent } from './components/user-components/user-details/user-details.component';
 import { UserFollowersComponent } from './components/user-components/user-followers/user-followers.component';
 import { UserFollowedComponent } from './components/user-components/user-followed/user-followed.component';
@@ -20,7 +18,6 @@ import { UserCreateComponent } from './components/user-components/user-create/us
 import { LocationCreateComponent } from './components/location-components/location-create/location-create.component';
 import { LocationDetailsComponent } from './components/location-components/location-details/location-details.component';
 import { LocationEditComponent } from './components/location-components/location-edit/location-edit.component';
-
 import { LogInComponent } from './components/log-in/log-in.component';
 import { CommentEditComponent } from './components/comment-components/comment-edit/comment-edit.component';
 import { CommentDetailsComponent } from './components/comment-components/comment-details/comment-details.component';
@@ -44,48 +41,61 @@ import { AuthService } from './services/auth.service';
 import { ActivityParticipantsComponent } from './components/activity-components/activity-participants/activity-participants.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate:[AuthGuard] },
-  { path: 'listUsers', component: ListUserComponent, canActivate:[AuthGuard] },
-  { path: 'app', component: AppComponent, canActivate:[AuthGuard] },
-  { path: 'comment', component: CommentComponent, canActivate:[AuthGuard] },
-  { path: 'comment-create', component: CommentCreateComponent, canActivate:[AuthGuard] },
-  { path: 'comment-details/:uuid', component: CommentDetailsComponent, canActivate:[AuthGuard] },
-  { path: 'comment-edit/:uuid', component: CommentEditComponent, canActivate:[AuthGuard] },
-  { path: 'location', component: LocationComponent, canActivate:[AuthGuard] },
-  { path: 'user-details/:uuid', component: UserDetailsComponent, canActivate:[AuthGuard] },
-  { path: 'user-edit/:uuid', component: UserEditComponent, canActivate:[AuthGuard] },
-  { path: 'user-create', component: UserCreateComponent, canActivate:[AuthGuard] },
 
-  { path: 'location-create', component: LocationCreateComponent, canActivate:[AuthGuard] },
-  { path: 'location-details/:uuid', component: LocationDetailsComponent, canActivate:[AuthGuard] },
-  { path: 'location-edit/:uuid', component: LocationEditComponent, canActivate:[AuthGuard] },
+  // OLD: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  /*
+  { path: 'listUsers', component: ListUserComponent },
+  { path: 'app', component: AppComponent },
+  { path: 'comment', component: CommentComponent },
+  { path: 'comment-create', component: CommentCreateComponent },
+  { path: 'comment-details/:uuid', component: CommentDetailsComponent },
+  { path: 'comment-edit/:uuid', component: CommentEditComponent },
+  { path: 'location', component: LocationComponent },
+  { path: 'user-details/:uuid', component: UserDetailsComponent },
+  { path: 'user-edit/:uuid', component: UserEditComponent },
+  { path: 'user-create', component: UserCreateComponent },
+  { path: 'location-create', component: LocationCreateComponent },
+  { path: 'location-details/:uuid', component: LocationDetailsComponent },
+  { path: 'location-edit/:uuid', component: LocationEditComponent },
+  { path: 'comment-details/responses/:uuid/:aux', component: CommentResponseComponent },
+  { path: 'user-details/followers/:uuid', component: UserFollowersComponent },
+  { path: 'user-details/followed/:uuid', component: UserFollowedComponent },
+  { path: 'publication', component: PublicationComponent },
+  { path: 'publication-create', component: PublicationCreateComponent },
+  { path: 'publication-details/:uuid', component: PublicationDetailsComponent },
+  { path: 'publication-edit/:uuid', component: PublicationEditComponent },
+  { path: 'activity', component: ActivityComponent },
+  { path: 'activity-create', component: ActivityCreateComponent },
+  { path: 'activity-details/:uuid', component: ActivityDetailsComponent },
+  { path: 'activity-edit/:uuid', component: ActivityEditComponent },
+  { path: 'activity-participants/:uuid', component: ActivityParticipantsComponent },
+  { path: 'application', component: ApplicationComponent },
+  { path: 'application-create', component: ApplicationCreateComponent },
+  { path: 'application-details/:uuid', component: ApplicationDetailsComponent },
+  { path: 'application-edit/:uuid', component: ApplicationEditComponent},
+  */
+
+  /* CÓDIGO CON AUTH GUARD:
+  { path: 'application-edit/:uuid', component: ApplicationEditComponent, canActivate:[AuthGuard] },
+  */
+
+  // NEW: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  // { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LogInComponent },
+  { path: '', component: HomeComponent },
 
-  { path:'comment-details/responses/:uuid/:aux', component: CommentResponseComponent, canActivate:[AuthGuard] },
-  { path:'user-details/followers/:uuid',component: UserFollowersComponent, canActivate:[AuthGuard] },
-  { path:'user-details/followed/:uuid',component: UserFollowedComponent, canActivate:[AuthGuard] },
-  { path:'publication',component: PublicationComponent, canActivate:[AuthGuard] },
-  { path:'publication-create',component: PublicationCreateComponent, canActivate:[AuthGuard] },
-  { path:'publication-details/:uuid',component: PublicationDetailsComponent, canActivate:[AuthGuard] },
-  { path:'publication-edit/:uuid',component: PublicationEditComponent, canActivate:[AuthGuard] },
-
-  { path:'activity',component: ActivityComponent, canActivate:[AuthGuard] },
-  { path:'activity-create',component: ActivityCreateComponent, canActivate:[AuthGuard] },
-  { path:'activity-details/:uuid',component: ActivityDetailsComponent, canActivate:[AuthGuard] },
-  { path:'activity-edit/:uuid',component: ActivityEditComponent, canActivate:[AuthGuard] },
-  { path:'activity-participants/:uuid',component: ActivityParticipantsComponent, canActivate:[AuthGuard] },
-
-  { path:'application',component: ApplicationComponent, canActivate:[AuthGuard] },
-  { path:'application-create',component: ApplicationCreateComponent, canActivate:[AuthGuard] },
-  { path:'application-details/:uuid',component: ApplicationDetailsComponent, canActivate:[AuthGuard] },
-  { path:'application-edit/:uuid',component: ApplicationEditComponent, canActivate:[AuthGuard] }
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ];
 
 @NgModule({
   declarations: [
+
+    // OLD: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     ListUserComponent,
     NavigationComponent,
     AppComponent,
@@ -95,40 +105,38 @@ const routes: Routes = [
     CommentDetailsComponent,
     CommentEditComponent,
     CommentResponseComponent,
-
-    
     LogInComponent,
     RegisterComponent,
-    
     UserDetailsComponent,
     UserFollowersComponent,
     UserFollowedComponent,
     UserEditComponent,
     ConfirmationModalComponent,
     UserCreateComponent,
-
     LocationComponent,
     LocationCreateComponent,
     LocationDetailsComponent,
     LocationEditComponent,
-
-    
     PublicationComponent,
     PublicationCreateComponent,
     PublicationDetailsComponent,
     PublicationEditComponent,
-    
-
     ApplicationComponent,
     ApplicationCreateComponent,
     ApplicationDetailsComponent,
     ApplicationEditComponent,
-  
     ActivityComponent,
     ActivityCreateComponent,
     ActivityDetailsComponent,
     ActivityEditComponent,
     ActivityParticipantsComponent,
+
+    // NEW: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   ],
   imports: [
     BrowserModule,
