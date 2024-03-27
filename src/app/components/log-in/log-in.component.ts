@@ -5,7 +5,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { KnownService } from 'src/app/services/known.service';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',

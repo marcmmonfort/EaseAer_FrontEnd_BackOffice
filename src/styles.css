@@ -1,2 +1,33 @@
+@font-face {
+    font-family: 'TitleFontType';
+    src: url('assets/fontTypes/Emirates_Font.ttf') format('truetype');
+}
+  
+@font-face {
+    font-family: 'SubtitleFontType';
+    src: url('assets/fontTypes/Corporate_Font.ttf') format('truetype');
+}
+  
+@font-face {
+    font-family: 'TextFontType';
+    src: url('assets/fontTypes/SF_Font.ttf') format('truetype');
+}
+
 @import url('node_modules/bootstrap/dist/css/bootstrap.min.css');
 
+body {
+    background-color: #e9e8e6;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    margin-bottom: -14px;
+    font-family: 'TextFontType', sans-serif;
+    background-color: rgba(50, 30, 41, 0.65);
+    color: white;
+    padding: 8px;
+    text-align: center;
+    font-size: 12px;
+}
