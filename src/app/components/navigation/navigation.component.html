@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <body>
   <header>
     <div class="contenedor_cabecera">
@@ -9,23 +9,32 @@
     </div>
     <div class="contenedor_menu">
         <div class="menu">
-            <input type="checkbox" id="check__menu">
-            <label for="check__menu" id="label__check">
-                <i class="fas fa-bars icon__menu"></i>
-            </label>
             <nav>
               <ul *ngIf="userKnown" class="navbar__init">
-                <li><a routerLink="/home">Home</a></li>
-                <li><a routerLink="/listUsers">Users</a></li>
-                <li><a routerLink="/comment">Comments</a></li>
-                <li><a routerLink="/location">Location</a></li>
-                <li><a routerLink="/application">Application</a></li>
-                <li><a routerLink="/activity">Activities</a></li>
-                <li><a routerLink="/publication">Publications</a></li>
-                <li><a id="log-out" routerLink="/login" (click)="LogOut()">LogOut</a></li>
+                <li><a routerLink="/home"><i class="fas fa-home"></i></a></li> <!-- Home -->
+                <li><a routerLink="/users"><i class="fas fa-users"></i></a></li> <!-- Users -->
+                <li><a routerLink="/cards"><i class="fas fa-credit-card"></i></a></li> <!-- Cards -->
+                <li><a routerLink="/prizes"><i class="fas fa-gift"></i></a></li> <!-- Prizes -->
+                <li><a routerLink="/locations"><i class="fas fa-map-marker-alt"></i></a></li> <!-- Locations -->
+                <li><a routerLink="/shops"><i class="fas fa-store"></i></a></li> <!-- Shops -->
+                <li><a routerLink="/services"><i class="fas fa-toilet"></i></a></li> <!-- Services -->
+                <li><a routerLink="/products"><i class="fas fa-shopping-basket"></i></a></li> <!-- Products -->
+                <li><a routerLink="/offers"><i class="fas fa-tags"></i></a></li> <!-- Offers -->
+                <li><a routerLink="/bookings"><i class="fas fa-calendar-alt"></i></a></li> <!-- Bookings -->
+                <li><a routerLink="/news"><i class="fas fa-newspaper"></i></a></li> <!-- News -->
+                <li><a routerLink="/incidents"><i class="fas fa-exclamation-circle"></i></a></li> <!-- Incidents -->
+                <li><a routerLink="/flights"><i class="fas fa-plane-departure"></i></a></li> <!-- Flights -->
+                <li><a routerLink="/luggage"><i class="fas fa-suitcase"></i></a></li> <!-- Luggage -->
+                <li><a routerLink="/predictions"><i class="fas fa-clock"></i></a></li> <!-- Predictions -->
+                <li><a routerLink="/preferences"><i class="fas fa-cogs"></i></a></li> <!-- Preferences -->
+                <li><a routerLink="/statistics"><i class="fas fa-chart-bar"></i></a></li> <!-- Statistics -->
+                <li><a routerLink="/games"><i class="fas fa-chess"></i></a></li> <!-- Games -->
+                <li><a routerLink="/questions"><i class="fas fa-question-circle"></i></a></li> <!-- Question -->
+                <li><a routerLink="/matches"><i class="fas fa-heart"></i></a></li> <!-- Matches -->
+                <li><a id="log-out" routerLink="/login" (click)="LogOut()"><i class="fas fa-sign-out-alt"></i></a></li> <!-- Icono de salir -->
               </ul>
               <ul *ngIf="!userKnown" class="navbar__menu">
-                <li><a routerLink="/login"  >Login</a></li> <!-- id="selected" -->
+                <li><a routerLink="/login">LogIn</a></li> <!-- id="selected" -->
                 <li><a routerLink="/register">Register</a></li>
               </ul>
             </nav>

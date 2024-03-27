@@ -30,6 +30,7 @@ header {
 }
 
 /*HEADER SUPERIOR*/
+
 .tituloCabecera h1{
   font-weight: bold;
   font-family: 'TitleFontType', sans-serif;
@@ -57,36 +58,32 @@ header {
   padding: 0px;
 }
 
-.logo img {
-  width: 250px;
-  
-}
-
-.search input {
-  width: 300px;
-  padding: 10px;
-}
-
-.titulo {
-  width: 300px;
-  padding: 10px;
-}
-
 /*BARRA MENU*/
 
 .contenedor_menu {
   width: 100%;
-  height: 70px;
-  background: radial-gradient(circle at center, #153f59, #94b8d7);
-  padding: 0px 20px;
+  height: 100%;
+  background-color: #e9e8e6;
+  padding: 0px 8px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
 }
 
+.navbar__init {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  height: 36px;
+}
 
 .menu {
-  max-width: 1200px;
-  margin: auto;
-  height: 100%;
+  max-width: 100%;
+  height: 36px;
 }
 
 nav {
@@ -105,18 +102,19 @@ nav ul li {
 }
 
 nav > ul > li:first-child > a {
-  /*background-image: url(../img/retirement-home.png);*/
   background-size: 24px;
   background-repeat: no-repeat;
   background-position: center center;
-  padding: 20px 40px;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
+  padding: 14px;
 }
 
 nav > ul > li:first-child:hover > a {
-  /*background-image: url(../img/retirement-home.png);*/
-  background-size: 24px;
   background-repeat: no-repeat;
   background-position: center center;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
 }
 
 nav > ul > li > a {
@@ -124,60 +122,39 @@ nav > ul > li > a {
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 40px;
-  color: white;
-  text-transform: uppercase;
+  transition: all 120ms ease;
+  font-family: 'TextFontType', sans-serif;
   font-size: 14px;
-  transition: all 300ms ease;
+  color: #321e29;
+  padding: 14px;
 }
 
 nav > ul > li > a:hover {
-  transform: scale(1.1);
-  background: hsl(62, 92%, 33%);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-}
-
-#selected {
-  transform: scale(1.1);
-  background-color: #24004d;
-  box-shadow: 0 0 10px 0 rgb(58, 0, 91);
-}
-
-/*ARTICULO*/
-
-main {
-  padding: 10px 20px;
+  transform: scale(0.8);
+  background: #b3b0a1;
+  color: white;
+  border-radius: 12px;
   margin-top: 0px;
 }
 
-article {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 40px;
-  background: #f0f0f0;
-}
-
-article p {
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: 300;
+#selected {
+  transform: scale(1);
+  background-color: #24004d;
 }
 
 /*ELEMENTOS RESPONSIVOS*/
 
 .icon__menu {
-  font-size: 26px;
+  font-size: 14px;
   color: white;
   cursor: pointer;
-  width: 26px;
+  font-family: 'SubtitleFontType', sans-serif;
   height: 100%;
   display: none;
   align-items: center;
 }
 
 #label__check {
-  width: 26px;
-  height: 100%;
   display: none;
 }
 

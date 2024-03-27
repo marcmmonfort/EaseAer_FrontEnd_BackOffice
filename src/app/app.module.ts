@@ -82,10 +82,11 @@ const routes: Routes = [
 
   // NEW: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  // { path: '', component: HomeComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: '', component: LogInComponent },
+
   { path: 'login', component: LogInComponent },
-  { path: '', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
