@@ -80,6 +80,10 @@ export class RegisterComponent {
         allowedAccess = true;
       }
     }
+    if (userData.roleUser == "pax")
+    {
+      allowedAccess = true;
+    }
 
     userData.uuid = " ";
     delete userData.code;

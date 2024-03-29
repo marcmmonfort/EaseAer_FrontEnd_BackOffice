@@ -29,6 +29,45 @@ header {
   background-image: url('https://img.freepik.com/vector-gratis/fondo-acuarela_87374-69.jpg?w=1380&t=st=1682372953~exp=1682373553~hmac=2fb033385321897dc838be39b04d930d0123f3d4fd3b5bea135e2aa1b955b9c0');
 }
 
+/* NEWS HERE */
+
+.contenedor_info_cabecera {
+  text-align: center;
+  background-color: #d8131b;
+  padding: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.infoCabecera h1{
+  font-weight: bold;
+  font-family: 'TextFontType', sans-serif;
+  color: #321e29;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 5px;
+}
+
+.infoContainer {
+  display: inline-block;
+  animation: desplazar 50s linear infinite;
+}
+
+
+.infoHeader{
+  display: inline-block;
+}
+
+@keyframes desplazar {
+  0% {
+    transform: translateX(100%); /* Comienza fuera del contenedor */
+  }
+  100% {
+    transform: translateX(-100%); /* Termina fuera del contenedor */
+  }
+}
+
 /*HEADER SUPERIOR*/
 
 .tituloCabecera h1{

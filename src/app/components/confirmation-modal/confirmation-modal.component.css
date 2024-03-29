@@ -10,12 +10,25 @@
     align-items: center;
     z-index: 9999;
   }
+
+  .areyousure {
+    display: block;
+    font-family: 'TextFontType', sans-serif;
+    font-size: 14px;
+    margin-bottom: -10px;
+    font-weight: bold;
+    color: white;
+    margin-top: 0px;
+  }  
   
   .modal-container {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 5px;
+    background-color: #321e29;
+    border-radius: 12px;
     text-align: center;
+    align-items: center;
+    width: 320px;
+    padding-top: 26px;
+    padding-bottom: 32px;
   }
   
   .modal-buttons {
@@ -23,21 +36,26 @@
   }
   
   .modal-button {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
     cursor: pointer;
     border: none;
-    margin-right: 1rem;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 0px;
   }
   
   .modal-button-accept {
-    background-color: green;
+    background-color: #d0871e;
     color: white;
+    font-family: 'TextFontType', sans-serif;
+    font-size: 14px;
   }
   
   .modal-button-cancel {
-    background-color: red;
+    background-color: #d8131b;
     color: white;
+    font-family: 'TextFontType', sans-serif;
+    font-size: 14px;
   }
   
