@@ -15,13 +15,10 @@
                 <li class="list-group-item"><strong>Email:</strong> {{ userData.mailUser }}</li>
                 <li class="list-group-item"><strong>Birthday:</strong> {{ userData.birthdateUser }}</li>
                 <li class="list-group-item"><strong>Gender:</strong> {{ userData.genderUser === 'male' ? 'Masculino' : 'Femenino' }}</li>
-                <li class="list-group-item"><strong>Ocupation:</strong> {{ userData.ocupationUser }}</li>
                 <li class="list-group-item"><strong>Description:</strong> {{ userData.descriptionUser }}</li>
                 <li class="list-group-item"><strong>Privacy:</strong> <span *ngIf="userData.privacyUser; else privacidadPublica"><i class="fas fa-lock"></i> Privado</span><ng-template #privacidadPublica><i class="fas fa-unlock"></i> Público</ng-template></li>
                 <li class="list-group-item"><strong>Role:</strong> {{ getRolText(userData.roleUser) }}</li>
                 <li class="list-group-item"><strong>Estate:</strong> <span [ngClass]="{'text-danger': userData.deletedUser, 'text-success': !userData.deletedUser}">{{ userData.deletedUser ? 'Desactivado' : 'Activo' }}</span></li>
-                <li class="list-group-item"><strong>Followers:</strong><a [routerLink]="['/user-details/followers', userData.uuid]"><button type="button" class="btn btn-primary" (click)="showFollowers(userData.uuid)">Seguidores</button></a></li>
-                <li class="list-group-item"><strong>Following:</strong><a [routerLink]="['/user-details/followed', userData.uuid]"><button type="button" class="btn btn-primary" (click)="showFollowed(userData.uuid)">Seguidos</button></a></li>
                 <li class="list-group-item"><strong>ID:</strong> {{ userData.uuid }}</li>
                 <li class="list-group-item"><strong>Created at:</strong> {{ userData.createdAt }}</li>
                 <li class="list-group-item"><strong>Updated at:</strong> {{ userData.updatedAt }}</li>

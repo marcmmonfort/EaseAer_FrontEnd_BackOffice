@@ -14,68 +14,86 @@ export class UserService {
   message!: String;
   private userSource = new BehaviorSubject(this.user);
   currentUser = this.userSource.asObservable();
-  private apiURL = environment.API_URL + '/user/';
-  private apiURLFollower = environment.API_URL + '/user/follower/';
-  private apiURLFollowed = environment.API_URL + '/user/followed/';
 
-  private apiURLGetAll = environment.API_URL + '/users/all';
-  private apiURLGetAll2 = environment.API_URL + '/user/all';
-  //private apiRegister = environment.API_URL + '/auth/register';
+  private apiURLUser = environment.API_URL + '/user/';
+
+  // ROUTE 1: routeUser.post("/user/register", userCtrl.registerUserCtrl);
+  private apiURLUserRegister = environment.API_URL + '/user/register';
+  // ROUTE 2: routeUser.get("/user/:uuid", checkJwt, userCtrl.getUserByIdCtrl);
+  private apiURLUserGetById = environment.API_URL + '/users/';
+  // ROUTE 3: routeUser.get("/user/google/check/:mailUser", userCtrl.getUserByEmailCtrl),
+  private apiURLUserGetByMail = environment.API_URL + '/user/google/check/';
+  // ROUTE 4: routeUser.get("/user/search/:search", checkJwt, userCtrl.getSearchUsersCtrl);
+  private apiURLUserGetSearch = environment.API_URL + '/user/search/';
+  // ROUTE 5: routeUser.get("/user/all/count/docs", checkJwt, userCtrl.getNumUsersCtrl);
+  private apiURLUserGetNum = environment.API_URL + '/user/all/count/docs';
+  // ROUTE 6: routeUser.get("/users/all", checkJwt, userCtrl.listUserCtrl);
+  private apiURLUserList = environment.API_URL + '/users/all';
+  // ROUTE 7: routeUser.get("/user/all/:numPage", checkJwt, userCtrl.listUserPagCtrl);
+  private apiURLUserListPag = environment.API_URL + '/user/all/';
+  // ROUTE 8: routeUser.post("/user/login", userCtrl.loginUserCtrl);
+  private apiURLUserLog = environment.API_URL + '/user/login';
+  // ROUTE 9: routeUser.post("/user/loginfrontend", userCtrl.loginFrontEndUserCtrl);
+  private apiURLUserLogFE = environment.API_URL + '/user/loginfrontend';
+  // ROUTE 10: routeUser.put("/user/update/:uuid", checkJwt, userCtrl.updateUserCtrl);
+  private apiURLUserUpdate = environment.API_URL + '/user/update/';
+  // ROUTE 11: routeUser.delete("/user/delete/:uuid", checkJwt, userCtrl.deleteUserCtrl);
+  private apiURLUserDelete = environment.API_URL + '/user/delete/';
+
+  // private apiRegister = environment.API_URL + '/auth/register';
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  // OK
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiURLGetAll, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.authService.getToken(),
-      }),
-    });
-  }
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  getFollowers(uuid: string, numPage: string): Observable<User[]> {
-    return this.http.get<User[]>(this.apiURLFollower + uuid + '/' + numPage, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.authService.getToken(),
-      }),
-    });
-  }
+  // registerUser(data: UserAuthEntity): Promise<UserAuthEntity | null | string>;
 
-  getFollowed(uuid: string, numPage: string): Observable<User[]> {
-    return this.http.get<User[]>(this.apiURLFollowed + uuid + '/' + numPage, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.authService.getToken(),
-      }),
-    });
-  }
-
-  getUsersPag(numPage: string): Observable<User[]> {
-    return this.http.get<User[]>(this.apiURLGetAll2 + '/' + numPage, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.authService.getToken(),
-      }),
-    });
-  }
-
+  // getUserById(uuid: string): Promise<UserEntity | null>;
   getUser(uuid: string): Observable<User> {
-    return this.http.get<User>(this.apiURL + uuid, {
+    return this.http.get<User>(this.apiURLUserGetById + uuid, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + this.authService.getToken(),
       }),
     });
-  } // OK
+  }
 
-  delete(uuid: string): Observable<User> {
-    return this.http.delete<User>(this.apiURL + uuid, {
+  // getUserByEmail(email: string): Promise<UserEntity | null>;
+
+  // getSearchUsers(search: string): Promise<UserEntity[] | null>;
+
+  // getNumUsers(): Promise<string | null>;
+  getCountUser(): Observable<string> {
+    return this.http.get<string>(this.apiURLUserGetNum,{
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + this.authService.getToken(),
       }),
     });
+  }
+
+  // listUser(): Promise<UserEntity[] | null>;
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiURLUserList, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
+
+  // listUserPag(numPage: string): Promise<UserEntity[] | null>;
+  getUsersPag(numPage: string): Observable<User[]> {
+    return this.http.get<User[]>(this.apiURLUserListPag + numPage, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
+
+  // loginUser(data: AuthEntity): Promise<string[2] | null>;
+  newUserLogged(user: User) {
+    this.userSource.next(user);
   }
 
   /*
@@ -84,23 +102,26 @@ export class UserService {
   }
   */
 
-  newUserLogged(user: User) {
-    this.userSource.next(user);
-  }
+  // loginFrontEndUser(data: AuthEntity): Promise<string[2] | null>;
+
+  // updateUser(uuid: string, data: UserEntity): Promise<UserEntity | null>;
   updateUser(user: User, id: string): Observable<User> {
-    return this.http.put<User>(this.apiURL + id, user,{
+    return this.http.put<User>(this.apiURLUserUpdate + id, user,{
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + this.authService.getToken(),
       }),
     });
   }
-  getCountUser(): Observable<string> {
-    return this.http.get<string>(this.apiURL + 'all/count/docs',{
+
+  // deleteUser(uuid: string): Promise<UserEntity | null>;
+  delete(uuid: string): Observable<User> {
+    return this.http.delete<User>(this.apiURLUserDelete + uuid, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + this.authService.getToken(),
       }),
     });
   }
+
 }

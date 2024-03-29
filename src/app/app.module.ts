@@ -10,8 +10,6 @@ import { HomeComponent } from './components/home/home.component';
 import { LocationComponent } from './components/location-components/location/location.component';
 import { CommentComponent } from './components/comment-components/comment/comment.component';
 import { UserDetailsComponent } from './components/user-components/user-details/user-details.component';
-import { UserFollowersComponent } from './components/user-components/user-followers/user-followers.component';
-import { UserFollowedComponent } from './components/user-components/user-followed/user-followed.component';
 import { UserEditComponent } from './components/user-components/user-edit/user-edit.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { UserCreateComponent } from './components/user-components/user-create/user-create.component';
@@ -109,8 +107,6 @@ const routes: Routes = [
     LogInComponent,
     RegisterComponent,
     UserDetailsComponent,
-    UserFollowersComponent,
-    UserFollowedComponent,
     UserEditComponent,
     ConfirmationModalComponent,
     UserCreateComponent,

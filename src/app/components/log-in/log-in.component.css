@@ -52,10 +52,10 @@ textarea {
   font-size: 14px;
   border-radius: 12px;
   border-width: 0px;
-  width: 180px;
+  width: 120px;
   margin: 0 auto;
   margin-top: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .buttonEntry:hover {

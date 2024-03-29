@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,8 +12,10 @@ import Swal from 'sweetalert2';
 export class RegisterComponent {
 
   registerForm: FormGroup | any;
+  registerFormCode: FormGroup | any;
   userKnown:boolean=false;
   isModalOpen:boolean=false;
+  showAdditionalForm: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private registerService: AuthService, private router: Router) {
     
@@ -27,12 +28,19 @@ export class RegisterComponent {
       "photoUser": ['', Validators.required],
       "birthdateUser": ['', Validators.required],
       "genderUser": ['', Validators.required],
-      "ocupationUser": ['', Validators.required],
       "descriptionUser": ['', Validators.required],
+      "roleUser": ['', Validators.required],
       "privacyUser": [false, Validators.required],
-      "roleUser": ['admin', Validators.required],
-      "deletedUser": [false, Validators.required]
+      "recordGameUser": [0],
+      "flightsUser": [[]],
+      "deletedUser": [false, Validators.required],
+      "code": ['']
     });
+  }
+
+  toggleAdditionalForm(): void {
+    const roleUserValue = this.registerForm.get('roleUser').value;
+    this.showAdditionalForm = ['pax'].includes(roleUserValue);
   }
   
   ngOnInit(): void {
@@ -48,53 +56,92 @@ export class RegisterComponent {
       return;
     }
     this.openModal();
+    
   }
 
   confirmChanges(): void {
+    console.log("DATA 0:" + this.registerForm.value.appUser);
+
     const userData = this.registerForm.value;
-    this.registerService.addUser(userData).subscribe(
-      (data:any)=>{
-        console.log(data);
-      
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          customClass: {
-            icon: 'swal-icon-color'
-          },
-          title: 'Register succefull!',
-          showConfirmButton: false,
-          timerProgressBar: true,
-          timer: 1500,
-          backdrop: `
-          rgba(0,0,0,0.8)
-          `
-        })
+    userData.birthdateUser = new Date(userData.birthdateUser);
 
-        this.router.navigate(['/login']);
-      },(error:any)=>{
-        
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          customClass: {
-            icon: 'swal-icon-color'
-          },
-          title: 'This user already exists!',
-          showConfirmButton: false,
-          timerProgressBar: true,
-          timer: 1500,
-          backdrop: `
-          rgba(0,0,0,0.8)
-          `
-        })
+    console.log("DATA 1:" + JSON.stringify(userData));
 
-      });
-    this.closeModal();
+    let allowedAccess = false;
+
+    if (userData.roleUser == "company" || userData.roleUser == "admin" || userData.roleUser == "tech"){
+      if ((userData.roleUser == "company") && (userData.code == "ea_bcn_company_0324")){
+        allowedAccess = true;
+      }
+      if ((userData.roleUser == "admin") && (userData.code == "ea_bcn_admin_0324_B8F3G5M2")){
+        allowedAccess = true;
+      }
+      if ((userData.roleUser == "tech") && (userData.code == "ea_bcn_tech_0324_N1U7D9K4")){
+        allowedAccess = true;
+      }
+    }
+
+    userData.uuid = " ";
+    delete userData.code;
+
+    if (allowedAccess == true) {
+      this.registerService.addUser(userData).subscribe(
+        (data:any)=>{
+          console.log(data);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            customClass: {
+              icon: 'swal-icon-color'
+            },
+            title: '¡Bienvenido!',
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 1500,
+            backdrop: `
+            rgba(0,0,0,0.8)
+            `
+          })
+          this.router.navigate(['/login']);
+        },(error:any)=>{
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            customClass: {
+              icon: 'swal-icon-color'
+            },
+            title: 'Error',
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 1500,
+            backdrop: `
+            rgba(0,0,0,0.8)
+            `
+          })
+        });
+      this.closeModal();
+    }
+    else {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        customClass: {
+          icon: 'swal-icon-color'
+        },
+        title: 'Código Incorrecto',
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 1500,
+        backdrop: `
+        rgba(0,0,0,0.8)
+        `
+      })
+    }
   }
 
   onAcceptChanges(): void {
     this.confirmChanges();
+    this.isModalOpen = false;
   }
 
   onCancelChanges(): void {
@@ -104,6 +151,7 @@ export class RegisterComponent {
   openModal(): void {
     this.isModalOpen = true;
   }
+
   closeModal(): void {
     this.isModalOpen = false;
   }
