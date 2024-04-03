@@ -10,12 +10,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-
   registerForm: FormGroup | any;
   registerFormCode: FormGroup | any;
   userKnown:boolean=false;
   isModalOpen:boolean=false;
   showAdditionalForm: boolean = false;
+  isNotificationOpen: boolean = false;
+  modalText: string = '';
 
   constructor(private formBuilder: FormBuilder, private registerService: AuthService, private router: Router) {
     
@@ -91,60 +92,30 @@ export class RegisterComponent {
       this.registerService.addUser(userData).subscribe(
         (data:any)=>{
           console.log(data);
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            customClass: {
-              icon: 'swal-icon-color'
-            },
-            title: '¡Bienvenido!',
-            showConfirmButton: false,
-            timerProgressBar: true,
-            timer: 1500,
-            backdrop: `
-            rgba(0,0,0,0.8)
-            `
-          })
-          this.router.navigate(['/login']);
+          this.openNotificationModal("¡Registrad@!");
         },(error:any)=>{
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            customClass: {
-              icon: 'swal-icon-color'
-            },
-            title: 'Error',
-            showConfirmButton: false,
-            timerProgressBar: true,
-            timer: 1500,
-            backdrop: `
-            rgba(0,0,0,0.8)
-            `
-          })
+          this.openNotificationModal("¡Error!");
         });
       this.closeModal();
     }
     else {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        customClass: {
-          icon: 'swal-icon-color'
-        },
-        title: 'Código Incorrecto',
-        showConfirmButton: false,
-        timerProgressBar: true,
-        timer: 1500,
-        backdrop: `
-        rgba(0,0,0,0.8)
-        `
-      })
+      this.openNotificationModal("Código Incorrecto");
     }
   }
 
   onAcceptChanges(): void {
-    this.confirmChanges();
-    this.isModalOpen = false;
+    if (this.modalText == ""){
+      this.confirmChanges();
+      this.modalText = "";
+      this.isModalOpen = false;
+      this.isNotificationOpen = false;
+    }
+    if (this.modalText == "¡Registrad@!"){
+      this.modalText = "";
+      this.router.navigate(['/login']);
+      this.isModalOpen = false;
+      this.isNotificationOpen = false;
+    }
   }
 
   onCancelChanges(): void {
@@ -157,6 +128,18 @@ export class RegisterComponent {
 
   closeModal(): void {
     this.isModalOpen = false;
+  }
+
+  // Notification Modal:
+
+  openNotificationModal(text: string): void {
+    this.modalText = text;
+    this.isNotificationOpen = true;
+  }
+
+  // Método para cerrar el modal
+  closeNotificationModal(): void {
+    this.isNotificationOpen = false;
   }
 
 }
