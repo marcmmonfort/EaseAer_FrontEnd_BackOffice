@@ -1,4 +1,5 @@
 <confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
 
 <h2 class="text-center">Registro</h2>
 <form [formGroup]="registerForm" (ngSubmit)="register()" class="formulario row g-3">
