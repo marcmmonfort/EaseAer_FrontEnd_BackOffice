@@ -45,35 +45,35 @@ export class LogInComponent {
     this.loginService.logIn(authData).subscribe(
       (data:any)=>{
         console.log(data);
-
-        // NOTIFICATION (Success)
         
         localStorage.setItem('token',data.token);
         
         this.knownService.updateUserKnown(true);
-        this.openNotificationModal("Success!"); // Poner texto aquí.
+        this.openNotificationModal("¡Bienvenid@!");
 
       },(error:any)=>{
         console.log(error.status);
 
         switch (error.status) {
           case 403:
-              // NOTIFICATION (Incorrect Password)
+            this.openNotificationModal("Contraseña Incorrecta");
             break;
           case 406:
-              // NOTIFICATION (Not Admin)
+              this.openNotificationModal("No Eres Admininstrador");
             break; 
           default: 
-            // NOTIFICATION (Error)
-            this.router.navigate(['/register']);
+            this.openNotificationModal("¡Error!");
             break;
         }
       });
   }
 
   onAcceptChanges(): void {
-    this.isModalOpen = false;
-    this.router.navigate(['/home']);
+    this.isNotificationOpen = false;
+    if (this.modalText == "¡Bienvenid@!"){
+      this.modalText = "";
+      this.router.navigate(['/home']);
+    }
   }
 
   onCancelChanges(): void {
