@@ -11,9 +11,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent {
-  
   loginForm: FormGroup | any;
   userKnown:boolean=false;
+  isModalOpen:boolean=false;
+  isNotificationOpen: boolean = false;
+  modalText: string = '';
 
   constructor(private formBuilder: FormBuilder, private loginService: AuthService, private knownService: KnownService, private router: Router) {
     
@@ -42,92 +44,60 @@ export class LogInComponent {
     console.log("Password:",this.loginForm.value.passwordUser);
     this.loginService.logIn(authData).subscribe(
       (data:any)=>{
-        // this.tokenStorage.saveToken(data.token);
         console.log(data);
-        
-        // alert("¡LogIn efectuado correctamente!");
 
-        // Poner aquí el alert ...
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          customClass: {
-            icon: 'swal-icon-color'
-          },
-          title: 'LogIn succesful!',
-          showConfirmButton: false,
-          timerProgressBar: true,
-          timer: 1500,
-          backdrop: `
-          rgba(0,0,0,0.8)
-          `
-        })
+        // NOTIFICATION (Success)
         
-        // Aquí deberíamos hacer el cambio de la barra de navigate ...
-
         localStorage.setItem('token',data.token);
         
         this.knownService.updateUserKnown(true);
-        this.router.navigate(['/home']);
+        this.openNotificationModal("Success!"); // Poner texto aquí.
+
       },(error:any)=>{
         console.log(error.status);
 
         switch (error.status) {
           case 403:
-              // Poner aquí el alert ...
-              Swal.fire({
-                position: 'center',
-                icon: 'error',
-                customClass: {
-                  icon: 'swal-icon-color'
-                },
-                title: 'Incorrect Password!',
-                showConfirmButton: false,
-                timerProgressBar: true,
-                timer: 1500,
-                backdrop: `
-                rgba(0,0,0,0.8)
-                `
-              })
+              // NOTIFICATION (Incorrect Password)
             break;
           case 406:
-              // Poner aquí el alert ...
-              Swal.fire({
-                position: 'center',
-                icon: 'error',
-                customClass: {
-                  icon: 'swal-icon-color'
-                },
-                title: 'You are not an admin!',
-                showConfirmButton: false,
-                timerProgressBar: true,
-                timer: 1500,
-                backdrop: `
-                rgba(0,0,0,0.8)
-                `
-              })
+              // NOTIFICATION (Not Admin)
             break; 
           default: 
-            // Poner aquí el alert ...
-            Swal.fire({
-              position: 'center',
-              icon: 'info',
-              customClass: {
-                icon: 'swal-icon-color'
-              },
-              title: 'This user does not exist!',
-              showConfirmButton: false,
-              timerProgressBar: true,
-              timer: 1500,
-              backdrop: `
-              rgba(0,0,0,0.8)
-              `
-            })
+            // NOTIFICATION (Error)
             this.router.navigate(['/register']);
             break;
         }
       });
   }
 
+  onAcceptChanges(): void {
+    this.isModalOpen = false;
+    this.router.navigate(['/home']);
+  }
+
+  onCancelChanges(): void {
+    this.isModalOpen = false;
+  }
+  
+  openModal(): void {
+    this.isModalOpen = true;
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+  }
+
+  // Notification Modal:
+
+  openNotificationModal(text: string): void {
+    this.modalText = text;
+    this.isNotificationOpen = true;
+  }
+
+  // Método para cerrar el modal
+  closeNotificationModal(): void {
+    this.isNotificationOpen = false;
+  }
 
 }

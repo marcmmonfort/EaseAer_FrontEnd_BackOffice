@@ -37,6 +37,7 @@ import { ActivityEditComponent } from './components/activity-components/activity
 import { AuthGuard } from './shared/auth.guard';
 import { AuthService } from './services/auth.service';
 import { ActivityParticipantsComponent } from './components/activity-components/activity-participants/activity-participants.component';
+import { NotificationModalComponent } from './components/notification-modal/notification-modal.component';
 
 const routes: Routes = [
 
@@ -109,6 +110,7 @@ const routes: Routes = [
     UserDetailsComponent,
     UserEditComponent,
     ConfirmationModalComponent,
+    NotificationModalComponent,
     UserCreateComponent,
     LocationComponent,
     LocationCreateComponent,

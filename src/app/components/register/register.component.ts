@@ -56,7 +56,6 @@ export class RegisterComponent {
       return;
     }
     this.openModal();
-    
   }
 
   confirmChanges(): void {

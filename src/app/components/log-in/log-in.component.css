@@ -104,3 +104,7 @@ input {
   margin-bottom: 0px;
   margin-top: 0px;
 }
+
+.swal2-popup {
+  background-color: #321e29 !important;
+}

@@ -1,3 +1,5 @@
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
 <h2 class="text-center">Acceso</h2>
 <form [formGroup]="loginForm" (ngSubmit)="login()" class="formulario row g-3">
 
