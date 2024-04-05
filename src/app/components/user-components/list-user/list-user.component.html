@@ -14,8 +14,7 @@
       <tr>
         <th class="textTitleTable">ID Usuario</th>
         <th class="textTitleTable">Usuario</th>
-        <th class="textTitleTable">Nombre</th>
-        <th class="textTitleTable">Apellidos</th>
+        <th class="textTitleTable">Nombre y Apellidos</th>
         <th class="textTitleTable">E-Mail</th>
         <th class="textTitleTable">Tipo</th>
         <th class="textTitleTable">Género</th>
@@ -28,8 +27,7 @@
       <tr *ngFor="let user of filteredUsers" [ngClass]="{ 'table-danger': user.deletedUser, 'table-success': !user.deletedUser }">
         <td class="text-center">{{ user.uuid.slice(0, 4) }} ... {{ user.uuid.slice(-4) }}</td>
         <td class="text-center">{{ user.appUser }}</td>
-        <td class="text-center">{{ user.nameUser }}</td>
-        <td class="text-center">{{ user.surnameUser }}</td>
+        <td class="text-center">{{ user.nameUser }} {{ user.surnameUser }}</td>
         <td class="text-center">{{ user.mailUser }}</td>
         <td class="text-center">
           <span *ngIf="user.roleUser === 'admin'">Administración</span>

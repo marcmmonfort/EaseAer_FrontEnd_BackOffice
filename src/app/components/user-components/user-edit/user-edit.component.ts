@@ -12,6 +12,8 @@ export class UserEditComponent {
   userData!: User;
   userId!: string;
   isModalOpen:boolean=false;
+  isNotificationOpen: boolean = false;
+  modalText: string = '';
   
   constructor(private route: ActivatedRoute, private userService: UserService,private router:Router) {}
 
@@ -41,17 +43,9 @@ export class UserEditComponent {
   }
   confirmChanges(): void {
     this.userService.updateUser(this.userData, this.userId).subscribe(() => {
-      this.closeModal();
-      this.router.navigate(['listUsers'])
+      this.openNotificationModal("¡Actualización Satisfactoria!");
+      // this.closeModal();
     });
-  }
-  onAcceptChanges(): void {
-    this.confirmChanges();
-  }
-  
-  onCancelChanges(): void {
-    this.isModalOpen = false;
-    this.loadUserData();
   }
   
   getRolText(rol: string): string {
@@ -69,15 +63,47 @@ export class UserEditComponent {
     }
   }
 
-  showFollowers(user:any):void{
-    this.router.navigate(['user-details/followers',user.id])
+  onAcceptChanges(): void {
+    if (this.modalText == ""){
+      this.confirmChanges();
+      this.modalText = "";
+      this.isModalOpen = false;
+      this.isNotificationOpen = false;
+    }
+    if (this.modalText == "¡Actualización Satisfactoria!"){
+      this.modalText = "";
+      this.router.navigate(['/users']);
+      this.isModalOpen = false;
+      this.isNotificationOpen = false;
+    }
+    else {
+      this.modalText = "";
+      this.isModalOpen = false;
+      this.isNotificationOpen = false;
+    }
   }
-  showFollowed(user:any):void{
-    this.router.navigate(['user-details/followed',user.id])
+  
+  onCancelChanges(): void {
+    this.isModalOpen = false;
+    this.isNotificationOpen = false;
+    this.loadUserData();
   }
+
   formatDate(dateString: Date): string {
     const date = new Date(dateString);
     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  }
+
+  // Notification Modal:
+
+  openNotificationModal(text: string): void {
+    this.modalText = text;
+    this.isNotificationOpen = true;
+  }
+
+  // Método para cerrar el modal
+  closeNotificationModal(): void {
+    this.isNotificationOpen = false;
   }
   
 }

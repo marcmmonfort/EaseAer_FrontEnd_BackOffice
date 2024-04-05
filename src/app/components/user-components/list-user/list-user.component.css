@@ -127,6 +127,9 @@ h2 {
 
 .tableUsers {
   margin-bottom: 0px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .buttonDetailsEdit {

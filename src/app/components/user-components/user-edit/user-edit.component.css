@@ -7,84 +7,119 @@ body {
   
   h2 {
     color: #343a40;
-    margin-top: 40px;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
+    font-family: 'SubtitleFontType', sans-serif;
+    margin-top: 18px;
+    margin-bottom: 18px;
     font-weight: bold;
   }
   
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  select,
-  textarea {
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-    padding: 8px;
-    width: 100%;
-    font-size: 16px;
-    color: #495057;
-    background-color: #fff;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  }
-  
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  input[type="password"]:focus,
-  select:focus,
-  textarea:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  }
-  
-  textarea {
-    resize: vertical;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 20px;
-    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-    background: linear-gradient(to right, #afd5ff, #113351);
-    display: flex;
-    justify-content: center;
+  .formulario {
+    background-color: #b3b0a1;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
     align-items: center;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0069d9;
-    border-color: #0062cc;
-  }
-  
-  .form-check-input {
-    margin-top: 5px;
-  }
-  .last-updated {
-    font-size: 14px;
     text-align: center;
-    font-style: italic;
+    align-content: center;
+    margin-bottom: 68px;
   }
-  
-  
-  /* Estilos específicos para el formulario */
-  
+
   form {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    text-align: center;
+    align-content: center;
+  }
+
+  .form-group {
+    margin-bottom: 0px;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+  }
+
+  .warningInput {
+    font-family: 'TextFontType', sans-serif;
+    font-size: 12px;
+    color: #d8131b;
+    margin-top: 4px;
+  }  
+
+  label {
+    display: block;
+    font-family: 'TextFontType', sans-serif;
+    font-size: 14px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #321e29;
+    margin-top: -10px;
+  }  
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 12px;
+    font-family: 'TextFontType', sans-serif;
+    font-size: 14px;
+  }  
+
+  textarea {
+    resize: vertical;
+  }
+  
+  .buttonUpdate {
+    background-color: #321e29;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.15s ease-in-out;
+    font-family: 'TextFontType', sans-serif;
+    font-size: 14px;
+    border-radius: 12px;
+    border-width: 0px;
+    width: 120px;
+    margin: 0 auto;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .buttonUpdate:hover {
+    background-color: #d8131b;
+    color: white;
+    font-family: 'TextFontType', sans-serif;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+  
+  .form-check-input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 12px;
+}
+  
+  .form-check-input:checked {
+    background-color: #875a32;
+    font-size: 14px;
+    border: none;
+  }
+
+  .form-check-label {
+    cursor: pointer;
+}
+
+  .last-updated {
+    font-size: 14px;
+    text-align: center;
+    font-style: italic;
   }
   
   .form-check-label {
@@ -98,8 +133,24 @@ body {
   #genderUser {
     width: auto;
   }
-  
-  #descriptionUser {
-    height: 100px;
+
+  select {
+    width: 100% !important;
+    border-radius: 12px;
+    font-family: 'TextFontType', sans-serif;
+    font-size: 14px;
+    height: 38px;
+
+    background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Reemplazar la flecha predeterminada con un ícono personalizado */
+    background-repeat: no-repeat;
+    background-position: right 0.35em top 50%;
   }
+
+  select option {
+    width: 50%;
+    padding: 0px;
+    border-radius: 12px;
+    font-family: 'TextFontType', sans-serif;
+    font-size: 14px;
+  } 
   

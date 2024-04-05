@@ -6,6 +6,9 @@
       <h3 class="text-center">@{{ userData.appUser }}</h3>
     </div>
     <div class="card-body">
+      <div *ngIf="!userData" class="text-center mt-5">
+        <p>Cargando Información ...</p>
+      </div>
       <div *ngIf="userData">
         <ul class="list-group">
           <li class="list-group-item"><strong>ID Completo </strong>{{ userData.uuid }}</li>
@@ -30,12 +33,10 @@
           <li class="list-group-item"><strong>Descripción </strong> {{ userData.descriptionUser }}</li>
           <li class="list-group-item"><strong>Privacidad </strong> <span *ngIf="userData.privacyUser; else privacidadPublica"> Privado <i class="fas fa-lock"></i></span><ng-template #privacidadPublica> Público <i class="fas fa-lock-open"></i></ng-template></li>
           <li class="list-group-item"><strong>Estado </strong> <span [ngClass]="{'text-danger': userData.deletedUser, 'text-success': !userData.deletedUser}">{{ userData.deletedUser ? 'Desactivado' : 'Activo' }}</span></li>
+          <li class="list-group-item"><strong>Game Record </strong> {{ userData.recordGameUser }}</li>
           <li class="list-group-item"><strong>Fecha de Creación </strong> {{ userData.createdAt | date:'dd/MM/yyy' }}</li>
           <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ userData.updatedAt | date:'dd/MM/yyy' }}</li>
         </ul>
-      </div>
-      <div *ngIf="!userData" class="text-center mt-5">
-        <p>Cargando Información ...</p>
       </div>
     </div>
   </div>
