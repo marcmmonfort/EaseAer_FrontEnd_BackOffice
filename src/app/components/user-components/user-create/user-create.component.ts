@@ -14,24 +14,27 @@ export class UserCreateComponent implements OnInit {
 
   userForm: FormGroup | any;
   isModalOpen:boolean=false;
+  isNotificationOpen: boolean = false;
+  modalText: string = '';
 
   constructor(private formBuilder: FormBuilder, private userService: UserService,private authservice:AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
-      appUser: ['', Validators.required],
-      nameUser: ['', Validators.required],
-      surnameUser: ['', Validators.required],
-      mailUser: ['', [Validators.required, Validators.email]],
-      passwordUser: ['', Validators.required],
-      photoUser: ['', Validators.required],
-      birthdateUser: ['', Validators.required],
-      genderUser: ['', Validators.required],
-      ocupationUser: ['', Validators.required],
-      descriptionUser: ['', Validators.required],
-      privacyUser: [false, Validators.required],
-      roleUser: ['common', Validators.required],
-      deletedUser: [false, Validators.required]
+      "appUser": ['', Validators.required],
+      "nameUser": ['', Validators.required],
+      "surnameUser": ['', Validators.required],
+      "mailUser": ['', [Validators.required, Validators.email]],
+      "passwordUser": ['', Validators.required],
+      "photoUser": ['', Validators.required],
+      "birthdateUser": ['', Validators.required],
+      "genderUser": ['', Validators.required],
+      "descriptionUser": ['', Validators.required],
+      "roleUser": ['', Validators.required],
+      "privacyUser": [false, Validators.required],
+      "recordGameUser": [0],
+      "flightsUser": [[]],
+      "deletedUser": [false, Validators.required],
     });
   }
 
@@ -41,8 +44,7 @@ export class UserCreateComponent implements OnInit {
 
   onSubmit(): void {
     if (this.userForm.invalid) {
-      alert('Por favor, completa todos los campos requeridos')
-      this.router.navigate(['/listUsers']);
+      this.openNotificationModal("¡Faltan campos por completar!");
     }
     this.openModal();
   }
@@ -50,43 +52,60 @@ export class UserCreateComponent implements OnInit {
     const userData = this.userForm.value;
     this.authservice.addUser(userData).subscribe(
       (response) => {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          customClass: {
-            icon: 'swal-icon-color'
-          },
-          title: 'Usuario creado correctamente!',
-          showConfirmButton: false,
-          timerProgressBar: true,
-          timer: 1500,
-          backdrop: `
-          rgba(0,0,0,0.8)
-          `
-        })
+        this.openNotificationModal("¡Registrad@!");
         console.log('Usuario guardado correctamente:', response);
-        // Aquí podrías redirigir a la página de éxito, por ejemplo
       },
       (error) => {
         console.error('Error al guardar usuario:', error);
-        // Aquí podrías mostrar un mensaje de error al usuario
+        this.openNotificationModal("¡Error!");
       }
     );
     this.closeModal();
   }
-  onAcceptChanges(): void {
-    this.confirmChanges();
-    this.ngOnInit();
 
+  onAcceptChanges(): void {
+    if (this.modalText == ""){
+      this.confirmChanges();
+      this.ngOnInit();
+      this.modalText = "";
+      this.isModalOpen = false;
+      this.isNotificationOpen = false;
+    }
+    if (this.modalText == "¡Registrad@!"){
+      this.modalText = "";
+      this.router.navigate(['/users']);
+      this.isModalOpen = false;
+      this.isNotificationOpen = false;
+    }
+    else {
+      this.modalText = "";
+      this.isModalOpen = false;
+      this.isNotificationOpen = false;
+    }
   }
+
   onCancelChanges(): void {
     this.isModalOpen = false;
+    this.isNotificationOpen = false;
   }
+
   openModal(): void {
     this.isModalOpen = true;
   }
   closeModal(): void {
     this.isModalOpen = false;
+  }
+
+  // Notification Modal:
+
+  openNotificationModal(text: string): void {
+    this.modalText = text;
+    this.isNotificationOpen = true;
+  }
+
+  // Método para cerrar el modal
+  closeNotificationModal(): void {
+    this.isNotificationOpen = false;
   }
 }
 
