@@ -51,8 +51,6 @@ const routes: Routes = [
   { path: 'comment-details/:uuid', component: CommentDetailsComponent },
   { path: 'comment-edit/:uuid', component: CommentEditComponent },
   { path: 'location', component: LocationComponent },
-  { path: 'user-details/:uuid', component: UserDetailsComponent },
-  { path: 'user-edit/:uuid', component: UserEditComponent },
   { path: 'location-create', component: LocationCreateComponent },
   { path: 'location-details/:uuid', component: LocationDetailsComponent },
   { path: 'location-edit/:uuid', component: LocationEditComponent },
@@ -87,6 +85,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'users', component: ListUserComponent },
   { path: 'users/create', component: UserCreateComponent },
+  { path: 'users/details/:uuid', component: UserDetailsComponent },
+  { path: 'users/edit/:uuid', component: UserEditComponent },
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

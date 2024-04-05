@@ -20,7 +20,7 @@ export class UserService {
   // ROUTE 1: routeUser.post("/user/register", userCtrl.registerUserCtrl);
   private apiURLUserRegister = environment.API_URL + '/user/register';
   // ROUTE 2: routeUser.get("/user/:uuid", checkJwt, userCtrl.getUserByIdCtrl);
-  private apiURLUserGetById = environment.API_URL + '/users/';
+  private apiURLUserGetById = environment.API_URL + '/user/';
   // ROUTE 3: routeUser.get("/user/google/check/:mailUser", userCtrl.getUserByEmailCtrl),
   private apiURLUserGetByMail = environment.API_URL + '/user/google/check/';
   // ROUTE 4: routeUser.get("/user/search/:search", checkJwt, userCtrl.getSearchUsersCtrl);

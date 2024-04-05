@@ -1,36 +1,47 @@
+<h2 *ngIf="userId" class="text-center">Información de {{ userData.nameUser }}</h2>
+
 <div class="container">
-  <h2 *ngIf="userId" class="text-center">{{userId}}</h2>
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <div class="card my-5">
-          <div class="card-header">
-            <h2 class="text-center">User details</h2>
-          </div>
-          <div class="card-body">
-            <div *ngIf="userData">
-              <ul class="list-group">
-                <li class="list-group-item"><strong class="textA">Nick:</strong> {{ userData.appUser }}</li>
-                <li class="list-group-item"><strong>Name:</strong> {{ userData.nameUser }}</li>
-                <li class="list-group-item"><strong>Surname:</strong> {{ userData.surnameUser }}</li>
-                <li class="list-group-item"><strong>Email:</strong> {{ userData.mailUser }}</li>
-                <li class="list-group-item"><strong>Birthday:</strong> {{ userData.birthdateUser }}</li>
-                <li class="list-group-item"><strong>Gender:</strong> {{ userData.genderUser === 'male' ? 'Masculino' : 'Femenino' }}</li>
-                <li class="list-group-item"><strong>Description:</strong> {{ userData.descriptionUser }}</li>
-                <li class="list-group-item"><strong>Privacy:</strong> <span *ngIf="userData.privacyUser; else privacidadPublica"><i class="fas fa-lock"></i> Privado</span><ng-template #privacidadPublica><i class="fas fa-unlock"></i> Público</ng-template></li>
-                <li class="list-group-item"><strong>Role:</strong> {{ getRolText(userData.roleUser) }}</li>
-                <li class="list-group-item"><strong>Estate:</strong> <span [ngClass]="{'text-danger': userData.deletedUser, 'text-success': !userData.deletedUser}">{{ userData.deletedUser ? 'Desactivado' : 'Activo' }}</span></li>
-                <li class="list-group-item"><strong>ID:</strong> {{ userData.uuid }}</li>
-                <li class="list-group-item"><strong>Created at:</strong> {{ userData.createdAt }}</li>
-                <li class="list-group-item"><strong>Updated at:</strong> {{ userData.updatedAt }}</li>
-              </ul>
-            </div>
-  
-            <div *ngIf="!userData" class="text-center mt-5">
-              <p>Loading data...</p>
-            </div>
-          </div>
-        </div>
+  <div class="card my-5">
+    <div class="card-header">
+      <h3 class="text-center">@{{ userData.appUser }}</h3>
+    </div>
+    <div class="card-body">
+      <div *ngIf="userData">
+        <ul class="list-group">
+          <li class="list-group-item"><strong>ID Completo </strong>{{ userData.uuid }}</li>
+          <li class="list-group-item"><strong>Usuario </strong>{{ userData.appUser }}</li>
+          <li class="list-group-item"><strong>Nombre y Apellido/s </strong>{{ userData.nameUser }} {{ userData.surnameUser }}</li>
+          <li class="list-group-item"><strong>E-Mail </strong>{{ userData.mailUser }}</li>
+          <li class="list-group-item"><strong>Tipo de Cuenta </strong>{{ getRolText(userData.roleUser) }}</li>
+          <li class="list-group-item"><strong>Nacimiento </strong>{{ userData.birthdateUser | date:'dd/MM/yyy' }}</li>
+          <li class="list-group-item"><strong>Género </strong> 
+            <ng-container *ngIf="userData.genderUser === 'male'; else female">
+              Hombre
+            </ng-container>
+            <ng-template #female>
+              <ng-container *ngIf="userData.genderUser === 'female'; else other">
+                Mujer
+              </ng-container>
+              <ng-template #other>
+                Otr@
+              </ng-template>
+            </ng-template>
+          </li>
+          <li class="list-group-item"><strong>Descripción </strong> {{ userData.descriptionUser }}</li>
+          <li class="list-group-item"><strong>Privacidad </strong> <span *ngIf="userData.privacyUser; else privacidadPublica"> Privado <i class="fas fa-lock"></i></span><ng-template #privacidadPublica> Público <i class="fas fa-lock-open"></i></ng-template></li>
+          <li class="list-group-item"><strong>Estado </strong> <span [ngClass]="{'text-danger': userData.deletedUser, 'text-success': !userData.deletedUser}">{{ userData.deletedUser ? 'Desactivado' : 'Activo' }}</span></li>
+          <li class="list-group-item"><strong>Fecha de Creación </strong> {{ userData.createdAt | date:'dd/MM/yyy' }}</li>
+          <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ userData.updatedAt | date:'dd/MM/yyy' }}</li>
+        </ul>
+      </div>
+      <div *ngIf="!userData" class="text-center mt-5">
+        <p>Cargando Información ...</p>
       </div>
     </div>
   </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
   

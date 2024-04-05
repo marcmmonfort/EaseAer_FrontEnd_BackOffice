@@ -19,7 +19,7 @@
         <th class="textTitleTable">E-Mail</th>
         <th class="textTitleTable">Tipo</th>
         <th class="textTitleTable">Género</th>
-        <th class="textTitleTable">Activo</th>
+        <th class="textTitleTable">Activ@</th>
         <th class="textTitleTable">Detalles</th>
         <th class="textTitleTable">Editar</th>
       </tr>
@@ -33,7 +33,7 @@
         <td class="text-center">{{ user.mailUser }}</td>
         <td class="text-center">
           <span *ngIf="user.roleUser === 'admin'">Administración</span>
-          <span *ngIf="user.roleUser === 'pax'">Pasajero</span>
+          <span *ngIf="user.roleUser === 'pax'">Pasajer@</span>
           <span *ngIf="user.roleUser === 'tech'">Equipo Técnico</span>
           <span *ngIf="user.roleUser === 'company'">Compañía</span>
         </td>
@@ -46,8 +46,8 @@
           <span *ngIf="!user.deletedUser" class="badge badge-success"><i class="fas fa-check" style="color: green;"></i></span>
           <span *ngIf="user.deletedUser" class="badge badge-danger" ><i class="fas fa-times" style="color: red;"></i></span>
         </td>
-        <td><a [routerLink]="['/user-details', user.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(user)">Detalles</button></a></td>
-        <td><a [routerLink]="['/user-edit', user.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(user)">Editar</button></a></td>
+        <td><a [routerLink]="['/users/details/', user.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(user)">Detalles</button></a></td>
+        <td><a [routerLink]="['/users/edit/', user.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(user)">Editar</button></a></td>
       </tr>
     </tbody>
   </table>

@@ -29,10 +29,10 @@ export class ListUserComponent implements OnInit {
   }
 
   showDetails(user: User): void {
-    this.router.navigate(['/user-details', user.uuid]);
+    this.router.navigate(['/users/details', user.uuid]);
   }
   showEdit(user: User): void {
-    this.router.navigate(['/user-edit', user.uuid]);
+    this.router.navigate(['/users/edit', user.uuid]);
   }
 
   search() {
@@ -75,9 +75,6 @@ export class ListUserComponent implements OnInit {
   paginateprevious() {
     if (this.printeado) {
       if (this.numPage == '1') {
-
-        // ("Estas en la primera pagina");
-
         this.openNotificationModal("¡Estás en la primera página!");
 
         return;
