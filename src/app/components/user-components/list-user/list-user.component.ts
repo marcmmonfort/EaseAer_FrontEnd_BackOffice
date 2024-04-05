@@ -15,6 +15,8 @@ export class ListUserComponent implements OnInit {
   numPage: string = '';
   searchTerm: string = '';
   printeado: boolean = false;
+  isNotificationOpen: boolean = false;
+  modalText: string = '';
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -50,40 +52,13 @@ export class ListUserComponent implements OnInit {
           this.numPage = '1';
         }
 
-        // Poner aquí el alert ...
-        Swal.fire({
-          position: 'center',
-          icon: 'info',
-          customClass: {
-            icon: 'swal-icon-color'
-          },
-          title: 'You are in the last page!',
-          showConfirmButton: false,
-          timerProgressBar: true,
-          timer: 1500,
-          backdrop: `
-          rgba(0,0,0,0.8)
-          `
-        })
+        this.openNotificationModal("¡No hay más páginas!");
       }
       else{
         console.log(users);
         this.filteredUsers = users;
         if (!this.printeado){
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            customClass: {
-              icon: 'swal-icon-color'
-            },
-            title: 'Users Loaded',
-            showConfirmButton: false,
-            timerProgressBar: true,
-            timer: 1500,
-            backdrop: `
-            rgba(0,0,0,0.8)
-            `
-          })
+          this.openNotificationModal("Usuarios Cargados");
         }
         this.printeado = true;
       }
@@ -103,21 +78,7 @@ export class ListUserComponent implements OnInit {
 
         // ("Estas en la primera pagina");
 
-        // Poner aquí el alert ...
-        Swal.fire({
-          position: 'center',
-          icon: 'info',
-          customClass: {
-            icon: 'swal-icon-color'
-          },
-          title: 'You are in the first page!',
-          showConfirmButton: false,
-          timerProgressBar: true,
-          timer: 1500,
-          backdrop: `
-          rgba(0,0,0,0.8)
-          `
-        })
+        this.openNotificationModal("¡Estás en la primera página!");
 
         return;
       } else {
@@ -125,5 +86,29 @@ export class ListUserComponent implements OnInit {
         this.printeaTodos();
       }
     }
+  }
+
+  // Notification Modal:
+
+  onAcceptChanges(): void {
+    this.isNotificationOpen = false;
+    if (this.modalText == "¡Bienvenid@!"){
+      this.modalText = "";
+      this.router.navigate(['/home']);
+    }
+  }
+
+  onCancelChanges(): void {
+    this.isNotificationOpen = false;
+  }
+
+  openNotificationModal(text: string): void {
+    this.modalText = text;
+    this.isNotificationOpen = true;
+  }
+
+  // Método para cerrar el modal
+  closeNotificationModal(): void {
+    this.isNotificationOpen = false;
   }
 }

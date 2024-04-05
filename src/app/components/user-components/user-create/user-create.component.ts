@@ -15,7 +15,6 @@ export class UserCreateComponent implements OnInit {
   userForm: FormGroup | any;
   isModalOpen:boolean=false;
 
-
   constructor(private formBuilder: FormBuilder, private userService: UserService,private authservice:AuthService, private router: Router) { }
 
   ngOnInit(): void {

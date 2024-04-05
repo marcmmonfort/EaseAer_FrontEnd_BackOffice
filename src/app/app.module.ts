@@ -53,7 +53,6 @@ const routes: Routes = [
   { path: 'location', component: LocationComponent },
   { path: 'user-details/:uuid', component: UserDetailsComponent },
   { path: 'user-edit/:uuid', component: UserEditComponent },
-  { path: 'user-create', component: UserCreateComponent },
   { path: 'location-create', component: LocationCreateComponent },
   { path: 'location-details/:uuid', component: LocationDetailsComponent },
   { path: 'location-edit/:uuid', component: LocationEditComponent },
@@ -87,6 +86,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'users', component: ListUserComponent },
+  { path: 'users/create', component: UserCreateComponent },
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
