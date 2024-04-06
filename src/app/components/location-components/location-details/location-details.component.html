@@ -1,29 +1,64 @@
+<h2 *ngIf="locationId" class="text-center">Información de {{ locData.nameLocation }}</h2>
+
 <div class="container">
-    <h1 class="text-center">{{ locData.nameLocation }}</h1>
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <div class="card my-5">
-          <div class="card-header">
-            <h2 class="text-center">Location details</h2>
-          </div>
-          <div class="card-body">
-            <div *ngIf="locData">
-              <ul class="list-group">
-                <li class="list-group-item"><strong>Name:</strong> {{ locData.nameLocation }}</li>
-                <li class="list-group-item"><strong>Latitude:</strong> {{ locData.latLocation }}</li>
-                <li class="list-group-item"><strong>Longitude:</strong> {{ locData.lonLocation }}</li>
-                <li class="list-group-item"><strong>Description:</strong> {{ locData.descriptionLocation }}</li>
-                <li class="list-group-item"><strong>ID:</strong> {{ locData.uuid }}</li>
-                <li class="list-group-item"><strong>Created at:</strong> {{ locData.createdAt }}</li>
-                <li class="list-group-item"><strong>Updated at:</strong> {{ locData.updatedAt }}</li>
-              </ul>
-            </div>
-  
-            <div *ngIf="!locData" class="text-center mt-5">
-              <p>Loading data...</p>
-            </div>
-          </div>
-        </div>
+  <div class="card my-5">
+    <div class="card-header">
+      <h3 class="text-center">{{ locData.nameLocation }}</h3>
+    </div>
+    <div class="card-body">
+      <div *ngIf="!locData" class="text-center mt-5">
+        <p>Cargando Información ...</p>
+      </div>
+      <div *ngIf="locData">
+        <ul class="list-group">
+          <li class="list-group-item"><strong>ID Completo </strong>{{ locData.uuid }}</li>
+          <li class="list-group-item"><strong>Nombre </strong>{{ locData.nameLocation }}</li>
+          <li class="list-group-item"><strong>Latitud </strong>{{ locData.latLocation }}</li>
+          <li class="list-group-item"><strong>Longitud </strong>{{ locData.lonLocation }}</li>
+          <li class="list-group-item"><strong>Terminal </strong> 
+            <ng-container *ngIf="locData.terminalLocation === 't1'; else t2">
+              T1
+            </ng-container>
+            <ng-template #t2>
+              T2
+            </ng-template>
+          </li>
+          <li class="list-group-item"><strong>Planta </strong> 
+            <ng-container *ngIf="locData.floorLocation === 'p00'; else p01">
+              P0
+            </ng-container>
+            <ng-template #p01>
+              <ng-container *ngIf="locData.floorLocation === 'p01'; else p02">
+                P1
+              </ng-container>
+              <ng-template #p02>
+                <ng-container *ngIf="locData.floorLocation === 'p02'; else p03">
+                  P2
+                </ng-container>
+                <ng-template #p03>
+                  P3
+                </ng-template>
+            </ng-template>
+          </ng-template>
+          </li>
+          <li class="list-group-item"><strong>Tipo </strong> 
+            <ng-container *ngIf="locData.typeLocation === 'shop'; else service">
+              Comercio
+            </ng-container>
+            <ng-template #service>
+              Servicio
+            </ng-template>
+          </li>
+          <li class="list-group-item"><strong>Estado </strong> <span [ngClass]="{'text-danger': locData.deletedLocation, 'text-success': !locData.deletedLocation}">{{ locData.deletedLocation ? 'Desactivada' : 'Activada' }}</span></li>
+          <li class="list-group-item"><strong>Fecha de Creación </strong> {{ locData.createdAt | date:'dd/MM/yyy' }}</li>
+          <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ locData.updatedAt | date:'dd/MM/yyy' }}</li>
+        </ul>
       </div>
     </div>
   </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

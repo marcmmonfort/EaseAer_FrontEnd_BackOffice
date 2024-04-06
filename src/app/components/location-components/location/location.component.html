@@ -41,7 +41,10 @@
           <span *ngIf="location.floorLocation === 'p20'">P2</span>
           <span *ngIf="location.floorLocation === 'p30'">P3</span>
         </td>
-        <td class="text-center">{{ location.typeLocation }}</td>
+        <td class="text-center">
+          <span *ngIf="location.typeLocation === 'shop'">Comercio</span>
+          <span *ngIf="location.typeLocation === 'service'">Servicio</span>
+        </td>
         <td><a [routerLink]="['/locations/details/', location.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(location)">Detalles</button></a></td>
         <td><a [routerLink]="['/locations/edit/', location.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(location)">Editar</button></a></td>
       </tr>
