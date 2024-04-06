@@ -1,0 +1,159 @@
+@font-face {
+    font-family: 'TitleFontType';
+    src: url('../../../assets/fontTypes/Emirates_Font.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'SubtitleFontType';
+    src: url('../../../assets/fontTypes/Corporate_Font.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'TextFontType';
+    src: url('../../../assets/fontTypes/SF_Font.ttf') format('truetype');
+  }
+  
+  .containerHomePage {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+  }
+  
+  footer {
+      text-align: center;
+      font-family: 'TextFontType', sans-serif;
+      font-size: 12px;
+  }
+  
+  li {
+      margin-bottom: 25px;
+  }
+  
+  .list-group {
+      margin-bottom: 0px;
+      text-align: center;
+      align-items: center;
+  }
+    
+  .list-group-item {
+    background-color: #b3b0a1;
+    border: none;
+    border-radius: 0;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-family: 'TextFontType', sans-serif;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .numberCount {
+    background-color: #321e29;
+    border: none;
+    border-radius: 0;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 0px;
+    font-family: 'TextFontType', sans-serif;
+    color: white;
+    font-size: 14px;
+    list-style: none;
+    z-index: 2;
+  }
+  
+  .topicCount {
+    background-color: white;
+    border: none;
+    border-radius: 0;
+    padding: 2px 10px;
+    padding-left: 16px;
+    border-radius: 0px 12px 12px 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: -12px;
+    font-family: 'TextFontType', sans-serif;
+    color: #875a31;
+    font-size: 14px;
+    list-style: none;
+  }
+  
+  .redesSociales {
+    margin-top: 2px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0px 0px;
+    margin-bottom: 68px;
+    font-family: 'TextFontType', sans-serif;
+    color: #000a23;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .numberClass {
+    display: flex;
+    align-items: center; /* Centrar verticalmente los elementos */
+    justify-content: center; /* Centrar horizontalmente los elementos */
+  }
+  
+  .logo{
+    height: 62px;
+    margin-top: 156px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .titulo{
+    font-weight: bold;
+    font-family: 'TitleFontType', sans-serif;
+    color: #d0871e;
+    text-align: center;
+    font-size: 52px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  
+  .airportName{
+    font-weight: bold;
+    font-family: 'SubtitleFontType', sans-serif;
+    color:#321e29;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .networkIcon{
+    height: 20px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  
+  .teamMember {
+    font-size: 14px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: 4px;
+    margin-right: 4px;
+    font-family: 'TextFontType', sans-serif;
+    color: #875a31;
+  }
+  
+  .titleAndIcon{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+  }
+  
+  main {
+    background-image: url('../../../assets/imagesEaseAer/BO_Trencadis_1_Png_Small.png');
+    background-size: cover; /* Ajusta el tamaño de la imagen de fondo para cubrir completamente el elemento */
+    background-position: center; /* Centra la imagen de fondo dentro del elemento */
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+    height: 100vh;
+  }

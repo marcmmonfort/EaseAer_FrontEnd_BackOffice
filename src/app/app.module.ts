@@ -20,6 +20,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './shared/auth.guard';
 import { AuthService } from './services/auth.service';
 import { NotificationModalComponent } from './components/notification-modal/notification-modal.component';
+import { FrontPageComponent } from './components/frontpage/frontpage.component';
+
 
 const routes: Routes = [
 
@@ -56,7 +58,7 @@ const routes: Routes = [
 
   // NEW: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  { path: '', component: LogInComponent },
+  { path: '', component: FrontPageComponent },
 
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },

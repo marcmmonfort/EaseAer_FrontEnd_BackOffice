@@ -2,10 +2,10 @@
 <body>
   <header>
     <div class="contenedor_cabecera">
-      <div class="tituloCabecera">
+      <a href="/" class="tituloCabecera">
         <h1 class="enLinea">EaseAer</h1>
         <h1 class="enLinea" style="color: #e9e8e6;">&nbsp; Barcelona</h1>
-      </div>
+      </a>
     </div>
     <div class="contenedor_info_cabecera">
       <div class="infoCabecera">
@@ -54,7 +54,7 @@
                 <li><a routerLink="/games"><i class="fas fa-chess"></i></a></li> <!-- Games -->
                 <li><a routerLink="/questions"><i class="fas fa-question-circle"></i></a></li> <!-- Question -->
                 <li><a routerLink="/matches"><i class="fas fa-heart"></i></a></li> <!-- Matches -->
-                <li><a id="log-out" routerLink="/login" (click)="LogOut()"><i class="fas fa-sign-out-alt"></i></a></li> <!-- Icono de salir -->
+                <li><a id="log-out" routerLink="/" (click)="LogOut()"><i class="fas fa-sign-out-alt"></i></a></li> <!-- Icono de salir -->
               </ul>
               <ul *ngIf="!userKnown" class="navbar__menu">
                 <li><a routerLink="/login">LogIn</a></li> <!-- id="selected" -->
