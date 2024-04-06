@@ -101,11 +101,31 @@ li {
 }
 
 .logo{
-  height: 56px;
-  margin-top: 10px;
+  height: 64px;
+  margin-top: 16px;
   margin-left: 4px;
   margin-right: 4px;
   margin-bottom: -6px;
+
+  animation: rotateAnimation 5s ease-in-out infinite;
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  16% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  66% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .titulo{
@@ -113,7 +133,7 @@ li {
   font-family: 'TitleFontType', sans-serif;
   color: #d0871e;
   text-align: center;
-  font-size: 36px;
+  font-size: 38px;
   margin-top: 0px;
   margin-bottom: 0px;
 }
@@ -123,7 +143,7 @@ li {
   font-family: 'SubtitleFontType', sans-serif;
   color:#321e29;
   text-align: center;
-  font-size: 18px;
+  font-size: 22px;
   margin-bottom: 12px;
 }
 
@@ -151,7 +171,7 @@ li {
 }
 
 main {
-  background-image: url('../../../assets/imagesEaseAer/BO_Trencadis_1_Png_Small.png');
+  background-image: url('../../../assets/imagesDetailing/EaseAer_BG_Barcelona_1_Png.png');
   background-size: cover; /* Ajusta el tamaño de la imagen de fondo para cubrir completamente el elemento */
   background-position: center; /* Centra la imagen de fondo dentro del elemento */
   background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */

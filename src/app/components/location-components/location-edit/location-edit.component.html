@@ -1,58 +1,58 @@
-<confirmation-modal
-  [isOpen]="isModalOpen"
-  (acceptChanges)="onAcceptChanges()"
-  (cancelChanges)="onCancelChanges()"
-></confirmation-modal>
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
 
-<form (ngSubmit)="onSubmit()">
+<h2 class="text-center">Editar Datos de {{ locData.nameLocation }}</h2>
+
+<form (ngSubmit)="onSubmit()" class="formulario row g-3">
   <div class="form-group">
-    <label for="nameLocation">Location name</label>
-    <input
-      type="string"
-      class="form-control"
-      id="nameLocation"
-      name="nameLocation"
-      [(ngModel)]="locData.nameLocation"
-      required
-    />
+    <label for="nameLocation">Nombre</label>
+    <input type="text" class="form-control" id="nameLocation" name="nameLocation" [(ngModel)]="locData.nameLocation" required />
   </div>
 
   <div class="form-group">
-    <label for="latLocation">Latitude</label>
-    <input
-      type="string"
-      class="form-control"
-      id="latLocation"
-      name="latLocation"
-      [(ngModel)]="locData.latLocation"
-      required
-    />
+    <label for="latLocation">Latitud</label>
+    <input type="text" class="form-control" id="latLocation" name="latLocation" [(ngModel)]="locData.latLocation" required />
   </div>
 
   <div class="form-group">
-    <label for="lonLocation">Longitude</label>
-    <input
-      type="string"
-      class="form-control"
-      id="lonLocation"
-      name="lonLocation"
-      [(ngModel)]="locData.lonLocation"
-      required
-    />
+    <label for="lonLocation">Longitud</label>
+    <input type="text" class="form-control" id="lonLocation" name="lonLocation" [(ngModel)]="locData.lonLocation" required />
   </div>
 
   <div class="form-group">
-    <label for="descriptionLocation">Description</label>
-    <input
-      type="string"
-      class="form-control"
-      id="descriptionLocation"
-      name="descriptionLocation"
-      [(ngModel)]="locData.descriptionLocation"
-      required
-    />
+    <label for="terminalLocation">Terminal</label>
+    <select class="form-control" id="terminalLocation" name="terminalLocation" [(ngModel)]="locData.terminalLocation" required>
+      <option value="t1">Terminal 1</option>
+      <option value="t2">Terminal 2</option>
+    </select>
   </div>
 
-  <button class="btn btn-primary" (click)="editar()">Save changes</button>
-  <button type="button" class="btn btn-primary2" (click)="eliminar()"> Eliminate location </button>
+  <div class="form-group">
+    <label for="floorLocation">Planta</label>
+    <select class="form-control" id="floorLocation" name="floorLocation" [(ngModel)]="locData.floorLocation" required>
+      <option value="p00">Planta 0</option>
+      <option value="p10">Planta 1</option>
+      <option value="p20">Planta 2</option>
+      <option value="p30">Planta 3</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="typeLocation">Tipo de Ubicación</label>
+    <select class="form-control" id="typeLocation" name="typeLocation" [(ngModel)]="locData.typeLocation" required>
+      <option value="shop">Comercio</option>
+      <option value="service">Servicio</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="deletedLocation">Ubicación Eliminada</label>
+    <input type="checkbox" class="form-check-input" id="deletedLocation" name="deletedLocation" [(ngModel)]="locData.deletedLocation" />
+  </div>
+
+  <button class="buttonUpdate" (click)="openModal()">Actualizar</button>
 </form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

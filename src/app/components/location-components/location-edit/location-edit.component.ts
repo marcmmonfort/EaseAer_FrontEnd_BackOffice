@@ -11,6 +11,8 @@ export class LocationEditComponent {
   locData: any;
   locationId!: string;
   isModalOpen:boolean=false;
+  isNotificationOpen: boolean = false;
+  modalText: string = '';
   isDeleteUp:boolean=false;
   isEditUp:boolean=false;
   
@@ -44,8 +46,7 @@ export class LocationEditComponent {
   confirmChanges(): void {
 
       this.locationService.updateLocation(this.locData, this.locationId).subscribe(() => {
-        this.closeModal();
-        this.router.navigate(['/location']);
+        this.openNotificationModal("¡Actualización Satisfactoria!");
       });
       
       if(this.isDeleteUp){
@@ -53,91 +54,61 @@ export class LocationEditComponent {
         this.locationService.deleteLocation(this.locationId).subscribe( 
           
           (data:any)=>{
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              customClass: {
-                icon: 'swal-icon-color'
-              },
-              title: 'Delete succesful!',
-              showConfirmButton: false,
-              timerProgressBar: true,
-              timer: 1500,
-              backdrop: `
-              rgba(0,0,0,0.8)
-              `
-            });
-
-
-          
-            this.router.navigate(['/location']);
+            this.openNotificationModal("¡Borrada Satisfactoriamente!");
           },(error:any)=>{
             console.log(error.status);
     
             switch (error.status) {
               case 401:
-                  // Poner aquí el alert ...
-                  Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    customClass: {
-                      icon: 'swal-icon-color'
-                    },
-                    title: 'NO_TIENES_UN_JWT_VALIDO!',
-                    showConfirmButton: false,
-                    timerProgressBar: true,
-                    timer: 1500,
-                    backdrop: `
-                    rgba(0,0,0,0.8)
-                    `
-                  })
+                this.openNotificationModal("¡No Estás Autorizado!");
                 break;
               case 402:
-                  // Poner aquí el alert ...
-                  Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    customClass: {
-                      icon: 'swal-icon-color'
-                    },
-                    title: 'You are not an admin!',
-                    showConfirmButton: false,
-                    timerProgressBar: true,
-                    timer: 1500,
-                    backdrop: `
-                    rgba(0,0,0,0.8)
-                    `
-                  })
+                this.openNotificationModal("¡No Eres Administrador!");
                 break; 
               default: 
-                // Poner aquí el alert ...
-                Swal.fire({
-                  position: 'center',
-                  icon: 'error',
-                  customClass: {
-                    icon: 'swal-icon-color'
-                  },
-                  title: 'ERROR!',
-                  showConfirmButton: false,
-                  timerProgressBar: true,
-                  timer: 1500,
-                  backdrop: `
-                  rgba(0,0,0,0.8)
-                  `
-                })
+                this.openNotificationModal("¡Error!");
               }
         })  
       } 
   }
 
   onAcceptChanges(): void {
-    this.confirmChanges();
+    if (this.modalText == ""){
+      this.confirmChanges();
+      this.modalText = "";
+      this.isModalOpen = false;
+      this.isNotificationOpen = false;
+    }
+    if (this.modalText == "¡Borrada Satisfactoriamente!" || this.modalText == "¡Actualización Satisfactoria!"){
+      this.modalText = "";
+      this.router.navigate(['/locations']);
+      this.isModalOpen = false;
+      this.isNotificationOpen = false;
+    }
+    else {
+      this.modalText = "";
+      this.isModalOpen = false;
+      this.isNotificationOpen = false;
+    }
   }
 
   onCancelChanges(): void {
     this.closeModal();
     this.loadLocationData();
   }
+
+  // Notification Modal:
+
+  openNotificationModal(text: string): void {
+    this.modalText = text;
+    this.isNotificationOpen = true;
+  }
+
+  // Método para cerrar el modal
+  closeNotificationModal(): void {
+    this.isNotificationOpen = false;
+  }
+
   eliminar(){
     this.isDeleteUp=true;
     this.openModal();
