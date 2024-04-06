@@ -3,41 +3,65 @@
 
 <h2 class="text-center">Nueva Ubicación</h2>
 
-<form [formGroup]="locForm" (ngSubmit)="onSubmit()" class="row g-3">
+<form [formGroup]="locForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+  
   <div class="form-group">
-    <label for="nameLocation">Name:</label>
+    <label for="nameLocation">Nombre</label>
     <input type="string" id="nameLocation" formControlName="nameLocation" class="form-control" />
     <div *ngIf="locForm.controls.nameLocation.invalid && (locForm.controls.nameLocation.dirty || locForm.controls.nameLocation.touched)">
-      <div *ngIf="locForm.controls.nameLocation.errors.required">
-        This camp is required.
-      </div>
+      <div *ngIf="locForm.controls.nameLocation.errors.required" class="warningInput">Campo obligatorio.</div>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="latLocation">Latitude:</label>
+    <label for="latLocation">Latitud</label>
     <input type="string" id="latLocation" formControlName="latLocation" class="form-control" />
     <div *ngIf="locForm.controls.latLocation.invalid && (locForm.controls.latLocation.dirty || locForm.controls.latLocation.touched)">
-      <div *ngIf="locForm.controls.latLocation.errors.required">
-        Este camp is required.
-      </div>
+      <div *ngIf="locForm.controls.latLocation.errors.required" class="warningInput">Campo obligatorio.</div>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="lonLocation">Longitude:</label>
+    <label for="lonLocation">Longitud</label>
     <input type="string" id="lonLocation" formControlName="lonLocation" class="form-control" />
     <div *ngIf="locForm.controls.lonLocation.invalid && (locForm.controls.lonLocation.dirty || locForm.controls.lonLocation.touched)">
-      <div *ngIf="locForm.controls.lonLocation.errors.required">
-        Este camp is required.
-      </div>
+      <div *ngIf="locForm.controls.lonLocation.errors.required" class="warningInput">Campo obligatorio.</div>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="descriptionLocation">Description:</label>
-    <input type="string" id="descriptionLocation" formControlName="descriptionLocation" class="form-control" />
+    <label for="terminalLocation">Terminal</label>
+    <select id="terminalLocation" formControlName="terminalLocation" class="form-control" (change)="toggleAdditionalForm()">
+      <option value="t1">Terminal 1</option>
+      <option value="t2">Terminal 2</option>
+    </select>
   </div>
 
-  <button class="btn btn-primary" (click)="openModal()">Save changes</button>
+  <div class="form-group">
+    <label for="floorLocation">Planta</label>
+    <select id="floorLocation" formControlName="floorLocation" class="form-control">
+      <option value="p00">Planta 0</option>
+      <option value="p10">Planta 1</option>
+      <option value="p20" [hidden]="showAdditionalOption">Planta 2</option>
+      <option value="p30" [hidden]="showAdditionalOption">Planta 3</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="typeLocation">Tipo de Ubicación</label>
+    <select id="typeLocation" formControlName="typeLocation" class="form-control">
+      <option value="shop">Comercial</option>
+      <option value="service">Servicio</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="descriptionLocation">Descripción</label>
+    <input type="string" id="descriptionLocation" formControlName="descriptionLocation" class="form-control" />
+    <div *ngIf="locForm.controls.descriptionLocation.invalid && (locForm.controls.descriptionLocation.dirty || locForm.controls.descriptionLocation.touched)">
+      <div *ngIf="locForm.controls.descriptionLocation.errors.required" class="warningInput">Campo obligatorio.</div>
+    </div>
+  </div>
+
+  <button class="buttonRegister" (click)="openModal()">Crear</button>
 </form>

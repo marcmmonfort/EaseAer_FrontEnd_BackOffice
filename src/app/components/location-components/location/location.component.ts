@@ -12,7 +12,8 @@ import Swal from 'sweetalert2';
 export class LocationComponent implements OnInit {
   locations: any[] = [];
   filteredLocations: any[] = [];
-  searchTerm: string = '';
+  searchName: string = '';
+  searchTerminal: string = '';
   numPage: string = '';
   printeado: boolean = false;
   isNotificationOpen: boolean = false;
@@ -36,12 +37,22 @@ export class LocationComponent implements OnInit {
     this.router.navigate(['/locations/edit/', location.uuid]);
   }
 
-  search() {
-    if (this.searchTerm.trim() !== '') {
+  searchByName() {
+    if (this.searchName.trim() !== '') {
       this.filteredLocations = this.locations.filter((location) =>
         location.nameLocation
           .toLowerCase()
-          .includes(this.searchTerm.toLowerCase())
+          .includes(this.searchName.toLowerCase())
+      );
+    } 
+  }
+
+  searchByTerminal() {
+    if (this.searchTerminal.trim() !== '') {
+      this.filteredLocations = this.locations.filter((location) =>
+        location.terminalLocation
+          .toLowerCase()
+          .includes(this.searchTerminal.toLowerCase())
       );
     } 
   }

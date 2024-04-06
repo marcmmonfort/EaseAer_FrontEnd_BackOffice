@@ -14,16 +14,21 @@ export class LocationCreateComponent {
   isModalOpen:boolean=false;
   isNotificationOpen: boolean = false;
   modalText: string = '';
+  showAdditionalOption: boolean = true;
 
   constructor(private formBuilder: FormBuilder, private locationService: LocationService, private router: Router) { }
 
   ngOnInit(): void {
 
     this.locForm = this.formBuilder.group({
-      nameLocation: ['', Validators.required],
-      latLocation: ['', Validators.required],
-      lonLocation: ['', Validators.required],
-      descriptionLocation: ['', Validators.required],
+      "nameLocation": ['', Validators.required],
+      "latLocation": ['', Validators.required],
+      "lonLocation": ['', Validators.required],
+      "terminalLocation": ['', Validators.required],
+      "floorLocation": ['', Validators.required],
+      "typeLocation": ['', Validators.required],
+      "descriptionLocation": ['', Validators.required],
+      "deletedLocation": [false, Validators.required],
     });
   }
 
@@ -33,24 +38,28 @@ export class LocationCreateComponent {
 
   onSubmit(): void {
     if (this.locForm.invalid) {
-      alert('Por favor, completa todos los campos requeridos')
-      this.router.navigate(['/locations']);
+      this.openNotificationModal("¡Información Incorrecta!");
     }
     this.openModal();
   }
+
+  toggleAdditionalForm(): void {
+    const terminalSelected = this.locForm.get('terminalLocation').value;
+    this.showAdditionalOption = ['t2'].includes(terminalSelected);
+  }
+  
   confirmChanges(): void {
     const locData = this.locForm.value;
     this.locationService.addLocation(locData).subscribe(
       (response) => {
-        this.openNotificationModal("Ubicación Creada!");
+        this.openNotificationModal("¡Ubicación Creada!");
       },
       (error) => {
-        console.error('Error al guardar location:', error);
         this.openNotificationModal("¡Error!");
       }
     );
     this.closeModal();
-    this.router.navigate(['/locations']);
+    // this.router.navigate(['/locations']);
   }
 
   openModal(): void {

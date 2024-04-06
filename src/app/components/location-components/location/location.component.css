@@ -2,11 +2,14 @@
 .table th {
   text-align: center;
   vertical-align: middle;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
 }
 
 .table .badge {
-  font-size: 1rem;
-  padding: 0.5em 1em;
+  padding: 2px 2px;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
 }
 
 .tableLocations {
@@ -15,6 +18,7 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
 
 .textTitleTable{
   color: #875a31;
@@ -34,6 +38,7 @@
   text-align: center;
   justify-content: center;
   margin-top: 0px;
+  margin-bottom: -20px;
   padding: 0px;
 }
 
