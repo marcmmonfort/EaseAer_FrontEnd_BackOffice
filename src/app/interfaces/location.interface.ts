@@ -3,7 +3,8 @@ export interface Location {
     nameLocation:string;
     latLocation:string;
     lonLocation:string;
-    descriptionLocation?:string;
+    typeLocation: string;
+    deletedLocation: boolean;
     createdAt: string;
     updatedAt: string;
 }

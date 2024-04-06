@@ -1,10 +1,10 @@
 export interface User {
-    nameLocation: string;
-    latLocation: string;
-    lonLocation: string; 
-    descriptionLocation: string;
-    uuid: string;
-    createdAt: string;
-    updatedAt: string;
-  }
-  
+  uuid: string;
+  nameLocation: string;
+  latLocation: string;
+  lonLocation: string; 
+  typeLocation: string;
+  deletedLocation: boolean;
+  createdAt: string;
+  updatedAt: string;
+}

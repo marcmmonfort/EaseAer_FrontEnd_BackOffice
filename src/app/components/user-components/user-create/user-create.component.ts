@@ -48,6 +48,7 @@ export class UserCreateComponent implements OnInit {
     }
     this.openModal();
   }
+  
   confirmChanges(): void {
     const userData = this.userForm.value;
     this.authservice.addUser(userData).subscribe(

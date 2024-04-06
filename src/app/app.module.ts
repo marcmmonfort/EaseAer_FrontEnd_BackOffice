@@ -32,10 +32,6 @@ const routes: Routes = [
   { path: 'comment-create', component: CommentCreateComponent },
   { path: 'comment-details/:uuid', component: CommentDetailsComponent },
   { path: 'comment-edit/:uuid', component: CommentEditComponent },
-  { path: 'location', component: LocationComponent },
-  { path: 'location-create', component: LocationCreateComponent },
-  { path: 'location-details/:uuid', component: LocationDetailsComponent },
-  { path: 'location-edit/:uuid', component: LocationEditComponent },
   { path: 'comment-details/responses/:uuid/:aux', component: CommentResponseComponent },
   { path: 'user-details/followers/:uuid', component: UserFollowersComponent },
   { path: 'user-details/followed/:uuid', component: UserFollowedComponent },
@@ -65,10 +61,16 @@ const routes: Routes = [
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
+
   { path: 'users', component: ListUserComponent },
   { path: 'users/create', component: UserCreateComponent },
   { path: 'users/details/:uuid', component: UserDetailsComponent },
   { path: 'users/edit/:uuid', component: UserEditComponent },
+
+  { path: 'locations', component: LocationComponent },
+  { path: 'locations/create', component: LocationCreateComponent },
+  { path: 'locations/details/:uuid', component: LocationDetailsComponent },
+  { path: 'locations/edit/:uuid', component: LocationEditComponent },
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

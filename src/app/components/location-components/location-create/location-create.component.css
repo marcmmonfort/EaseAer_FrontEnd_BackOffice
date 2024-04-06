@@ -6,8 +6,10 @@ body {
   
   h2 {
     color: #343a40;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    font-family: 'SubtitleFontType', sans-serif;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    font-weight: bold;
   }
   
   .form-group {

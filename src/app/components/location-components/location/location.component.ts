@@ -8,12 +8,15 @@ import Swal from 'sweetalert2';
   templateUrl: './location.component.html',
   styleUrls: ['./location.component.css'],
 })
+
 export class LocationComponent implements OnInit {
   locations: any[] = [];
   filteredLocations: any[] = [];
   searchTerm: string = '';
   numPage: string = '';
   printeado: boolean = false;
+  isNotificationOpen: boolean = false;
+  modalText: string = '';
   
   constructor(private locationService: LocationService, private router: Router) {}
   
@@ -26,10 +29,11 @@ export class LocationComponent implements OnInit {
   }
 
   showDetails(location: any): void {
-    this.router.navigate(['/location-details', location.uuid]);
+    this.router.navigate(['/locations/details/', location.uuid]);
   }
+
   showEdit(location: any): void {
-    this.router.navigate(['/location-edit', location.uuid]);
+    this.router.navigate(['/locations/edit/', location.uuid]);
   }
 
   search() {
@@ -41,6 +45,7 @@ export class LocationComponent implements OnInit {
       );
     } 
   }
+
   printeaTodos() {
     this.locationService.getLocations(this.numPage).subscribe((locations) => {
       if(locations.length==0){
@@ -50,70 +55,31 @@ export class LocationComponent implements OnInit {
           this.numPage = '1';
         }
 
-        // Poner aquí el alert ...
-        Swal.fire({
-          position: 'center',
-          icon: 'info',
-          customClass: {
-            icon: 'swal-icon-color'
-          },
-          title: 'You are in the last page!',
-          showConfirmButton: false,
-          timerProgressBar: true,
-          timer: 1500,
-          backdrop: `
-          rgba(0,0,0,0.8)
-          `
-        })
+        this.openNotificationModal("¡No hay más páginas!");
       }
       else{
         this.filteredLocations = locations;
         if (!this.printeado){
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            customClass: {
-              icon: 'swal-icon-color'
-            },
-            title: 'Locations Loaded',
-            showConfirmButton: false,
-            timerProgressBar: true,
-            timer: 1500,
-            backdrop: `
-            rgba(0,0,0,0.8)
-            `
-          })
+          this.openNotificationModal("Ubicaciones Cargadas");
         }
         this.printeado = true;
         
       }
     });
   }
+
   paginatenext() {
     if (this.printeado) {
       this.numPage = (parseInt(this.numPage, 10) + 1).toString();
       this.printeaTodos();
     }
   }
+
   paginateprevious() {
     if (this.printeado) {
       if (this.numPage == '1') {
 
-        // Poner aquí el alert ...
-        Swal.fire({
-          position: 'center',
-          icon: 'info',
-          customClass: {
-            icon: 'swal-icon-color'
-          },
-          title: 'You are in the first page!',
-          showConfirmButton: false,
-          timerProgressBar: true,
-          timer: 1500,
-          backdrop: `
-          rgba(0,0,0,0.8)
-          `
-        })
+        this.openNotificationModal("¡Estás en la primera página!");
 
         return;
       } else {
@@ -122,4 +88,28 @@ export class LocationComponent implements OnInit {
       }
     }
   }
+
+  // Notification Modal:
+
+  onAcceptChanges(): void {
+    this.isNotificationOpen = false;
+    if (this.modalText == "¡Ubicación Creada!"){
+      this.modalText = "";
+      this.router.navigate(['/locations']);
+    }
+  }
+
+  onCancelChanges(): void {
+    this.isNotificationOpen = false;
+  }
+
+  openNotificationModal(text: string): void {
+    this.modalText = text;
+    this.isNotificationOpen = true;
+  }
+
+  closeNotificationModal(): void {
+    this.isNotificationOpen = false;
+  }
+
 }

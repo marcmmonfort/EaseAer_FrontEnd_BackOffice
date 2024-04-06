@@ -1,30 +1,37 @@
-<header>
-  <h1 class="titulo">EaseAer</h1>
-  <h2 class="slogan">Aeropuerto Josep Tarradellas Barcelona - El Prat</h2>
-</header>
 <main>
-  <div>
-    <section>
-      <h2 class="titulo2">Estadísticas</h2>
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-action active">
-          {{ userCount }} <strong>Usuarios Registrados</strong> 
-        </li>
-      </ul>
-    </section>
+  <div class="titleAndIcon">
+    <img src="../../../assets/imagesEaseAer/EaseAer_Logo_2_Png.png" alt="GitHub" class="logo">
+    <h1 class="titulo">EaseAer</h1>
+    <h2 class="airportName">Aeropuerto Josep Tarradellas Barcelona - El Prat</h2>
   </div>
-
-  <div>
+  <div class="containerHomePage">
     <section>
-      <h2 class="titulo2">Team</h2>
+      <div class="numberClass"> 
+        <li class="numberCount">{{ userCount }}</li>
+        <li class="topicCount">Usuari@s</li>
+      </div>
+      <div class="numberClass"> 
+        <li class="numberCount">{{ locationCount }}</li>
+        <li class="topicCount">Ubicaciones</li>
+      </div>
       <ul class="list-group">
-        <li class="list-group-item list-group-item-action active">
-          <a class="enlace" href="https://www.instagram.com/marcmmonfort/">Marc Moran Monfort</a> 
+        <li class="redesSociales">
+          <h3 class="teamMember">Marc Moran Monfort</h3>
+          <a href="https://www.instagram.com/marcmmonfort/">
+            <img src="../../../assets/imagesSocialNetworks/Icon_Instagram.png" alt="Instagram" class="networkIcon">
+          </a>
+          <a href="https://www.linkedin.com/in/marc-moran-monfort-ba698019a/">
+            <img src="../../../assets/imagesSocialNetworks/Icon_LinkedIn.png" alt="LinkedIn" class="networkIcon">
+          </a>
+          <a href="https://github.com/marcmmonfort">
+            <img src="../../../assets/imagesSocialNetworks/Icon_GitHub.png" alt="GitHub" class="networkIcon">
+          </a>
         </li>
       </ul>
     </section>
   </div>
 </main>
+
 <footer>
   <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
 </footer>

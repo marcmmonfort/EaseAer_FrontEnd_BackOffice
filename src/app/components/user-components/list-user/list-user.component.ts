@@ -91,7 +91,7 @@ export class ListUserComponent implements OnInit {
     this.isNotificationOpen = false;
     if (this.modalText == "¡Bienvenid@!"){
       this.modalText = "";
-      this.router.navigate(['/home']);
+      this.router.navigate(['/users']);
     }
   }
 
@@ -104,8 +104,8 @@ export class ListUserComponent implements OnInit {
     this.isNotificationOpen = true;
   }
 
-  // Método para cerrar el modal
   closeNotificationModal(): void {
     this.isNotificationOpen = false;
   }
+  
 }
