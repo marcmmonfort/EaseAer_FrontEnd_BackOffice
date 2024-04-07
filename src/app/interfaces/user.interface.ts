@@ -1,5 +1,5 @@
-export interface User{
-    uuid?:string;
+export interface User {
+    uuid?: string;
     appUser: string;
     nameUser: string;
     surnameUser: string;
@@ -16,6 +16,3 @@ export interface User{
     createdAt: string;
     updatedAt: string;
 }
-
-    
-
