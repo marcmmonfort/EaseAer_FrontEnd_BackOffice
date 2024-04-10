@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
     providedIn: 'root',
 })
 
-export class ProductService {
+export class NewsService {
     news!: News;
     message!: String;
     private newsSource = new BehaviorSubject(this.news);

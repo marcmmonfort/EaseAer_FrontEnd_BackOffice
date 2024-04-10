@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
     providedIn: 'root',
 })
 
-export class IncidentService {
+export class PreferencesService {
     preferences!: Preferences;
     message!: String;
     private preferencesSource = new BehaviorSubject(this.preferences);
