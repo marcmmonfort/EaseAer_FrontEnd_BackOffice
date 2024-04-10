@@ -98,11 +98,19 @@ li {
   display: flex;
   align-items: center; /* Centrar verticalmente los elementos */
   justify-content: center; /* Centrar horizontalmente los elementos */
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.dataContainer {
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
 }
 
 .logo{
   height: 64px;
-  margin-top: 16px;
+  margin-top: 44px;
   margin-left: 4px;
   margin-right: 4px;
   margin-bottom: -6px;

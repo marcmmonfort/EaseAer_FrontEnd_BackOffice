@@ -49,10 +49,10 @@ export class HomeComponent {
     private locationService: LocationService, 
     private cardService: CardService, 
     private prizeService: PrizeService, 
-    private serviceService: ServiceService, 
-    private shopService: ShopService, 
+    private serviceService: ServiceService, //
+    private shopService: ShopService,  //
     private incidentService: IncidentService, 
-    private offerService: OfferService, 
+    private offerService: OfferService,  //
     private productService: ProductService, 
     private newsService: NewsService, 
     private preferencesService: PreferencesService, 
@@ -63,7 +63,6 @@ export class HomeComponent {
     private bookingService: BookingService, 
     private gameService: GameService, 
     private questionService: QuestionService, 
-
     private router: Router) {}
 
   ngOnInit(){
