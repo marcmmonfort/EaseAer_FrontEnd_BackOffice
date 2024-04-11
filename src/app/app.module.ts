@@ -25,7 +25,8 @@ import { CardComponent } from './components/card-components/card/card.component'
 import { CardCreateComponent } from './components/card-components/card-create/card-create.component';
 import { CardDetailsComponent } from './components/card-components/card-details/card-details.component';
 import { CardEditComponent } from './components/card-components/card-edit/card-edit.component';
-
+import { PrizeComponent } from './components/prize-component/prize/prize.component';
+import { PrizeCreateComponent } from './components/prize-component/prize-create/prize-create.component';
 
 const routes: Routes = [
 
@@ -83,6 +84,9 @@ const routes: Routes = [
   { path: 'cards/details/:uuid', component: CardDetailsComponent },
   { path: 'cards/edit/:uuid', component: CardEditComponent },
 
+  { path: 'prizes', component: PrizeComponent },
+  { path: 'prizes/create', component: PrizeCreateComponent },
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ];
@@ -115,6 +119,9 @@ const routes: Routes = [
     CardCreateComponent,
     CardDetailsComponent,
     CardEditComponent,
+
+    PrizeComponent,
+    PrizeCreateComponent
 
     // NEW: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

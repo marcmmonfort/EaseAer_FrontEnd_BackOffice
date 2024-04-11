@@ -5,6 +5,7 @@
 <div class="bloque_funcionalidades_clase">
   <button type="button" class="animated-word" routerLink="/users/create" >Create</button>
   <button type="button" class="animated-word" (click)="printeaTodos()" >Get All</button>
+  <input type="text" class="buscador" placeholder="Get By ID" [(ngModel)]="searchById" name="searchById" (keyup)="searchUserById()">
   <input type="text" class="buscador" placeholder="Get By E-Mail" [(ngModel)]="searchTerm" name="searchTerm" (keyup)="search()">
 </div>
 

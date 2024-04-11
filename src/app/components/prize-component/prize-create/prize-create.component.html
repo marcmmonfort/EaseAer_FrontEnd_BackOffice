@@ -1,0 +1,58 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Nuevo Premio</h2>
+
+<form [formGroup]="prizeForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+  
+  <div class="form-group">
+    <label for="namePrize">Nombre</label>
+    <input type="string" id="namePrize" formControlName="namePrize" class="form-control" />
+    <div *ngIf="prizeForm.controls.namePrize.invalid && (prizeForm.controls.namePrize.dirty || prizeForm.controls.namePrize.touched)">
+        <div *ngIf="prizeForm.controls.namePrize.errors.required" class="warningInput">Campo obligatorio.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="descriptionPrize">Descripción</label>
+    <input type="string" id="descriptionPrize" formControlName="descriptionPrize" class="form-control" />
+    <div *ngIf="prizeForm.controls.descriptionPrize.invalid && (prizeForm.controls.descriptionPrize.dirty || prizeForm.controls.descriptionPrize.touched)">
+        <div *ngIf="prizeForm.controls.descriptionPrize.errors.required" class="warningInput">Campo obligatorio.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="pointsPrize">Puntos</label>
+    <input type="number" id="pointsPrize" formControlName="pointsPrize" class="form-control" min="0"/>
+    <div *ngIf="prizeForm.controls.pointsPrize.invalid && (prizeForm.controls.pointsPrize.dirty || prizeForm.controls.pointsPrize.touched)">
+        <div *ngIf="prizeForm.controls.pointsPrize.errors.required" class="warningInput">Campo obligatorio.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="idShopPrize">ID Tienda</label>
+    <input type="string" id="idShopPrize" formControlName="idShopPrize" class="form-control" />
+    <div *ngIf="prizeForm.controls.idShopPrize.invalid && (prizeForm.controls.idShopPrize.dirty || prizeForm.controls.idShopPrize.touched)">
+        <div *ngIf="prizeForm.controls.idShopPrize.errors.required" class="warningInput">Campo obligatorio.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dateEndPrize">Caducidad</label>
+    <input type="date" id="dateEndPrize" formControlName="dateEndPrize" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="codePrize">Código</label>
+    <input type="string" id="codePrize" formControlName="codePrize" class="form-control" />
+    <div *ngIf="prizeForm.controls.codePrize.invalid && (prizeForm.controls.codePrize.dirty || prizeForm.controls.codePrize.touched)">
+        <div *ngIf="prizeForm.controls.codePrize.errors.required" class="warningInput">Campo obligatorio.</div>
+    </div>
+  </div>
+
+  <button class="buttonRegister" (click)="openModal()">Crear</button>
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

@@ -14,6 +14,7 @@ export class ListUserComponent implements OnInit {
   filteredUsers: any[] = [];
   numPage: string = '';
   searchTerm: string = '';
+  searchById: string = '';
   printeado: boolean = false;
   isNotificationOpen: boolean = false;
   modalText: string = '';
@@ -39,6 +40,14 @@ export class ListUserComponent implements OnInit {
     if (this.searchTerm.trim() !== '') {
       this.filteredUsers = this.users.filter((user) =>
         user.mailUser.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }   
+  }
+
+  searchUserById() {
+    if (this.searchById.trim() !== '') {
+      this.filteredUsers = this.users.filter((user) =>
+        user.uuid.toLowerCase().includes(this.searchById.toLowerCase())
       );
     }   
   }

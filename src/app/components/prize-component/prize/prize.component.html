@@ -1,0 +1,47 @@
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Premios</h2>
+
+<div class="bloque_funcionalidades_clase">
+  <button type="button" class="animated-word" routerLink="/prizes/create">Create</button>
+  <button type="button" class="animated-word" (click)="printeaTodos()">Get All</button>
+  <input type="text" class="buscador" placeholder="Get By Name" [(ngModel)]="searchName" name="searchName" (keyup)="searchByName()"/> 
+</div>
+
+<div class="input-group mb-3">
+</div>
+
+<div class="tableLocations">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="textTitleTable">ID Premio</th>
+        <th class="textTitleTable">Nombre</th>
+        <th class="textTitleTable">Descripción</th>
+        <th class="textTitleTable">Puntos</th>
+        <th class="textTitleTable">ID Comercio</th>
+        <th class="textTitleTable">Caducidad</th>
+        <th class="textTitleTable">Código</th>
+        <th class="textTitleTable">Detalles</th>
+        <th class="textTitleTable">Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prize of filteredPrizes" [ngClass]="{ 'table-danger': prize.deletedPrize, 'table-success': !prize.deletedPrize }">
+        <td class="text-center">{{ prize.uuid.slice(0, 4) }} ... {{ prize.uuid.slice(-4) }}</td>
+        <td class="text-center">{{ prize.namePrize }}</td>
+        <td class="text-center">{{ prize.descriptionPrize.slice(0, 15) }} ...</td>
+        <td class="text-center">{{ prize.pointsPrize }}</td>
+        <td class="text-center">{{ prize.idShopPrize.slice(0, 4) }} ... {{ prize.idShopPrize.slice(-4) }}</td>
+        <td class="text-center">{{ prize.dateEndPrize | date:'dd/MM/yyy' }}</td>
+        <td class="text-center">{{ prize.codePrize }}</td>
+        <td><a [routerLink]="['/prizes/details/', prize.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(prize)">Detalles</button></a></td>
+        <td><a [routerLink]="['/prizes/edit/', prize.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(prize)">Editar</button></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

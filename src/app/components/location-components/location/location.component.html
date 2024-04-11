@@ -5,8 +5,13 @@
 <div class="bloque_funcionalidades_clase">
   <button type="button" class="animated-word" routerLink="/locations/create" >Create</button>
   <button type="button" class="animated-word" (click)="printeaTodos()" >Get All</button>
-  <input type="text" class="buscador" placeholder="Get By Name" [(ngModel)]="searchName" name="searchName" (keyup)="searchByName()"/>
-  <input type="text" class="buscador" placeholder="Get By Terminal T1 / T2" [(ngModel)]="searchTerminal" name="searchTerminal" (keyup)="searchByTerminal()"/>
+  <input type="text" class="buscador" placeholder="Get By Name" [(ngModel)]="searchName" name="searchName" (keyup)="searchByName()"/> 
+  <select class="buscadorSelect" [(ngModel)]="searchTerminal" (change)="searchByTerminal()">
+    <option value="">Get By Terminal</option>
+    <option value="t1">Terminal 1</option>
+    <option value="t2">Terminal 2</option>
+  </select>
+
 </div>
 
 <div class="input-group mb-3">
