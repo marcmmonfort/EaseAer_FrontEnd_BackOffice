@@ -1,7 +1,7 @@
 export interface Card {
     uuid: string;
     idUserCard: string;
-    numberCard: number;
+    numberCard: string;
     pointsCard: number;
     levelCard: string;
     deletedCard: boolean;

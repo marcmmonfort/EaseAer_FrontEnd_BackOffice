@@ -1,0 +1,47 @@
+<h2 *ngIf="cardId" class="text-center">Información de Tarjeta</h2>
+
+<div class="container">
+  <div class="card my-5">
+    <div class="card-header">
+      <h3 class="text-center">{{ cardData.numberCard }}</h3>
+    </div>
+    <div class="card-body">
+      <div *ngIf="!cardData" class="text-center mt-5">
+        <p>Cargando Información ...</p>
+      </div>
+      <div *ngIf="cardData">
+        <ul class="list-group">
+          <li class="list-group-item"><strong>ID Tarjeta </strong>{{ cardData.uuid }}</li>
+          <li class="list-group-item"><strong>ID Usuario / Número Tarjeta </strong>{{ cardData.idUserCard }}</li>
+          <li class="list-group-item"><strong>Puntos </strong>{{ cardData.pointsCard }}</li>
+          <li class="list-group-item"><strong>Nivel </strong>
+            <ng-container *ngIf="cardData.levelCard === 'rookie'; else explorer">
+                Novato (Nivel 1)
+            </ng-container>
+            <ng-template #explorer>
+                <ng-container *ngIf="cardData.levelCard === 'explorer'; else captain">
+                    Explorador (Nivel 2)
+                </ng-container>
+                <ng-template #captain>
+                    <ng-container *ngIf="cardData.levelCard === 'captain'; else elite">
+                        Capitán (Nivel 3)
+                    </ng-container>
+                    <ng-template #elite>
+                        Elite (Nivel 4)
+                    </ng-template>
+                </ng-template>
+            </ng-template>
+          </li>
+          <li class="list-group-item"><strong>Estado </strong> <span [ngClass]="{'text-danger': cardData.deletedCard, 'text-success': !cardData.deletedCard}">{{ cardData.deletedLocation ? 'Desactivada' : 'Activada' }}</span></li>
+          <li class="list-group-item"><strong>Fecha de Creación </strong> {{ cardData.createdAt | date:'dd/MM/yyy' }}</li>
+          <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ cardData.updatedAt | date:'dd/MM/yyy' }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

@@ -18,23 +18,23 @@ export class ProductService {
     private apiURLProduct = environment.API_URL + '/product/';
 
     // ROUTE 1: routeProduct.post("/product/create", productCtrl.createProductCtrl);
-    private apiURLProductCreate = environment.API_URL + '/product/';
+    private apiURLProductCreate = environment.API_URL + '/product/create';
     // ROUTE 2: routeProduct.get("/product/getbyid/:uuid", checkJwt, productCtrl.getProductByIdCtrl);
-    private apiURLProductGetById = environment.API_URL + '/product/';
+    private apiURLProductGetById = environment.API_URL + '/product/getbyid/';
     // ROUTE 3: routeProduct.get("/product/getbyname/:name", productCtrl.getProductsByNameCtrl);
-    private apiURLProductGetByName = environment.API_URL + '/product/';
+    private apiURLProductGetByName = environment.API_URL + '/product/getbyname/';
     // ROUTE 4: routeProduct.get("/product/getbycode/:code", productCtrl.getProductsByCodeCtrl);
-    private apiURLProductGetByCode = environment.API_URL + '/product/';
+    private apiURLProductGetByCode = environment.API_URL + '/product/getbycode/';
     // ROUTE 5: routeProduct.put("/product/update/:uuid", checkJwt, productCtrl.updateProductCtrl);
-    private apiURLProductUpdate = environment.API_URL + '/product/';
+    private apiURLProductUpdate = environment.API_URL + '/product/update/';
     // ROUTE 6: routeProduct.delete("/product/delete/:uuid", checkJwt, productCtrl.deleteProductCtrl);
-    private apiURLProductDelete = environment.API_URL + '/product/';
+    private apiURLProductDelete = environment.API_URL + '/product/delete/';
     // ROUTE 7: routeProduct.get("/product/all/count/docs", checkJwt, productCtrl.getNumProductsCtrl);
-    private apiURLProductGetNum = environment.API_URL + '/product/';
+    private apiURLProductGetNum = environment.API_URL + '/product/all/count/docs';
     // ROUTE 8: routeProduct.get("/product/listproducts/all", checkJwt, productCtrl.listProductsCtrl);
-    private apiURLProductList = environment.API_URL + '/product/';
+    private apiURLProductList = environment.API_URL + '/product/listproducts/all';
     // ROUTE 9: routeProduct.get("/product/listproductspag/:numPage", checkJwt, productCtrl.listProductsPagCtrl);
-    private apiURLProductListPag = environment.API_URL + '/product/';
+    private apiURLProductListPag = environment.API_URL + '/product/listproductspag/';
 
     // private apiRegister = environment.API_URL + '/auth/register';
     constructor(private http: HttpClient, private authService: AuthService) {}

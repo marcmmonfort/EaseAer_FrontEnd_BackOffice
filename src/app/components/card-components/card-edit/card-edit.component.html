@@ -1,0 +1,33 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Editar Tarjeta {{ cardData.uuid }}</h2>
+
+<form (ngSubmit)="onSubmit()" class="formulario row g-3">
+
+  <div class="form-group">
+    <label for="pointsCard">Puntos</label>
+    <input type="number" class="form-control" id="pointsCard" name="pointsCard" [(ngModel)]="cardData.pointsCard" required />
+  </div>
+
+  <div class="form-group">
+    <label for="levelCard">Nivel</label>
+    <select class="form-control" id="levelCard" name="levelCard" [(ngModel)]="cardData.levelCard" required>
+        <option value="rookie">Novato (Nivel 1)</option>
+        <option value="explorer">Explorador (Nivel 2)</option>
+        <option value="captain">Capitán (Nivel 3)</option>
+        <option value="elite">Elite (Nivel 4)</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="deletedCard">Ubicación Eliminada</label>
+    <input type="checkbox" class="form-check-input" id="deletedCard" name="deletedCard" [(ngModel)]="cardData.deletedCard" />
+  </div>
+
+  <button class="buttonUpdate" (click)="openModal()">Actualizar</button>
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

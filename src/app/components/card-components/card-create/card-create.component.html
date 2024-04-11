@@ -1,0 +1,31 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Nueva Tarjeta</h2>
+
+<form [formGroup]="locForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+  
+  <div class="form-group">
+    <label for="idUserCard">ID Usuario</label>
+    <input type="string" id="idUserCard" formControlName="idUserCard" class="form-control" />
+    <div *ngIf="locForm.controls.idUserCard.invalid && (locForm.controls.idUserCard.dirty || locForm.controls.idUserCard.touched)">
+      <div *ngIf="locForm.controls.idUserCard.errors.required" class="warningInput">Campo obligatorio.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="levelCard">Nivel</label>
+    <select id="levelCard" formControlName="levelCard" class="form-control">
+      <option value="rookie">Novato (Nivel 1)</option>
+      <option value="explorer">Explorador (Nivel 2)</option>
+      <option value="captain">Capitán (Nivel 3)</option>
+      <option value="elite">Elite (Nivel 4)</option>
+    </select>
+  </div>
+
+  <button class="buttonRegister" (click)="openModal()">Crear</button>
+</form>
+
+<footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

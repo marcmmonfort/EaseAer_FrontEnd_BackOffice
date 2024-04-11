@@ -1,0 +1,59 @@
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Tarjetas</h2>
+
+<div class="bloque_funcionalidades_clase">
+  <button type="button" class="animated-word" routerLink="/cards/create" >Create</button>
+  <button type="button" class="animated-word" (click)="printeaTodos()" >Get All</button>
+  <input type="text" class="buscador" placeholder="Get By User Id" [(ngModel)]="searchCardByUser" name="searchCardByUser" (keyup)="searchByUserId()"/>
+  <select class="buscadorSelect" [(ngModel)]="searchCardsByLevel" (change)="searchCardsByLVL()">
+    <option value="">Get By Level</option>
+    <option value="rookie">Novato (Nivel 1)</option>
+    <option value="explorer">Explorador (Nivel 2)</option>
+    <option value="captain">Capitán (Nivel 3)</option>
+    <option value="elite">Elite (Nivel 4)</option>
+  </select>
+</div>
+
+<div class="input-group mb-3">
+</div>
+
+<div class="tableLocations">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="textTitleTable">ID Tarjeta</th>
+        <th class="textTitleTable">ID Usuario Tarjeta</th>
+        <th class="textTitleTable">Número</th>
+        <th class="textTitleTable">Puntos</th>
+        <th class="textTitleTable">Nivel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let card of filteredCards" [ngClass]="{ 'table-danger': card.deletedCard, 'table-success': !card.deletedCard }">
+        <td class="text-center">{{ card.uuid.slice(0, 4) }} ... {{ card.uuid.slice(-4) }}</td>
+        <td class="text-center">{{ card.idUserCard.slice(0, 4) }} ... {{ card.idUserCard.slice(-4) }}</td>
+        <td class="text-center">{{ card.numberCard }}</td>
+        <td class="text-center">{{ card.pointsCard }}</td>
+        <td class="text-center">
+          <span *ngIf="card.levelCard === 'rookie'">Novato (1)</span>
+          <span *ngIf="card.levelCard === 'explorer'">Explorador (2)</span>
+          <span *ngIf="card.levelCard === 'captain'">Capitán (3)</span>
+          <span *ngIf="card.levelCard === 'elite'">Élite (4)</span>
+        </td>
+        <td><a [routerLink]="['/cards/details/', card.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(card)">Detalles</button></a></td>
+        <td><a [routerLink]="['/cards/edit/', card.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(card)">Editar</button></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="pagButtonsContainer">
+  <button type="button" class="button-arounder" (click)="paginatePrevious()" >◀</button>
+  <p class="textoPag"> Page {{ numPage }} </p> 
+  <button type="button" class="button-arounder" (click)="paginateNext()">▶</button>  
+</div>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

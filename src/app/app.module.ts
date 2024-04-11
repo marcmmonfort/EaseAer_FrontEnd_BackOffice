@@ -21,6 +21,10 @@ import { AuthGuard } from './shared/auth.guard';
 import { AuthService } from './services/auth.service';
 import { NotificationModalComponent } from './components/notification-modal/notification-modal.component';
 import { FrontPageComponent } from './components/frontpage/frontpage.component';
+import { CardComponent } from './components/card-components/card/card.component';
+import { CardCreateComponent } from './components/card-components/card-create/card-create.component';
+import { CardDetailsComponent } from './components/card-components/card-details/card-details.component';
+import { CardEditComponent } from './components/card-components/card-edit/card-edit.component';
 
 
 const routes: Routes = [
@@ -74,6 +78,11 @@ const routes: Routes = [
   { path: 'locations/details/:uuid', component: LocationDetailsComponent },
   { path: 'locations/edit/:uuid', component: LocationEditComponent },
 
+  { path: 'cards', component: CardComponent },
+  { path: 'cards/create', component: CardCreateComponent },
+  { path: 'cards/details/:uuid', component: CardDetailsComponent },
+  { path: 'cards/edit/:uuid', component: CardEditComponent },
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ];
@@ -83,21 +92,29 @@ const routes: Routes = [
 
     // OLD: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    ListUserComponent,
     NavigationComponent,
     AppComponent,
     HomeComponent,
     LogInComponent,
     RegisterComponent,
-    UserDetailsComponent,
-    UserEditComponent,
+    
     ConfirmationModalComponent,
     NotificationModalComponent,
+
+    ListUserComponent,
     UserCreateComponent,
+    UserDetailsComponent,
+    UserEditComponent,
+
     LocationComponent,
     LocationCreateComponent,
     LocationDetailsComponent,
     LocationEditComponent,
+
+    CardComponent,
+    CardCreateComponent,
+    CardDetailsComponent,
+    CardEditComponent,
 
     // NEW: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
