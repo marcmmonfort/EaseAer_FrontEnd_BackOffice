@@ -1,0 +1,42 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Editar Datos de {{ shopData.uuid }}</h2>
+
+<form (ngSubmit)="onSubmit()" class="formulario row g-3">
+    <div class="form-group">
+        <label for="idCompanyShop">ID Compañía</label>
+        <input type="text" class="form-control" id="idCompanyShop" name="idCompanyShop" [(ngModel)]="shopData.idCompanyShop" required />
+    </div>
+
+    <div class="form-group">
+        <label for="idLocationShop">ID Ubicación</label>
+        <input type="text" class="form-control" id="idLocationShop" name="idLocationShop" [(ngModel)]="shopData.idLocationShop" required />
+    </div>
+
+    <div class="form-group">
+        <label for="descriptionShop">Descripción</label>
+        <input type="text" class="form-control" id="descriptionShop" name="descriptionShop" [(ngModel)]="shopData.descriptionShop" required />
+    </div>
+
+    <div class="form-group">
+        <label for="webShop">Página Web</label>
+        <input type="text" class="form-control" id="webShop" name="webShop" [(ngModel)]="shopData.webShop" required />
+    </div>
+
+    <div class="form-group">
+        <label for="scheduleShop">Horario</label>
+        <input type="text" class="form-control" id="scheduleShop" name="scheduleShop" [(ngModel)]="shopData.scheduleShop" required />
+    </div>
+
+    <div class="form-group">
+        <label for="deletedShop">Ubicación Eliminada</label>
+        <input type="checkbox" class="form-check-input" id="deletedShop" name="deletedShop" [(ngModel)]="shopData.deletedShop" />
+    </div>
+
+    <button class="buttonUpdate" (click)="openModal()">Actualizar</button>
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

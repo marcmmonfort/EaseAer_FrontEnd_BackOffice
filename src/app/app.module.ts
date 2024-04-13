@@ -29,41 +29,10 @@ import { PrizeComponent } from './components/prize-component/prize/prize.compone
 import { PrizeCreateComponent } from './components/prize-component/prize-create/prize-create.component';
 import { ShopComponent } from './components/shop-components/shop/shop.component';
 import { ShopCreateComponent } from './components/shop-components/shop-create/shop-create.component';
+import { ShopDetailsComponent } from './components/shop-components/shop-details/shop-details.component';
+import { ShopEditComponent } from './components/shop-components/shop-edit/shop-edit.component';
 
 const routes: Routes = [
-
-  // OLD: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  /*
-  { path: 'listUsers', component: ListUserComponent },
-  { path: 'app', component: AppComponent },
-  { path: 'comment', component: CommentComponent },
-  { path: 'comment-create', component: CommentCreateComponent },
-  { path: 'comment-details/:uuid', component: CommentDetailsComponent },
-  { path: 'comment-edit/:uuid', component: CommentEditComponent },
-  { path: 'comment-details/responses/:uuid/:aux', component: CommentResponseComponent },
-  { path: 'user-details/followers/:uuid', component: UserFollowersComponent },
-  { path: 'user-details/followed/:uuid', component: UserFollowedComponent },
-  { path: 'publication', component: PublicationComponent },
-  { path: 'publication-create', component: PublicationCreateComponent },
-  { path: 'publication-details/:uuid', component: PublicationDetailsComponent },
-  { path: 'publication-edit/:uuid', component: PublicationEditComponent },
-  { path: 'activity', component: ActivityComponent },
-  { path: 'activity-create', component: ActivityCreateComponent },
-  { path: 'activity-details/:uuid', component: ActivityDetailsComponent },
-  { path: 'activity-edit/:uuid', component: ActivityEditComponent },
-  { path: 'activity-participants/:uuid', component: ActivityParticipantsComponent },
-  { path: 'application', component: ApplicationComponent },
-  { path: 'application-create', component: ApplicationCreateComponent },
-  { path: 'application-details/:uuid', component: ApplicationDetailsComponent },
-  { path: 'application-edit/:uuid', component: ApplicationEditComponent},
-  */
-
-  /* CÓDIGO CON AUTH GUARD:
-  { path: 'application-edit/:uuid', component: ApplicationEditComponent, canActivate:[AuthGuard] },
-  */
-
-  // NEW: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   { path: '', component: FrontPageComponent },
 
@@ -91,8 +60,8 @@ const routes: Routes = [
 
   { path: 'shops', component: ShopComponent },
   { path: 'shops/create', component: ShopCreateComponent },
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  { path: 'shops/details/:uuid', component: ShopDetailsComponent },
+  { path: 'shops/edit/:uuid', component: ShopEditComponent },
 
 ];
 
@@ -130,6 +99,8 @@ const routes: Routes = [
 
     ShopComponent,
     ShopCreateComponent,
+    ShopDetailsComponent,
+    ShopEditComponent,
 
     // NEW: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

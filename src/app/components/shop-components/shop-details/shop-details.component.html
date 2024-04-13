@@ -1,0 +1,40 @@
+<h2 *ngIf="shopId" class="text-center">Información de Tienda</h2>
+
+<div class="container">
+  <div class="card my-5">
+    <div class="card-header">
+      <h3 class="text-center">{{ shopData.uuid }}</h3>
+    </div>
+    <div class="card-body">
+      <div *ngIf="!shopData" class="text-center mt-5">
+        <p>Cargando Información ...</p>
+      </div>
+      <div *ngIf="shopData">
+        <ul class="list-group">
+          <li class="list-group-item"><strong>ID Comercio </strong>{{ shopData.uuid }}</li>
+          <li class="list-group-item"><strong>ID Compañía </strong>{{ shopData.idCompanyShop }}</li>
+          <li class="list-group-item"><strong>ID Ubicación </strong>{{ shopData.idLocationShop }}</li>
+          <li class="list-group-item"><strong>Descripción </strong>{{ shopData.descriptionShop }}</li>
+          <li class="list-group-item"><strong>Página Web </strong>{{ shopData.webShop }}</li>
+
+          <li class="list-group-item"><strong>Horario de Lunes </strong>{{ monOpen }} H - {{ monClose }} H</li>
+          <li class="list-group-item"><strong>Horario de Martes </strong>{{ tueOpen }} H - {{ tueClose }} H</li>
+          <li class="list-group-item"><strong>Horario de Miércoles </strong>{{ wedOpen }} H - {{ wedClose }} H</li>
+          <li class="list-group-item"><strong>Horario de Jueves </strong>{{ thuOpen }} H - {{ thuClose }} H</li>
+          <li class="list-group-item"><strong>Horario de Viernes </strong>{{ friOpen }} H - {{ friClose }} H</li>
+          <li class="list-group-item"><strong>Horario de Sábado </strong>{{ satOpen }} H - {{ satClose }} H</li>
+          <li class="list-group-item"><strong>Horario de Domingo </strong>{{ sunOpen }} H - {{ sunClose }} H</li>
+
+          <li class="list-group-item"><strong>Estado </strong> <span [ngClass]="{'text-danger': shopData.deletedShop, 'text-success': !shopData.deletedShop}">{{ shopData.deletedShop ? 'Desactivada' : 'Activada' }}</span></li>
+          <li class="list-group-item"><strong>Fecha de Creación </strong> {{ shopData.createdAt | date:'dd/MM/yyy' }}</li>
+          <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ shopData.updatedAt | date:'dd/MM/yyy' }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

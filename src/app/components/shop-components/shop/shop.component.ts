@@ -12,7 +12,10 @@ import Swal from 'sweetalert2';
 export class ShopComponent implements OnInit {
   shops: any[] = [];
   filteredShops: any[] = [];
+
   searchCompany: string = '';
+  searchCardsByLevel: string = '';
+
   printeado: boolean = false;
   isNotificationOpen: boolean = false;
   modalText: string = '';
@@ -37,9 +40,19 @@ export class ShopComponent implements OnInit {
   searchByCompanyID() {
     if (this.searchCompany.trim() !== '') {
       this.filteredShops = this.shops.filter((shop) =>
-        shop.nameLocation
+        shop.idCompanyShop
           .toLowerCase()
           .includes(this.searchCompany.toLowerCase())
+      );
+    } 
+  }
+
+  searchCardsByLVL() {
+    if (this.searchCardsByLevel.trim() !== '') {
+      this.filteredShops = this.shops.filter((shop) =>
+        shop.levelCard
+          .toLowerCase()
+          .includes(this.searchCardsByLevel.toLowerCase())
       );
     } 
   }
