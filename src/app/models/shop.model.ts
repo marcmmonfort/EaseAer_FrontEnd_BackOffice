@@ -1,7 +1,7 @@
 export interface Shop {
     uuid: string;
     idCompanyShop: string;
-    locationShop: string;
+    idLocationShop: string;
     descriptionShop: string;
     webShop: string;
     scheduleShop: string;

@@ -38,8 +38,8 @@ export class ShopService {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     // SERVICE 1: createShopCtrl | apiURLShopCreate = environment.API_URL + '/shop/create';
-    createShop(shop: Shop): Observable<Location> {
-        return this.http.post<Location>(this.apiURLShopCreate, shop,{
+    createShop(shop: Shop): Observable<Shop> {
+        return this.http.post<Shop>(this.apiURLShopCreate, shop,{
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + this.authService.getToken(),

@@ -1,0 +1,43 @@
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Comercios</h2>
+
+<div class="bloque_funcionalidades_clase">
+  <button type="button" class="animated-word" routerLink="/shops/create">Create</button>
+  <button type="button" class="animated-word" (click)="printeaTodos()">Get All</button>
+  <input type="text" class="buscador" placeholder="Get By Company ID" [(ngModel)]="searchCompany" name="searchCompany" (keyup)="searchByCompanyID()"/>
+</div>
+
+<div class="input-group mb-3">
+</div>
+
+<div class="tableLocations">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="textTitleTable">ID Comercio</th>
+        <th class="textTitleTable">ID Compañía</th>
+        <th class="textTitleTable">ID Ubicación</th>
+        <th class="textTitleTable">Descripción</th>
+        <th class="textTitleTable">Página Web</th>
+        <th class="textTitleTable">Detalles</th>
+        <th class="textTitleTable">Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let shop of filteredShops" [ngClass]="{ 'table-danger': shop.deletedShop, 'table-success': !shop.deletedShop }">
+        <td class="text-center">{{ shop.uuid.slice(0, 4) }} ... {{ shop.uuid.slice(-4) }}</td>
+        <td class="text-center">{{ shop.idCompanyShop.slice(0, 4) }} ... {{ shop.idCompanyShop.slice(-4) }}</td>
+        <td class="text-center">{{ shop.idLocationShop.slice(0, 4) }} ... {{ shop.idLocationShop.slice(-4) }}</td>
+        <td class="text-center">{{ shop.descriptionShop.slice(0, 15) }} ...</td>
+        <td class="text-center">{{ shop.webShop.slice(0, 40) }} ...</td>
+        <td><a [routerLink]="['/shops/details/', shop.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(shop)">Detalles</button></a></td>
+        <td><a [routerLink]="['/prizes/edit/', shop.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(shop)">Editar</button></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>
