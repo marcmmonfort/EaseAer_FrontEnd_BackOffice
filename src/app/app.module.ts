@@ -31,6 +31,8 @@ import { ShopComponent } from './components/shop-components/shop/shop.component'
 import { ShopCreateComponent } from './components/shop-components/shop-create/shop-create.component';
 import { ShopDetailsComponent } from './components/shop-components/shop-details/shop-details.component';
 import { ShopEditComponent } from './components/shop-components/shop-edit/shop-edit.component';
+import { PrizeDetailsComponent } from './components/prize-component/prize-details/prize-details.component';
+import { PrizeEditComponent } from './components/prize-component/prize-edit/prize-edit.component';
 
 const routes: Routes = [
 
@@ -57,6 +59,8 @@ const routes: Routes = [
 
   { path: 'prizes', component: PrizeComponent },
   { path: 'prizes/create', component: PrizeCreateComponent },
+  { path: 'prizes/details/:uuid', component: PrizeDetailsComponent },
+  { path: 'prizes/edit/:uuid', component: PrizeEditComponent },
 
   { path: 'shops', component: ShopComponent },
   { path: 'shops/create', component: ShopCreateComponent },
@@ -96,6 +100,8 @@ const routes: Routes = [
 
     PrizeComponent,
     PrizeCreateComponent,
+    PrizeDetailsComponent,
+    PrizeEditComponent,
 
     ShopComponent,
     ShopCreateComponent,

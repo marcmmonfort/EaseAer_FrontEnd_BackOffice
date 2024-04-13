@@ -99,7 +99,7 @@ export class PrizeService {
     }
 
     // SERVICE 7: updatePrizeCtrl | apiURLPrizeUpdate
-    updateCard(prize: Prize, id: string): Observable<Prize> {
+    updatePrize(prize: Prize, id: string): Observable<Prize> {
         return this.http.put<Prize>(this.apiURLPrizeUpdate + id, prize,{
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ export class PrizeService {
     }
 
     // SERVICE 8: deletePrizeCtrl | apiURLPrizeDelete
-    deleteCard(uuid: string): Observable<Prize> {
+    deletePrize(uuid: string): Observable<Prize> {
         return this.http.delete<Prize>(this.apiURLPrizeDelete + uuid, {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
