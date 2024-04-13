@@ -6,6 +6,7 @@
   <button type="button" class="animated-word" routerLink="/prizes/create">Create</button>
   <button type="button" class="animated-word" (click)="printeaTodos()">Get All</button>
   <input type="text" class="buscador" placeholder="Get By Name" [(ngModel)]="searchName" name="searchName" (keyup)="searchByName()"/> 
+  <input type="text" class="buscador" placeholder="Get By Available Points" [(ngModel)]="searchPrizePoints" name="searchPrizePoints" (keyup)="searchAvailable()"/> 
 </div>
 
 <div class="input-group mb-3">
@@ -30,7 +31,7 @@
       <tr *ngFor="let prize of filteredPrizes" [ngClass]="{ 'table-danger': prize.deletedPrize, 'table-success': !prize.deletedPrize }">
         <td class="text-center">{{ prize.uuid.slice(0, 4) }} ... {{ prize.uuid.slice(-4) }}</td>
         <td class="text-center">{{ prize.namePrize }}</td>
-        <td class="text-center">{{ prize.descriptionPrize.slice(0, 15) }} ...</td>
+        <td class="text-center">{{ prize.descriptionPrize.slice(0, 32) }} ...</td>
         <td class="text-center">{{ prize.pointsPrize }}</td>
         <td class="text-center">{{ prize.idShopPrize.slice(0, 4) }} ... {{ prize.idShopPrize.slice(-4) }}</td>
         <td class="text-center">{{ prize.dateEndPrize | date:'dd/MM/yyy' }}</td>

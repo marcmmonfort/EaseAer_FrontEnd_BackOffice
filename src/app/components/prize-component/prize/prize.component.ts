@@ -13,7 +13,7 @@ export class PrizeComponent implements OnInit {
   prizes: any[] = [];
   filteredPrizes: any[] = [];
   searchName: string = '';
-  searchTerminal: string = '';
+  searchPrizePoints: string = '';
   numPage: string = '';
   printeado: boolean = false;
   isNotificationOpen: boolean = false;
@@ -40,22 +40,24 @@ export class PrizeComponent implements OnInit {
   searchByName() {
     if (this.searchName.trim() !== '') {
       this.filteredPrizes = this.prizes.filter((prize) =>
-        prize.nameLocation
+        prize.namePrize
           .toLowerCase()
           .includes(this.searchName.toLowerCase())
       );
     } 
   }
 
-  searchByTerminal() {
-    if (this.searchTerminal.trim() !== '') {
-      this.filteredPrizes = this.prizes.filter((location) =>
-        location.terminalLocation
-          .toLowerCase()
-          .includes(this.searchTerminal.toLowerCase())
-      );
-    } 
-  }
+  searchAvailable() {
+    if (this.searchPrizePoints.trim() !== '') {
+      const searchValue = parseFloat(this.searchPrizePoints.trim());
+      this.filteredPrizes = this.prizes.filter((prize) => {
+        const prizePoints = parseFloat(prize.pointsPrize);
+        return prizePoints <= searchValue;
+      });
+    } else {
+      // this.filteredPrizes = this.prizes;
+    }
+}
 
   printeaTodos() {
     this.prizeService.listPrizes().subscribe((prizes) => {

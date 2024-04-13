@@ -27,7 +27,7 @@ export class PrizeCreateComponent {
         "idShopPrize": ['', Validators.required],
         "dateEndPrize": ['', Validators.required],
         "codePrize": ['', Validators.required],
-        "deletedLocation": [false, Validators.required],
+        "deletedPrize": [false, Validators.required],
     });
   }
 
@@ -49,6 +49,11 @@ export class PrizeCreateComponent {
   
   confirmChanges(): void {
     const prizeData = this.prizeForm.value;
+
+    prizeData.dateEndPrize = new Date(prizeData.dateEndPrize);
+
+    console.log("DATOS DEL PREMIO:" + JSON.stringify(prizeData));
+
     this.prizeService.createPrize(prizeData).subscribe(
       (response) => {
         this.openNotificationModal("¡Premio Creado!");
