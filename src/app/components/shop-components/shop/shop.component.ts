@@ -14,7 +14,7 @@ export class ShopComponent implements OnInit {
   filteredShops: any[] = [];
 
   searchCompany: string = '';
-  searchCardsByLevel: string = '';
+  searchShopsOpened: string = '';
 
   printeado: boolean = false;
   isNotificationOpen: boolean = false;
@@ -47,15 +47,21 @@ export class ShopComponent implements OnInit {
     } 
   }
 
-  searchCardsByLVL() {
-    if (this.searchCardsByLevel.trim() !== '') {
-      this.filteredShops = this.shops.filter((shop) =>
-        shop.levelCard
-          .toLowerCase()
-          .includes(this.searchCardsByLevel.toLowerCase())
-      );
+  searchShopsSchedule() {
+    if (this.searchShopsOpened.trim() !== '') {
+      if (this.searchShopsOpened === 'open') {
+        const now: Date = new Date();
+        this.shopService.listOpenedShops(now).subscribe((shops) => {
+          this.filteredShops = shops;
+        });
+        this.printeado = false;
+      } 
     } 
-  }
+    else {
+      this.filteredShops = this.shops;
+    }
+
+}
 
   printeaTodos() {
     this.shopService.listShops().subscribe((shops) => {

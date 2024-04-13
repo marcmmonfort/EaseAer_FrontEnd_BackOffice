@@ -6,10 +6,9 @@
   <button type="button" class="animated-word" routerLink="/shops/create">Create</button>
   <button type="button" class="animated-word" (click)="printeaTodos()">Get All</button>
   <input type="text" class="buscador" placeholder="Get By Company ID" [(ngModel)]="searchCompany" name="searchCompany" (keyup)="searchByCompanyID()"/>
-  <select class="buscadorSelect" [(ngModel)]="searchCardsByLevel" (change)="searchCardsByLVL()">
-    <option value="">Get By Status</option>
-    <option value="open">Abiertos Ahora</option>
-    <option value="closed">Cerrados Ahora</option>
+  <select class="buscadorSelect" [(ngModel)]="searchShopsOpened" (change)="searchShopsSchedule()">
+    <option value="">Abiertos y Cerrados</option>
+    <option value="open">Solo Abiertos</option>
   </select>
 </div>
 
