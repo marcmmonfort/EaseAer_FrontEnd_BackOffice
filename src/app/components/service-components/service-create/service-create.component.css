@@ -41,6 +41,7 @@ body {
     align-items: center;
     text-align: center;
     align-content: center;
+    justify-content: center;
     margin-bottom: 68px;
   }
   
@@ -48,6 +49,7 @@ body {
     margin-bottom: 0px;
     align-items: center;
     text-align: center;
+    justify-content: center;
   }
   
   textarea {
@@ -146,41 +148,41 @@ body {
     font-size: 14px;
     border-radius: 12px;
   }
-  
- select {
-    width: 180px !important;
-    border-radius: 12px;
-    font-family: 'TextFontType', sans-serif;
-    font-size: 14px;
-    height: 38px;
-    margin-right: 5px;
-    margin-left: 5px;
-  
-    background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Reemplazar la flecha predeterminada con un ícono personalizado */
-    background-repeat: no-repeat;
-    background-position: right 0.35em top 50%;
-  }
-  
-  select option {
-    width: 100%;
-    padding: 0px;
-    border-radius: 12px;
-    font-family: 'TextFontType', sans-serif;
-    font-size: 14px;
-  } 
-  
-  .warningInput {
-    font-family: 'TextFontType', sans-serif;
-    font-size: 12px;
-    color: #d8131b;
-    margin-top: 4px;
-  } 
-  
-  .groupHoursDay{
-    display: flex;
-    width: 100%;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-  }
-  
+
+    select {
+        width: 180px;
+        border-radius: 12px;
+        font-family: 'TextFontType', sans-serif;
+        font-size: 14px;
+        height: 38px;
+        margin-right: 5px;
+        margin-left: 5px;
+    
+        background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Reemplazar la flecha predeterminada con un ícono personalizado */
+        background-repeat: no-repeat;
+        background-position: right 0.35em top 50%;
+    }
+    
+    select option {
+        width: 100%;
+        padding: 0px;
+        border-radius: 12px;
+        font-family: 'TextFontType', sans-serif;
+        font-size: 14px;
+    } 
+    
+    .warningInput {
+        font-family: 'TextFontType', sans-serif;
+        font-size: 12px;
+        color: #d8131b;
+        margin-top: 4px;
+    } 
+    
+    .groupHoursDay{
+        display: flex;
+        width: 100%;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+    }
+    

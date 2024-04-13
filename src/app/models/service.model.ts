@@ -1,7 +1,7 @@
 export interface Service {
     uuid: string;
     nameService: string;
-    locationService: string;
+    idLocationService: string;
     descriptionService: string;
     typeService: string;
     scheduleService: string;

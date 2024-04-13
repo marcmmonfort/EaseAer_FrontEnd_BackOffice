@@ -1,0 +1,60 @@
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Servicios</h2>
+
+<div class="bloque_funcionalidades_clase">
+  <button type="button" class="animated-word" routerLink="/services/create">Create</button>
+  <button type="button" class="animated-word" (click)="printeaTodos()">Get All</button>
+  <select class="buscadorSelect" [(ngModel)]="searchServicesOpened" (change)="searchServicesSchedule()">
+    <option value="">Abiertos y Cerrados</option>
+    <option value="open">Solo Abiertos</option>
+  </select>
+</div>
+
+<div class="input-group mb-3">
+</div>
+
+<div class="tableLocations">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="textTitleTable">ID Servicio</th>
+        <th class="textTitleTable">Nombre</th>
+        <th class="textTitleTable">ID Ubicación</th>
+        <th class="textTitleTable">Descripción</th>
+        <th class="textTitleTable">Tipo</th>
+        <th class="textTitleTable">Detalles</th>
+        <th class="textTitleTable">Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let service of filteredServices" [ngClass]="{ 'table-danger': service.deletedService, 'table-success': !service.deletedService }">
+        <td class="text-center">{{ service.uuid.slice(0, 4) }} ... {{ service.uuid.slice(-4) }}</td>
+        <td class="text-center">{{ service.nameService }}</td>
+        <td class="text-center">{{ service.idLocationService.slice(0, 4) }} ... {{ service.idLocationService.slice(-4) }}</td>
+        <td class="text-center">{{ service.descriptionService.slice(0, 26) }} ...</td>
+        <td class="text-center">
+            <span *ngIf="service.typeService === 'gate'">Puerta de Embarque</span>
+            <span *ngIf="service.typeService === 'stairs'">Escalera</span>
+            <span *ngIf="service.typeService === 'elevator'">Ascensor</span>
+            <span *ngIf="service.typeService === 'info'">Información</span>
+            <span *ngIf="service.typeService === 'toilet'">Lavabo</span>
+            <span *ngIf="service.typeService === 'parking'">Parking</span>
+            <span *ngIf="service.typeService === 'transport'">Transporte</span>
+            <span *ngIf="service.typeService === 'security'">Control de Seguridad</span>
+            <span *ngIf="service.typeService === 'medical'">Equipo Médico</span>
+            <span *ngIf="service.typeService === 'passports'">Control de Pasaportes</span>
+            <span *ngIf="service.typeService === 'luggage'">Equipaje</span>
+            <span *ngIf="service.typeService === 'room'">Sala</span>
+            <span *ngIf="service.typeService === 'other'">Otr@</span>
+        </td>
+        <td><a [routerLink]="['/services/details/', service.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(service)">Detalles</button></a></td>
+        <td><a [routerLink]="['/services/edit/', service.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(service)">Editar</button></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

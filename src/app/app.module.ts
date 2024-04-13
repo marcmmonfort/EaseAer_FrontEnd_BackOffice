@@ -33,6 +33,8 @@ import { ShopDetailsComponent } from './components/shop-components/shop-details/
 import { ShopEditComponent } from './components/shop-components/shop-edit/shop-edit.component';
 import { PrizeDetailsComponent } from './components/prize-component/prize-details/prize-details.component';
 import { PrizeEditComponent } from './components/prize-component/prize-edit/prize-edit.component';
+import { ServiceComponent } from './components/service-components/service/service.component';
+import { ServiceCreateComponent } from './components/service-components/service-create/service-create.component';
 
 const routes: Routes = [
 
@@ -66,6 +68,9 @@ const routes: Routes = [
   { path: 'shops/create', component: ShopCreateComponent },
   { path: 'shops/details/:uuid', component: ShopDetailsComponent },
   { path: 'shops/edit/:uuid', component: ShopEditComponent },
+
+  { path: 'services', component: ServiceComponent },
+  { path: 'services/create', component: ServiceCreateComponent },
 
 ];
 
@@ -108,11 +113,8 @@ const routes: Routes = [
     ShopDetailsComponent,
     ShopEditComponent,
 
-    // NEW: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    ServiceComponent,
+    ServiceCreateComponent,
 
   ],
   imports: [
