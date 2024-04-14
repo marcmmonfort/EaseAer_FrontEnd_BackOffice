@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { CardService } from 'src/app/services/card.service';
+import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css'],
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css'],
 })
 
-export class CardComponent implements OnInit {
-  cards: any[] = [];
-  filteredCards: any[] = [];
+export class ProductComponent implements OnInit {
+  products: any[] = [];
+  filteredProducts: any[] = [];
 
-  searchCardByUser: string = '';
-  searchCardsByLevel: string = '';
+  searchProductByName: string = '';
+  searchProductByCode: string = '';
 
   numPage: string = '';
   printeado: boolean = false;
@@ -23,47 +23,47 @@ export class CardComponent implements OnInit {
   isNotificationOpen: boolean = false;
   modalText: string = '';
   
-  constructor(private cardService: CardService, private router: Router) {}
+  constructor(private productService: ProductService, private router: Router) {}
   
   ngOnInit(): void {
-    this.cardService.getCards().subscribe((cards) => {
-      this.cards = cards;
+    this.productService.listProducts().subscribe((products) => {
+      this.products = products;
     });
     this.printeado = false;
     this.numPage="1";
   }
 
   showDetails(card: any): void {
-    this.router.navigate(['/cards/details/', card.uuid]);
+    this.router.navigate(['/products/details/', card.uuid]);
   }
 
   showEdit(card: any): void {
-    this.router.navigate(['/cards/edit/', card.uuid]);
+    this.router.navigate(['/products/edit/', card.uuid]);
   }
 
-  searchByUserId() {
-    if (this.searchCardByUser.trim() !== '') {
-      this.filteredCards = this.cards.filter((card) =>
-        card.idUserCard
+  searchByName() {
+    if (this.searchProductByName.trim() !== '') {
+      this.filteredProducts = this.products.filter((product) =>
+        product.nameProduct
           .toLowerCase()
-          .includes(this.searchCardByUser.toLowerCase())
+          .includes(this.searchProductByName.toLowerCase())
       );
     } 
   }
 
-  searchCardsByLVL() {
-    if (this.searchCardsByLevel.trim() !== '') {
-      this.filteredCards = this.cards.filter((card) =>
-        card.levelCard
+  searchByCode() {
+    if (this.searchProductByCode.trim() !== '') {
+      this.filteredProducts = this.products.filter((product) =>
+        product.codeProduct
           .toLowerCase()
-          .includes(this.searchCardsByLevel.toLowerCase())
+          .includes(this.searchProductByCode.toLowerCase())
       );
     } 
   }
 
   printeaTodos() {
-    this.cardService.getCardsPag(this.numPage).subscribe((cards) => {
-      if(cards.length==0){
+    this.productService.listProductsPag(this.numPage).subscribe((products) => {
+      if(products.length==0){
         this.numPage = (parseInt(this.numPage, 10) - 1).toString();
         
         if(parseInt(this.numPage, 10) < 1){
@@ -73,9 +73,9 @@ export class CardComponent implements OnInit {
         this.openNotificationModal("¡No hay más páginas!");
       }
       else{
-        this.filteredCards = cards;
+        this.filteredProducts = products;
         if (!this.printeado){
-          this.openNotificationModal("Tarjetas Cargadas");
+          this.openNotificationModal("Productos Cargados");
         }
         this.printeado = true;
         
@@ -108,7 +108,7 @@ export class CardComponent implements OnInit {
 
   onAcceptChanges(): void {
     this.isNotificationOpen = false;
-    if (this.modalText == "Tarjetas Cargadas"){
+    if (this.modalText == "Productos Cargados"){
       this.modalText = "";
       // this.router.navigate(['/cards']);
     }

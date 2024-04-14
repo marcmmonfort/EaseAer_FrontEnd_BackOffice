@@ -37,6 +37,8 @@ import { ServiceComponent } from './components/service-components/service/servic
 import { ServiceCreateComponent } from './components/service-components/service-create/service-create.component';
 import { ServiceDetailsComponent } from './components/service-components/service-details/service-details.component';
 import { ServiceEditComponent } from './components/service-components/service-edit/service-edit.component';
+import { ProductComponent } from './components/product-components/product/product.component';
+import { ProductCreateComponent } from './components/product-components/product-create/product-create.component';
 
 const routes: Routes = [
 
@@ -75,6 +77,9 @@ const routes: Routes = [
   { path: 'services/create', component: ServiceCreateComponent },
   { path: 'services/details/:uuid', component: ServiceDetailsComponent },
   { path: 'services/edit/:uuid', component: ServiceEditComponent },
+  
+  { path: 'products', component: ProductComponent },
+  { path: 'products/create', component: ProductCreateComponent },
 
 ];
 
@@ -121,6 +126,9 @@ const routes: Routes = [
     ServiceCreateComponent,
     ServiceDetailsComponent,
     ServiceEditComponent,
+
+    ProductComponent,
+    ProductCreateComponent,
 
   ],
   imports: [

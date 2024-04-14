@@ -122,7 +122,7 @@ export class ProductService {
     }
 
     // SERVICE 9: "/product/listproductspag/:numPage" | listProductsPag | apiURLProductListPag
-    listIncidentsPag(numPage: string): Observable<Product[]> {
+    listProductsPag(numPage: string): Observable<Product[]> {
         return this.http.get<Product[]>(this.apiURLProductListPag + numPage, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',

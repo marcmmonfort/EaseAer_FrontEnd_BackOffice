@@ -1,0 +1,29 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Nuevo Producto</h2>
+
+<form [formGroup]="prodForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+  
+    <div class="form-group">
+        <label for="nameProduct">Nombre</label>
+        <input type="string" id="nameProduct" formControlName="nameProduct" class="form-control" />
+        <div *ngIf="prodForm.controls.nameProduct.invalid && (prodForm.controls.nameProduct.dirty || prodForm.controls.nameProduct.touched)">
+        <div *ngIf="prodForm.controls.nameProduct.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="descriptionProduct">Descripción</label>
+        <input type="string" id="descriptionProduct" formControlName="descriptionProduct" class="form-control" />
+        <div *ngIf="prodForm.controls.descriptionProduct.invalid && (prodForm.controls.descriptionProduct.dirty || prodForm.controls.descriptionProduct.touched)">
+        <div *ngIf="prodForm.controls.descriptionProduct.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+  <button class="buttonRegister" (click)="openModal()">Crear</button>
+</form>
+
+<footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>
