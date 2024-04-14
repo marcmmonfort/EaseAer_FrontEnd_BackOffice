@@ -32,7 +32,7 @@
                 </ng-template>
             </ng-template>
           </li>
-          <li class="list-group-item"><strong>Estado </strong> <span [ngClass]="{'text-danger': cardData.deletedCard, 'text-success': !cardData.deletedCard}">{{ cardData.deletedLocation ? 'Desactivada' : 'Activada' }}</span></li>
+          <li class="list-group-item"><strong>Estado </strong> <span [ngClass]="{'text-danger': cardData.deletedCard, 'text-success': !cardData.deletedCard}">{{ cardData.deletedCard ? 'Desactivada' : 'Activada' }}</span></li>
           <li class="list-group-item"><strong>Fecha de Creación </strong> {{ cardData.createdAt | date:'dd/MM/yyy' }}</li>
           <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ cardData.updatedAt | date:'dd/MM/yyy' }}</li>
         </ul>

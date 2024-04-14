@@ -39,6 +39,8 @@ import { ServiceDetailsComponent } from './components/service-components/service
 import { ServiceEditComponent } from './components/service-components/service-edit/service-edit.component';
 import { ProductComponent } from './components/product-components/product/product.component';
 import { ProductCreateComponent } from './components/product-components/product-create/product-create.component';
+import { ProductDetailsComponent } from './components/product-components/product-details/product-details.component';
+import { ProductEditComponent } from './components/product-components/product-edit/product-edit.component';
 
 const routes: Routes = [
 
@@ -80,6 +82,8 @@ const routes: Routes = [
   
   { path: 'products', component: ProductComponent },
   { path: 'products/create', component: ProductCreateComponent },
+  { path: 'products/details/:uuid', component: ProductDetailsComponent },
+  { path: 'products/edit/:uuid', component: ProductEditComponent },
 
 ];
 
@@ -129,6 +133,8 @@ const routes: Routes = [
 
     ProductComponent,
     ProductCreateComponent,
+    ProductDetailsComponent,
+    ProductEditComponent,
 
   ],
   imports: [
