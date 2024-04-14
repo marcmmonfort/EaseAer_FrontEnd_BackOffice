@@ -1,0 +1,45 @@
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Ofertas</h2>
+
+<div class="bloque_funcionalidades_clase">
+  <button type="button" class="animated-word" routerLink="/offers/create">Create</button>
+  <button type="button" class="animated-word" (click)="printeaTodos()">Get All</button>
+  <input type="text" class="buscador" placeholder="Get By Product ID" [(ngModel)]="searchByProduct" name="searchByProduct" (keyup)="searchByProductID()"/>
+  <input type="text" class="buscador" placeholder="Get By Shop ID" [(ngModel)]="searchByShop" name="searchByShop" (keyup)="searchByShopID()"/>
+  <input type="text" class="buscador" placeholder="Get By Price (€)" [(ngModel)]="searchByPrice" name="searchByPrice" (keyup)="searchAvailableByPrice()"/>
+</div>
+
+<div class="input-group mb-3">
+</div>
+
+<div class="tableLocations">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="textTitleTable">ID Oferta</th>
+        <th class="textTitleTable">ID Tienda</th>
+        <th class="textTitleTable">ID Producto</th>
+        <th class="textTitleTable">Precio</th>
+        <th class="textTitleTable">Caducidad</th>
+        <th class="textTitleTable">Detalles</th>
+        <th class="textTitleTable">Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let offer of filteredOffers" [ngClass]="{ 'table-danger': isOfferExpired(offer.dateEndOffer), 'table-success': !isOfferExpired(offer.dateEndOffer) }">
+            <td class="text-center">{{ offer.uuid.slice(0, 4) }} ... {{ offer.uuid.slice(-4) }}</td>
+            <td class="text-center">{{ offer.idShopOffer.slice(0, 4) }} ... {{ offer.idShopOffer.slice(-4) }}</td>
+            <td class="text-center">{{ offer.idProductOffer.slice(0, 4) }} ... {{ offer.idProductOffer.slice(-4) }}</td>
+            <td class="text-center">{{ offer.priceOffer }} €</td>
+            <td class="text-center">{{ offer.dateEndOffer | date:'dd/MM/yyy' }}</td>
+            <td><a [routerLink]="['/offers/details/', offer.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(offer)">Detalles</button></a></td>
+            <td><a [routerLink]="['/offers/edit/', offer.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(offer)">Editar</button></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

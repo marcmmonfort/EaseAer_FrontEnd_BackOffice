@@ -41,6 +41,10 @@ import { ProductComponent } from './components/product-components/product/produc
 import { ProductCreateComponent } from './components/product-components/product-create/product-create.component';
 import { ProductDetailsComponent } from './components/product-components/product-details/product-details.component';
 import { ProductEditComponent } from './components/product-components/product-edit/product-edit.component';
+import { OfferComponent } from './components/offer-components/offer/offer.component';
+import { OfferCreateComponent } from './components/offer-components/offer-create/offer-create.component';
+import { OfferDetailsComponent } from './components/offer-components/offer-details/offer-details.component';
+import { OfferEditComponent } from './components/offer-components/offer-edit/offer-edit.component';
 
 const routes: Routes = [
 
@@ -84,6 +88,11 @@ const routes: Routes = [
   { path: 'products/create', component: ProductCreateComponent },
   { path: 'products/details/:uuid', component: ProductDetailsComponent },
   { path: 'products/edit/:uuid', component: ProductEditComponent },
+
+  { path: 'offers', component: OfferComponent },
+  { path: 'offers/create', component: OfferCreateComponent },
+  { path: 'offers/details/:uuid', component: OfferDetailsComponent },
+  { path: 'offers/edit/:uuid', component: OfferEditComponent },
 
 ];
 
@@ -135,6 +144,11 @@ const routes: Routes = [
     ProductCreateComponent,
     ProductDetailsComponent,
     ProductEditComponent,
+
+    OfferComponent,
+    OfferCreateComponent,
+    OfferDetailsComponent,
+    OfferEditComponent,
 
   ],
   imports: [

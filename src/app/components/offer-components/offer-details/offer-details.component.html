@@ -1,0 +1,31 @@
+<h2 *ngIf="offerId" class="text-center">Información de Oferta</h2>
+
+<div class="container">
+  <div class="card my-5">
+    <div class="card-header">
+      <h3 class="text-center">{{ offerData.uuid }}</h3>
+    </div>
+    <div class="card-body">
+      <div *ngIf="!offerData" class="text-center mt-5">
+        <p>Cargando Información ...</p>
+      </div>
+      <div *ngIf="offerData">
+        <ul class="list-group">
+          <li class="list-group-item"><strong>ID Completo </strong>{{ offerData.uuid }}</li>
+          <li class="list-group-item"><strong>ID Tienda </strong>{{ offerData.idShopOffer }}</li>
+          <li class="list-group-item"><strong>ID Producto </strong>{{ offerData.idProductOffer }}</li>
+          <li class="list-group-item"><strong>Precio </strong>{{ offerData.priceOffer }} €</li>
+          <li class="list-group-item"><strong>Caducidad </strong> {{ offerData.dateEndOffer | date:'dd/MM/yyy' }}</li>
+          <li class="list-group-item"><strong>Estado </strong> <span [ngClass]="{'text-danger': isOfferExpired(offerData.dateEndOffer), 'text-success': !isOfferExpired(offerData.dateEndOffer)}"> {{ isOfferExpired(offerData.dateEndOffer) ? 'Caducada' : 'Activa' }} </span></li>
+          <li class="list-group-item"><strong>Fecha de Creación </strong> {{ offerData.createdAt | date:'dd/MM/yyy' }}</li>
+          <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ offerData.updatedAt | date:'dd/MM/yyy' }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

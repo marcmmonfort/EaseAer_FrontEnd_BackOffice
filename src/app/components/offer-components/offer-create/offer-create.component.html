@@ -1,0 +1,42 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Nuevo Comercio</h2>
+
+<form [formGroup]="offerForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+    
+    <div class="form-group">
+        <label for="idShopOffer">ID Tienda</label>
+        <input type="string" id="idShopOffer" formControlName="idShopOffer" class="form-control" />
+        <div *ngIf="offerForm.controls.idShopOffer.invalid && (offerForm.controls.idShopOffer.dirty || offerForm.controls.idShopOffer.touched)">
+        <div *ngIf="offerForm.controls.idShopOffer.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="idProductOffer">ID Producto</label>
+        <input type="string" id="idProductOffer" formControlName="idProductOffer" class="form-control" />
+        <div *ngIf="offerForm.controls.idProductOffer.invalid && (offerForm.controls.idProductOffer.dirty || offerForm.controls.idProductOffer.touched)">
+        <div *ngIf="offerForm.controls.idProductOffer.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="priceOffer">Precio (€)</label>
+        <input type="number" id="priceOffer" formControlName="priceOffer" class="form-control" min="0"/>
+        <div *ngIf="offerForm.controls.priceOffer.invalid && (offerForm.controls.priceOffer.dirty || offerForm.controls.priceOffer.touched)">
+            <div *ngIf="offerForm.controls.priceOffer.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="dateEndOffer">Caducidad</label>
+        <input type="date" id="dateEndOffer" formControlName="dateEndOffer" class="form-control"/>
+    </div>
+
+    <button class="buttonRegister" (click)="openModal()">Crear</button>
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

@@ -25,12 +25,7 @@
     </div>
 
     <div class="form-group">
-        <label for="idShopPrize">Caducidad</label>
-        <input type="text" class="form-control" id="idShopPrize" name="idShopPrize" [(ngModel)]="prizeData.idShopPrize" required />
-    </div>
-
-    <div class="form-group">
-        <label for="dateEndPrize">Nacimiento</label>
+        <label for="dateEndPrize">Caducidad</label>
         <input type="date" class="form-control" id="dateEndPrize" name="dateEndPrize" [(ngModel)]="prizeData.dateEndPrize" required />
         <div class="warningInput"> Fecha de Caducidad Registrada: {{ prizeData.dateEndPrize | date:'dd/MM/yyy' }} </div>
     </div>

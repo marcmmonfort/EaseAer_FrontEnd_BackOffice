@@ -57,7 +57,7 @@ export class PrizeComponent implements OnInit {
     } else {
       // this.filteredPrizes = this.prizes;
     }
-}
+  }
 
   printeaTodos() {
     this.prizeService.listPrizes().subscribe((prizes) => {
