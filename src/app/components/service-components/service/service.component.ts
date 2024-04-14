@@ -28,12 +28,12 @@ export class ServiceComponent implements OnInit {
     this.printeado = false;
   }
 
-  showDetails(shop: any): void {
-    this.router.navigate(['/services/details/', shop.uuid]);
+  showDetails(service: any): void {
+    this.router.navigate(['/services/details/', service.uuid]);
   }
 
-  showEdit(shop: any): void {
-    this.router.navigate(['/services/edit/', shop.uuid]);
+  showEdit(service: any): void {
+    this.router.navigate(['/services/edit/', service.uuid]);
   }
 
   searchServicesSchedule() {

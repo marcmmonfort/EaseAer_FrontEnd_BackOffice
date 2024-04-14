@@ -1,0 +1,56 @@
+<h2 *ngIf="serviceId" class="text-center">Información de Servicio</h2>
+
+<div class="container">
+  <div class="card my-5">
+    <div class="card-header">
+      <h3 class="text-center">{{ serviceData.nameService }}</h3>
+    </div>
+    <div class="card-body">
+      <div *ngIf="!serviceData" class="text-center mt-5">
+        <p>Cargando Información ...</p>
+      </div>
+      <div *ngIf="serviceData">
+        <ul class="list-group">
+            <li class="list-group-item"><strong>ID Servicio </strong>{{ serviceData.uuid }}</li>
+            <li class="list-group-item"><strong>Nombre </strong>{{ serviceData.nameService }}</li>
+            <li class="list-group-item"><strong>Descripción </strong>{{ serviceData.descriptionService }}</li>
+            <li class="list-group-item"><strong>ID Ubicación </strong>{{ serviceData.idLocationService }}</li>
+            <li class="list-group-item">
+                <strong>Tipo </strong> 
+                <ng-container [ngSwitch]="serviceData.typeService">
+                    <ng-container *ngSwitchCase="'gate'">Puerta de Embarque</ng-container>
+                    <ng-container *ngSwitchCase="'stairs'">Escalera</ng-container>
+                    <ng-container *ngSwitchCase="'elevator'">Ascensor</ng-container>
+                    <ng-container *ngSwitchCase="'info'">Información</ng-container>
+                    <ng-container *ngSwitchCase="'toilet'">Lavabo</ng-container>
+                    <ng-container *ngSwitchCase="'parking'">Parking</ng-container>
+                    <ng-container *ngSwitchCase="'transport'">Transporte</ng-container>
+                    <ng-container *ngSwitchCase="'security'">Control de Seguridad</ng-container>
+                    <ng-container *ngSwitchCase="'medical'">Equipo Médico</ng-container>
+                    <ng-container *ngSwitchCase="'passports'">Control de Pasaportes</ng-container>
+                    <ng-container *ngSwitchCase="'luggage'">Equipaje</ng-container>
+                    <ng-container *ngSwitchCase="'room'">Sala</ng-container>
+                    <ng-container *ngSwitchCase="'other'">Otr@</ng-container>
+                    <ng-container *ngSwitchDefault>Desconocido</ng-container>
+                </ng-container>
+            </li>
+            <li class="list-group-item"><strong>Horario de Lunes </strong>{{ monOpen }} H - {{ monClose }} H</li>
+            <li class="list-group-item"><strong>Horario de Martes </strong>{{ tueOpen }} H - {{ tueClose }} H</li>
+            <li class="list-group-item"><strong>Horario de Miércoles </strong>{{ wedOpen }} H - {{ wedClose }} H</li>
+            <li class="list-group-item"><strong>Horario de Jueves </strong>{{ thuOpen }} H - {{ thuClose }} H</li>
+            <li class="list-group-item"><strong>Horario de Viernes </strong>{{ friOpen }} H - {{ friClose }} H</li>
+            <li class="list-group-item"><strong>Horario de Sábado </strong>{{ satOpen }} H - {{ satClose }} H</li>
+            <li class="list-group-item"><strong>Horario de Domingo </strong>{{ sunOpen }} H - {{ sunClose }} H</li>
+            <li class="list-group-item"><strong>Estado </strong> <span [ngClass]="{'text-danger': serviceData.deletedService, 'text-success': !serviceData.deletedService}">{{ serviceData.deletedService ? 'Desactivada' : 'Activada' }}</span></li>
+            <li class="list-group-item"><strong>Fecha de Creación </strong> {{ serviceData.createdAt | date:'dd/MM/yyy' }}</li>
+            <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ serviceData.updatedAt | date:'dd/MM/yyy' }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

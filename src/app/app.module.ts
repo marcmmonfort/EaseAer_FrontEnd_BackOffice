@@ -35,6 +35,8 @@ import { PrizeDetailsComponent } from './components/prize-component/prize-detail
 import { PrizeEditComponent } from './components/prize-component/prize-edit/prize-edit.component';
 import { ServiceComponent } from './components/service-components/service/service.component';
 import { ServiceCreateComponent } from './components/service-components/service-create/service-create.component';
+import { ServiceDetailsComponent } from './components/service-components/service-details/service-details.component';
+import { ServiceEditComponent } from './components/service-components/service-edit/service-edit.component';
 
 const routes: Routes = [
 
@@ -71,6 +73,8 @@ const routes: Routes = [
 
   { path: 'services', component: ServiceComponent },
   { path: 'services/create', component: ServiceCreateComponent },
+  { path: 'services/details/:uuid', component: ServiceDetailsComponent },
+  { path: 'services/edit/:uuid', component: ServiceEditComponent },
 
 ];
 
@@ -115,6 +119,8 @@ const routes: Routes = [
 
     ServiceComponent,
     ServiceCreateComponent,
+    ServiceDetailsComponent,
+    ServiceEditComponent,
 
   ],
   imports: [

@@ -1,0 +1,56 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Editar Datos de {{ serviceData.nameService }}</h2>
+
+<form (ngSubmit)="onSubmit()" class="formulario row g-3">
+    <div class="form-group">
+        <label for="nameService">Nombre</label>
+        <input type="text" class="form-control" id="nameService" name="nameService" [(ngModel)]="serviceData.nameService" required />
+    </div>
+
+    <div class="form-group">
+        <label for="descriptionService">Descripción</label>
+        <input type="text" class="form-control" id="descriptionService" name="descriptionService" [(ngModel)]="serviceData.descriptionService" required />
+    </div>
+
+    <div class="form-group">
+        <label for="idLocationService">ID Ubicación</label>
+        <input type="text" class="form-control" id="idLocationService" name="idLocationService" [(ngModel)]="serviceData.idLocationService" required />
+    </div>
+
+    <div class="form-group">
+        <label for="typeService">Gender</label>
+        <select class="form-control" id="typeService" name="typeService" [(ngModel)]="serviceData.typeService" required>
+            <option value="gate">Puerta de Embarque</option>
+            <option value="stairs">Escalera</option>
+            <option value="elevator">Ascensor</option>
+            <option value="info">Información</option>
+            <option value="toilet">Lavabo</option>
+            <option value="parking">Parking</option>
+            <option value="transport">Transporte</option>
+            <option value="security">Control de Seguridad</option>
+            <option value="medical">Equipo Médico</option>
+            <option value="passports">Control de Pasaportes</option>
+            <option value="luggage">Equipaje</option>
+            <option value="room">Sala</option>
+            <option value="other">Otr@</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="scheduleService">Horario</label>
+        <input type="text" class="form-control" id="scheduleService" name="scheduleService" [(ngModel)]="serviceData.scheduleService" required />
+    </div>
+
+    <div class="form-group">
+        <label for="deletedService">Servicio Eliminado</label>
+        <input type="checkbox" class="form-check-input" id="deletedService" name="deletedService" [(ngModel)]="serviceData.deletedService" />
+    </div>
+
+    <button class="buttonUpdate" (click)="openModal()">Actualizar</button>
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>
