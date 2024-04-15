@@ -49,6 +49,10 @@ import { IncidentComponent } from './components/incident-components/incident/inc
 import { IncidentCreateComponent } from './components/incident-components/incident-create/incident-create.component';
 import { IncidentDetailsComponent } from './components/incident-components/incident-details/incident-details.component';
 import { IncidentEditComponent } from './components/incident-components/incident-edit/incident-edit.component';
+import { NewsComponent } from './components/news-components/news/news.component';
+import { NewsCreateComponent } from './components/news-components/news-create/news-create.component';
+import { NewsDetailsComponent } from './components/news-components/news-details/news-details.component';
+import { NewsEditComponent } from './components/news-components/news-edit/news-edit.component';
 
 const routes: Routes = [
 
@@ -102,6 +106,11 @@ const routes: Routes = [
   { path: 'incidents/create', component: IncidentCreateComponent },
   { path: 'incidents/details/:uuid', component: IncidentDetailsComponent },
   { path: 'incidents/edit/:uuid', component: IncidentEditComponent },
+
+  { path: 'news', component: NewsComponent },
+  { path: 'news/create', component: NewsCreateComponent },
+  { path: 'news/details/:uuid', component: NewsDetailsComponent },
+  { path: 'news/edit/:uuid', component: NewsEditComponent },
 
 ];
 
@@ -163,6 +172,11 @@ const routes: Routes = [
     IncidentCreateComponent,
     IncidentDetailsComponent,
     IncidentEditComponent,
+
+    NewsComponent,
+    NewsCreateComponent,
+    NewsDetailsComponent,
+    NewsEditComponent,
 
   ],
 

@@ -88,7 +88,7 @@ export class NewsService {
     }
 
     // SERVICE 6: "/news/update/:uuid" | updateNews | apiURLNewsUpdate
-    updateProduct(news: News, id: string): Observable<News> {
+    updateNews(news: News, id: string): Observable<News> {
         return this.http.put<News>(this.apiURLNewsUpdate + id, news,{
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ export class NewsService {
     }
 
     // SERVICE 7: "/news/delete/:uuid" | deleteNews |  apiURLNewsDelete
-    deleteProduct(uuid: string): Observable<News> {
+    deleteNews(uuid: string): Observable<News> {
         return this.http.delete<News>(this.apiURLNewsDelete + uuid, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',

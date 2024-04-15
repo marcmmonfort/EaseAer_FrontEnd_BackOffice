@@ -1,0 +1,38 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Nueva Noticia</h2>
+
+<form [formGroup]="newsForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+  
+    <div class="form-group">
+        <label for="titleNews">Título</label>
+        <input type="string" id="titleNews" formControlName="titleNews" class="form-control" />
+        <div *ngIf="newsForm.controls.titleNews.invalid && (newsForm.controls.titleNews.dirty || newsForm.controls.titleNews.touched)">
+        <div *ngIf="newsForm.controls.titleNews.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="subtitleNews">Subtítulo</label>
+        <input type="string" id="subtitleNews" formControlName="subtitleNews" class="form-control" />
+        <div *ngIf="newsForm.controls.subtitleNews.invalid && (newsForm.controls.subtitleNews.dirty || newsForm.controls.subtitleNews.touched)">
+        <div *ngIf="newsForm.controls.subtitleNews.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="descriptionNews">Descripción / Contenido</label>
+        <input type="string" id="descriptionNews" formControlName="descriptionNews" class="form-control" />
+        <div *ngIf="newsForm.controls.descriptionNews.invalid && (newsForm.controls.descriptionNews.dirty || newsForm.controls.descriptionNews.touched)">
+        <div *ngIf="newsForm.controls.descriptionNews.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <button class="buttonRegister" (click)="openModal()">Crear</button>
+
+</form>
+
+<footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

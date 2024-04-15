@@ -1,0 +1,34 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Editar Noticia "{{ newsData.titleNews }}"</h2>
+
+<form (ngSubmit)="onSubmit()" class="formulario row g-3">
+
+    <div class="form-group">
+        <label for="titleNews">Título</label>
+        <input type="text" class="form-control" id="titleNews" name="titleNews" [(ngModel)]="newsData.titleNews" required />
+    </div>
+
+    <div class="form-group">
+        <label for="subtitleNews">Subtítulo</label>
+        <input type="text" class="form-control" id="subtitleNews" name="subtitleNews" [(ngModel)]="newsData.subtitleNews" required />
+    </div>
+
+    <div class="form-group">
+        <label for="descriptionNews">Descripción / Contenido</label>
+        <input type="text" class="form-control" id="descriptionNews" name="descriptionNews" [(ngModel)]="newsData.descriptionNews" required />
+    </div>
+
+    <div class="form-group">
+        <label for="deletedNews">Noticia Archivada</label>
+        <input type="checkbox" class="form-check-input" id="deletedNews" name="deletedNews" [(ngModel)]="newsData.deletedNews" />
+    </div>
+
+    <button class="buttonUpdate" (click)="openModal()">Actualizar</button>
+
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

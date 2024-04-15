@@ -1,57 +1,65 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IncidentService } from 'src/app/services/incident.service';
+import { NewsService } from 'src/app/services/news.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-incident-create',
-  templateUrl: './incident-create.component.html',
-  styleUrls: ['./incident-create.component.css']
+  selector: 'app-news-create',
+  templateUrl: './news-create.component.html',
+  styleUrls: ['./news-create.component.css']
 })
 
-export class IncidentCreateComponent {
-  incidentForm: FormGroup | any;
+export class NewsCreateComponent {
+  newsForm: FormGroup | any;
   isModalOpen:boolean=false;
   isNotificationOpen: boolean = false;
   modalText: string = '';
   showAdditionalOption: boolean = true;
 
-  constructor(private formBuilder: FormBuilder, private incidentService: IncidentService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private newsService: NewsService, private router: Router) { }
 
   ngOnInit(): void {
 
-    this.incidentForm = this.formBuilder.group({
-        "descriptionIncident": ['', Validators.required],
-        "collectivesIncident": ['', Validators.required],
-        "statusIncident": ['new', Validators.required],
-        "deletedIncident": [false, Validators.required],
+    this.newsForm = this.formBuilder.group({
+        "titleNews": ['', Validators.required],
+        "subtitleNews": ['', Validators.required],
+        "descriptionNews": ['', Validators.required],
+        "deletedNews": [false, Validators.required],
     });
   }
 
   get f() {
-    return this.incidentForm.controls;
+    return this.newsForm.controls;
   }
 
   onSubmit(): void {
-    if (this.incidentForm.invalid) {
+    console.log(this.newsForm);
+    if (this.newsForm.invalid) {
       this.openNotificationModal("¡Información Incorrecta!");
     }
     this.openModal();
   }
   
   confirmChanges(): void {
-    const incidentData = this.incidentForm.value;
-    
+    const newsData = this.newsForm.value;
+
     // Añadir UUID Creador:
-    incidentData.idUserIncident = localStorage.getItem('ownId');
+    newsData.idUserAuthorNews = localStorage.getItem('ownId');
 
-    console.log("DATOS: " + JSON.stringify(incidentData));
+    // Añadir Fecha Actual:
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString();
+    newsData.dateNews = formattedDate;
 
-    this.incidentService.createIncident(incidentData).subscribe(
+    console.log("NOTÍCIA: " + JSON.stringify(newsData));
+
+    this.newsService.createNews(newsData).subscribe(
       (response) => {
-        this.openNotificationModal("¡Incidente Creado!");
+        console.log("ENTRA AQUÍ (A)");
+        this.openNotificationModal("¡Noticia Creada!");
       },
       (error) => {
+        console.log("ENTRA AQUÍ (B)");
         this.openNotificationModal("¡Error!");
       }
     );
@@ -75,9 +83,9 @@ export class IncidentCreateComponent {
       this.isModalOpen = false;
       this.isNotificationOpen = false;
     }
-    if (this.modalText == "¡Incidente Creado!"){
+    if (this.modalText == "¡Noticia Creada!"){
       this.modalText = "";
-      this.router.navigate(['/incidents']);
+      this.router.navigate(['/news']);
       this.isModalOpen = false;
       this.isNotificationOpen = false;
     }

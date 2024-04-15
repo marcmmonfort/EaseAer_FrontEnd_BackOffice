@@ -4,6 +4,7 @@ export interface News {
     titleNews: string;
     subtitleNews: string;
     descriptionNews: string;
+    dateNews: Date;
     deletedNews: boolean;
     createdAt: string;
     updatedAt: string;
