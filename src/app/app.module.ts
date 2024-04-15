@@ -47,6 +47,8 @@ import { OfferDetailsComponent } from './components/offer-components/offer-detai
 import { OfferEditComponent } from './components/offer-components/offer-edit/offer-edit.component';
 import { IncidentComponent } from './components/incident-components/incident/incident.component';
 import { IncidentCreateComponent } from './components/incident-components/incident-create/incident-create.component';
+import { IncidentDetailsComponent } from './components/incident-components/incident-details/incident-details.component';
+import { IncidentEditComponent } from './components/incident-components/incident-edit/incident-edit.component';
 
 const routes: Routes = [
 
@@ -98,6 +100,8 @@ const routes: Routes = [
 
   { path: 'incidents', component: IncidentComponent },
   { path: 'incidents/create', component: IncidentCreateComponent },
+  { path: 'incidents/details/:uuid', component: IncidentDetailsComponent },
+  { path: 'incidents/edit/:uuid', component: IncidentEditComponent },
 
 ];
 
@@ -157,6 +161,8 @@ const routes: Routes = [
 
     IncidentComponent,
     IncidentCreateComponent,
+    IncidentDetailsComponent,
+    IncidentEditComponent,
 
   ],
 

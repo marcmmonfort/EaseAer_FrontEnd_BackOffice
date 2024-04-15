@@ -1,0 +1,51 @@
+<h2 *ngIf="incidentId" class="text-center">Información de Incidente</h2>
+
+<div class="container">
+  <div class="card my-5">
+    <div class="card-header">
+      <h3 class="text-center">{{ incidentData.uuid }}</h3>
+    </div>
+    <div class="card-body">
+      <div *ngIf="!incidentData" class="text-center mt-5">
+        <p>Cargando Información ...</p>
+      </div>
+      <div *ngIf="incidentData">
+        <ul class="list-group">
+            <li class="list-group-item"><strong>ID Incidente </strong>{{ incidentData.uuid }}</li>
+            <li class="list-group-item"><strong>ID Usuario </strong>{{ incidentData.idUserIncident }}</li>
+            <li class="list-group-item"><strong>Descripción </strong>{{ incidentData.descriptionIncident }}</li>
+            <li class="list-group-item"><strong>Colectivo Afectado </strong> 
+                <ng-container [ngSwitch]="incidentData.collectivesIncident">
+                    <ng-container *ngSwitchCase="'security'">FFCCS</ng-container>
+                    <ng-container *ngSwitchCase="'medical'">Servicios Médicos</ng-container>
+                    <ng-container *ngSwitchCase="'fire'">SSEI</ng-container>
+                    <ng-container *ngSwitchCase="'cleaning'">Limpieza</ng-container>
+                    <ng-container *ngSwitchCase="'assistance'">Asistencia / Ayuda</ng-container>
+                    <ng-container *ngSwitchCase="'tech'">Equipo Técnico</ng-container>
+                    <ng-container *ngSwitchCase="'other'">Otr@</ng-container>
+                    <ng-container *ngSwitchDefault>Desconocido</ng-container>
+                </ng-container>
+            </li>
+            <li class="list-group-item"><strong>Status </strong> 
+                <ng-container [ngSwitch]="incidentData.statusIncident">
+                    <ng-container *ngSwitchCase="'new'">Nuevo</ng-container>
+                    <ng-container *ngSwitchCase="'received'">Recibido</ng-container>
+                    <ng-container *ngSwitchCase="'managed'">Tramitado / Gestionado</ng-container>
+                    <ng-container *ngSwitchCase="'solved'">Solucionado ✓</ng-container>
+                    <ng-container *ngSwitchCase="'unsolved'">No Solucionado ✗</ng-container>
+                    <ng-container *ngSwitchDefault>Desconocido</ng-container>
+                </ng-container>
+            </li>
+            <li class="list-group-item"><strong>Estado </strong> <span [ngClass]="{'text-danger': incidentData.deletedIncident, 'text-success': !incidentData.deletedIncident}">{{ incidentData.deletedIncident ? 'Cerrado' : 'Abierto' }}</span></li>
+            <li class="list-group-item"><strong>Fecha de Creación </strong> {{ incidentData.createdAt | date:'dd/MM/yyy' }}</li>
+            <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ incidentData.updatedAt | date:'dd/MM/yyy' }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

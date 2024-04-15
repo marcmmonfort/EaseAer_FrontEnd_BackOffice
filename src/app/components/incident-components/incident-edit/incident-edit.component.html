@@ -1,0 +1,46 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Editar Incidente {{ incidentData.uuid }}</h2>
+
+<form (ngSubmit)="onSubmit()" class="formulario row g-3">
+    <div class="form-group">
+        <label for="descriptionIncident">Descripción</label>
+        <input type="text" class="form-control" id="descriptionIncident" name="descriptionIncident" [(ngModel)]="incidentData.descriptionIncident" required />
+    </div>
+
+    <div class="form-group">
+        <label for="collectivesIncident">Colectivo Afectado</label>
+        <select class="form-control" id="collectivesIncident" name="collectivesIncident" [(ngModel)]="incidentData.collectivesIncident" required>
+            <option value="security">FFCCS</option>
+            <option value="medical">Servicios Médicos</option>
+            <option value="fire">SSEI</option>
+            <option value="cleaning">Limpieza</option>
+            <option value="assistance">Asistencia / Ayuda</option>
+            <option value="tech">Equipo Técnico</option>
+            <option value="other">Otr@</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="statusIncident">Status</label>
+        <select class="form-control" id="statusIncident" name="statusIncident" [(ngModel)]="incidentData.statusIncident" required>
+            <option value="new">Nuevo</option>
+            <option value="received">Recibido</option>
+            <option value="managed">Tramitado / Gestionado</option>
+            <option value="solved">Solucionado ✓</option>
+            <option value="unsolved">No Solucionado ✗</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="deletedIncident">Incidente Cerrado</label>
+        <input type="checkbox" class="form-check-input" id="deletedIncident" name="deletedIncident" [(ngModel)]="incidentData.deletedIncident" />
+    </div>
+
+    <button class="buttonUpdate" (click)="openModal()">Actualizar</button>
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

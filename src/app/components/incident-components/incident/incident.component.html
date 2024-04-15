@@ -54,8 +54,8 @@
               <span *ngIf="incident.statusIncident === 'new'">Nuevo</span>
               <span *ngIf="incident.statusIncident === 'received'">Recibido</span>
               <span *ngIf="incident.statusIncident === 'managed'">Tramitado / Gestionado</span>
-              <span *ngIf="incident.statusIncident === 'solved'">Solucionado (OK)</span>
-              <span *ngIf="incident.statusIncident === 'unsolved'">No Solucionado (NO OK)</span>
+              <span *ngIf="incident.statusIncident === 'solved'">Solucionado ✓</span>
+              <span *ngIf="incident.statusIncident === 'unsolved'">No Solucionado ✗</span>
             </td>
             <td class="text-center">{{ incident.descriptionIncident.slice(0, 46) }} ... </td>
             <td class="text-center">
