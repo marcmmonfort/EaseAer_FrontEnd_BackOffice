@@ -45,6 +45,8 @@ import { OfferComponent } from './components/offer-components/offer/offer.compon
 import { OfferCreateComponent } from './components/offer-components/offer-create/offer-create.component';
 import { OfferDetailsComponent } from './components/offer-components/offer-details/offer-details.component';
 import { OfferEditComponent } from './components/offer-components/offer-edit/offer-edit.component';
+import { IncidentComponent } from './components/incident-components/incident/incident.component';
+import { IncidentCreateComponent } from './components/incident-components/incident-create/incident-create.component';
 
 const routes: Routes = [
 
@@ -93,6 +95,9 @@ const routes: Routes = [
   { path: 'offers/create', component: OfferCreateComponent },
   { path: 'offers/details/:uuid', component: OfferDetailsComponent },
   { path: 'offers/edit/:uuid', component: OfferEditComponent },
+
+  { path: 'incidents', component: IncidentComponent },
+  { path: 'incidents/create', component: IncidentCreateComponent },
 
 ];
 
@@ -150,7 +155,11 @@ const routes: Routes = [
     OfferDetailsComponent,
     OfferEditComponent,
 
+    IncidentComponent,
+    IncidentCreateComponent,
+
   ],
+
   imports: [
     BrowserModule,
     HttpClientModule,

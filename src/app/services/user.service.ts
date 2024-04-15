@@ -23,7 +23,7 @@ export class UserService {
     // ROUTE 2: routeUser.get("/user/:uuid", checkJwt, userCtrl.getUserByIdCtrl);
     private apiURLUserGetById = environment.API_URL + '/user/';
     // ROUTE 3: routeUser.get("/user/google/check/:mailUser", userCtrl.getUserByEmailCtrl),
-    private apiURLUserGetByMail = environment.API_URL + '/user/google/check/';
+    private apiURLUserGetByMail = environment.API_URL + '/user/getByEmail/';
     // ROUTE 4: routeUser.get("/user/search/:search", checkJwt, userCtrl.getSearchUsersCtrl);
     private apiURLUserGetSearch = environment.API_URL + '/user/search/';
     // ROUTE 5: routeUser.get("/user/all/count/docs", checkJwt, userCtrl.getNumUsersCtrl);
@@ -59,6 +59,14 @@ export class UserService {
     }
 
     // getUserByEmail(email: string): Promise<UserEntity | null>;
+    getUserByEmail(email: string): Observable<User> {
+      return this.http.get<User>(this.apiURLUserGetByMail + email, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + this.authService.getToken(),
+        }),
+      });
+    }
 
     // getSearchUsers(search: string): Promise<UserEntity[] | null>;
 

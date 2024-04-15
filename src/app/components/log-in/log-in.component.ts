@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { KnownService } from 'src/app/services/known.service';
+import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +18,7 @@ export class LogInComponent {
   isNotificationOpen: boolean = false;
   modalText: string = '';
 
-  constructor(private formBuilder: FormBuilder, private loginService: AuthService, private knownService: KnownService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private loginService: AuthService, private userService: UserService, private knownService: KnownService, private router: Router) {
     
     this.loginForm = this.formBuilder.group({
       "mailUser": ['', [Validators.required, Validators.email]],
@@ -40,13 +41,31 @@ export class LogInComponent {
 
   login(): void{
     const authData = this.loginForm.value;
-    console.log("Mail:",this.loginForm.value.mailUser);
-    console.log("Password:",this.loginForm.value.passwordUser);
+    console.log("Mail: ",this.loginForm.value.mailUser);
+    console.log("Password: ",this.loginForm.value.passwordUser);
     this.loginService.logIn(authData).subscribe(
       (data:any)=>{
-        console.log(data);
+        console.log("DATA:" + JSON.stringify(data));
         
         localStorage.setItem('token',data.token);
+
+        // MECANISMO PARA GUARDAR TU PROPIA ID:
+        console.log("CORREO: ",this.loginForm.value.mailUser);
+        this.userService.getUserByEmail(this.loginForm.value.mailUser).subscribe(
+          (response) => {
+            console.log("RECIBE:" + JSON.stringify(response));
+            if (response.uuid){
+              console.log("ENTRA CON ID: " + response.uuid);
+              localStorage.setItem('ownId', response.uuid);
+            }
+            else {
+              this.openNotificationModal("¡Error!");
+            }
+          },
+          (error) => {
+            this.openNotificationModal("¡Error!");
+          }
+        );
         
         this.knownService.updateUserKnown(true);
         this.openNotificationModal("¡Bienvenid@!");

@@ -20,6 +20,7 @@ export class NavigationComponent implements OnInit {
 
   LogOut(): void{
     localStorage.setItem('token','');
+    localStorage.setItem('ownId','');
     this.knownService.updateUserKnown(false);
   }
 

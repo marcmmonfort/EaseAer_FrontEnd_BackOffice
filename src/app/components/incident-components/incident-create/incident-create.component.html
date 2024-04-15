@@ -1,0 +1,34 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Nuevo Incidente</h2>
+
+<form [formGroup]="incidentForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+  
+    <div class="form-group">
+        <label for="descriptionIncident">Descripción</label>
+        <input type="string" id="descriptionIncident" formControlName="descriptionIncident" class="form-control" />
+        <div *ngIf="incidentForm.controls.descriptionIncident.invalid && (incidentForm.controls.descriptionIncident.dirty || incidentForm.controls.descriptionIncident.touched)">
+        <div *ngIf="incidentForm.controls.descriptionIncident.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="collectivesIncident">Colectivo Solicitado</label>
+        <select id="collectivesIncident" formControlName="collectivesIncident" class="form-control">
+            <option value="security">FFCCS</option>
+            <option value="medical">Servicios Médicos</option>
+            <option value="fire">SSEI</option>
+            <option value="cleaning">Limpieza</option>
+            <option value="assistance">Asistencia / Ayuda</option>
+            <option value="tech">Equipo Técnico</option>
+            <option value="other">Otr@</option>
+        </select>
+    </div>
+
+    <button class="buttonRegister" (click)="openModal()">Crear</button>
+</form>
+
+<footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>
