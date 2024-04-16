@@ -53,6 +53,8 @@ import { NewsComponent } from './components/news-components/news/news.component'
 import { NewsCreateComponent } from './components/news-components/news-create/news-create.component';
 import { NewsDetailsComponent } from './components/news-components/news-details/news-details.component';
 import { NewsEditComponent } from './components/news-components/news-edit/news-edit.component';
+import { FlightComponent } from './components/flight-components/flight/flight.component';
+import { FlightCreateComponent } from './components/flight-components/flight-create/flight-create.component';
 
 const routes: Routes = [
 
@@ -111,6 +113,9 @@ const routes: Routes = [
   { path: 'news/create', component: NewsCreateComponent },
   { path: 'news/details/:uuid', component: NewsDetailsComponent },
   { path: 'news/edit/:uuid', component: NewsEditComponent },
+
+  { path: 'flights', component: FlightComponent },
+  { path: 'flights/create', component: FlightCreateComponent },
 
 ];
 
@@ -177,6 +182,9 @@ const routes: Routes = [
     NewsCreateComponent,
     NewsDetailsComponent,
     NewsEditComponent,
+
+    FlightComponent,
+    FlightCreateComponent,
 
   ],
 

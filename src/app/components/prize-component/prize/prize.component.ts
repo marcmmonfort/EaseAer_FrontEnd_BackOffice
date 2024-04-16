@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'prize-location',
+  selector: 'app-prize',
   templateUrl: './prize.component.html',
   styleUrls: ['./prize.component.css'],
 })

@@ -1,0 +1,62 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Nuevo Vuelo</h2>
+
+<form [formGroup]="flightForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+  
+    <div class="form-group">
+        <label for="numberFlight">Número</label>
+        <input type="string" id="numberFlight" formControlName="numberFlight" class="form-control" />
+        <div *ngIf="flightForm.controls.numberFlight.invalid && (flightForm.controls.numberFlight.dirty || flightForm.controls.numberFlight.touched)">
+            <div *ngIf="flightForm.controls.numberFlight.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="companyFlight">ID Compañía</label>
+        <input type="string" id="companyFlight" formControlName="companyFlight" class="form-control" />
+        <div *ngIf="flightForm.controls.companyFlight.invalid && (flightForm.controls.companyFlight.dirty || flightForm.controls.companyFlight.touched)">
+            <div *ngIf="flightForm.controls.companyFlight.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="originFlight">Origen (OACI)</label>
+        <input type="string" id="originFlight" formControlName="originFlight" class="form-control" />
+        <div *ngIf="flightForm.controls.originFlight.invalid && (flightForm.controls.originFlight.dirty || flightForm.controls.originFlight.touched)">
+            <div *ngIf="flightForm.controls.originFlight.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="destinationFlight">Destino (OACI)</label>
+        <input type="string" id="destinationFlight" formControlName="destinationFlight" class="form-control" />
+        <div *ngIf="flightForm.controls.destinationFlight.invalid && (flightForm.controls.destinationFlight.dirty || flightForm.controls.destinationFlight.touched)">
+            <div *ngIf="flightForm.controls.destinationFlight.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="stdFlight">Salida (Scheduled Time)</label>
+        <input type="datetime-local" id="stdFlight" formControlName="stdFlight" class="form-control" />
+        <div *ngIf="flightForm.controls.stdFlight.invalid && (flightForm.controls.stdFlight.dirty || flightForm.controls.stdFlight.touched)">
+            <div *ngIf="flightForm.controls.stdFlight.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="staFlight">Llegada (Scheduled Time)</label>
+        <input type="datetime-local" id="staFlight" formControlName="staFlight" class="form-control" />
+        <div *ngIf="flightForm.controls.staFlight.invalid && (flightForm.controls.staFlight.dirty || flightForm.controls.staFlight.touched)">
+            <div *ngIf="flightForm.controls.staFlight.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <button class="buttonRegister" (click)="openModal()">Crear</button>
+
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

@@ -1,0 +1,69 @@
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Vuelos</h2>
+
+<div class="bloque_funcionalidades_clase">
+    <button type="button" class="animated-word" routerLink="/flights/create">Create</button>
+    <button type="button" class="animated-button" (click)="printeaFlights()">Get Flights</button>
+    <button type="button" class="animated-button" (click)="printeaDepartures()">Get Departures</button>
+    <button type="button" class="animated-button" (click)="printeaArrivals()">Get Arrivals</button>
+    <form [formGroup]="flightForm" (ngSubmit)="printeaFlights()" class="formulario row g-3">
+        <input type="string" class="buscador" placeholder="Airport" id="airportFlight" formControlName="airportFlight" />
+        <label class="fromToText" for="idUserCard">From</label>
+        <input type="datetime-local" class="buscador" placeholder="From" id="startDate" formControlName="startDate" />
+        <label class="fromToText" for="idUserCard">To</label>
+        <input type="datetime-local" class="buscador" placeholder="To" id="endDate" formControlName="endDate" />
+    </form>
+</div>
+
+<div class="input-group mb-3">
+</div>
+
+<div class="tableLocations">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="textTitleTable">ID Vuelo</th>
+                <th class="textTitleTable">Número</th>
+                <th class="textTitleTable">ID Compañía</th>
+                <th class="textTitleTable">Origen</th>
+                <th class="textTitleTable">Destino</th>
+                <th class="textTitleTable">STD</th>
+                <th class="textTitleTable">ETD</th>
+                <th class="textTitleTable">STA</th>
+                <th class="textTitleTable">ETA</th>
+                <th class="textTitleTable">Terminal (Departure)</th>
+                <th class="textTitleTable">Gate</th>
+                <th class="textTitleTable">Status</th>
+                <th class="textTitleTable">Detalles</th>
+                <th class="textTitleTable">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let flight of filteredFlights">
+                <td class="text-center">{{ flight.uuid.slice(0, 4) }} ... {{ flight.uuid.slice(-4) }}</td>
+                <td class="text-center">{{ flight.numberFlight }}</td>
+                <td class="text-center">{{ flight.companyFlight.slice(0, 4) }} ... {{ flight.companyFlight.slice(-4) }}</td>
+                <td class="text-center">{{ flight.originFlight }}</td>
+                <td class="text-center">{{ flight.destinationFlight }}</td>
+                <td class="text-center">{{ flight.stdFlight | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td class="text-center">{{ flight.etdFlight | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td class="text-center">{{ flight.staFlight | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td class="text-center">{{ flight.etaFlight | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td class="text-center">{{ flight.depTerminalFlight }}</td>
+                <td class="text-center">{{ flight.depGateFlight }}</td>
+                <td class="text-center">
+                    <span *ngIf="flight.statusFlight === 'ontime'">On Time</span>
+                    <span *ngIf="flight.statusFlight === 'delayed'">Delayed</span>
+                    <span *ngIf="flight.statusFlight === 'cancelled'">Cancelado</span>
+                </td>
+                <td><a [routerLink]="['/flights/details/', flight.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(flight)">Detalles</button></a></td>
+                <td><a [routerLink]="['/flights/edit/', flight.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(flight)">Editar</button></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>
