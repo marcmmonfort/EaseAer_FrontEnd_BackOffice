@@ -122,7 +122,7 @@ export class FlightService {
     }
 
     // SERVICE 9: "/flight/delete/:uuid" | deleteFlight | apiURLFlightDelete
-    deleteIncident(uuid: string): Observable<Flight> {
+    deleteFlight(uuid: string): Observable<Flight> {
         return this.http.delete<Flight>(this.apiURLFlightDelete + uuid, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',

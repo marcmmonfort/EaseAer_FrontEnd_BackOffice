@@ -1,0 +1,44 @@
+<h2 *ngIf="flightId" class="text-center">Información de Vuelo</h2>
+
+<div class="container">
+    <div class="card my-5">
+        <div class="card-header">
+        <h3 class="text-center">{{ flightData.numberFlight }}</h3>
+        </div>
+        <div class="card-body">
+        <div *ngIf="!flightData" class="text-center mt-5">
+            <p>Cargando Información ...</p>
+        </div>
+        <div *ngIf="flightData">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>ID Vuelo </strong>{{ flightData.uuid }}</li>
+                <li class="list-group-item"><strong>ID Compañía </strong>{{ flightData.companyFlight }}</li>
+                <li class="list-group-item"><strong>Número </strong>{{ flightData.numberFlight }}</li>
+                <li class="list-group-item"><strong>Orígen (ICAO) </strong>{{ flightData.originFlight }}</li>
+                <li class="list-group-item"><strong>Destino (ICAO) </strong>{{ flightData.destinationFlight }}</li>
+                <li class="list-group-item"><strong>STD </strong>{{ flightData.stdFlight | date:'dd/MM/yyyy HH:mm' }}</li>
+                <li class="list-group-item"><strong>ETD </strong>{{ flightData.etdFlight | date:'dd/MM/yyyy HH:mm' }}</li>
+                <li class="list-group-item"><strong>STA </strong>{{ flightData.staFlight | date:'dd/MM/yyyy HH:mm' }}</li>
+                <li class="list-group-item"><strong>ETA </strong>{{ flightData.etaFlight | date:'dd/MM/yyyy HH:mm' }}</li>
+                <li class="list-group-item"><strong>Terminal (Departure) </strong>{{ flightData.depTerminalFlight }}</li>
+                <li class="list-group-item"><strong>Gate </strong>{{ flightData.depGateFlight }}</li>
+                <li class="list-group-item"><strong>Status </strong> 
+                    <ng-container [ngSwitch]="flightData.statusFlight">
+                        <ng-container *ngSwitchCase="'ontime'">On Time</ng-container>
+                        <ng-container *ngSwitchCase="'delayed'">Delayed</ng-container>
+                        <ng-container *ngSwitchCase="'cancelled'">Cancelado</ng-container>
+                        <ng-container *ngSwitchDefault>Desconocido</ng-container>
+                    </ng-container>
+                </li>
+                <li class="list-group-item"><strong>Fecha de Creación </strong> {{ flightData.createdAt | date:'dd/MM/yyy' }}</li>
+                <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ flightData.updatedAt | date:'dd/MM/yyy' }}</li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

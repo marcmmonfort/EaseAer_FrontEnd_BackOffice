@@ -55,6 +55,8 @@ import { NewsDetailsComponent } from './components/news-components/news-details/
 import { NewsEditComponent } from './components/news-components/news-edit/news-edit.component';
 import { FlightComponent } from './components/flight-components/flight/flight.component';
 import { FlightCreateComponent } from './components/flight-components/flight-create/flight-create.component';
+import { FlightDetailsComponent } from './components/flight-components/flight-details/flight-details.component';
+import { FlightEditComponent } from './components/flight-components/flight-edit/flight-edit.component';
 
 const routes: Routes = [
 
@@ -116,6 +118,8 @@ const routes: Routes = [
 
   { path: 'flights', component: FlightComponent },
   { path: 'flights/create', component: FlightCreateComponent },
+  { path: 'flights/details/:uuid', component: FlightDetailsComponent },
+  { path: 'flights/edit/:uuid', component: FlightEditComponent },
 
 ];
 
@@ -185,6 +189,8 @@ const routes: Routes = [
 
     FlightComponent,
     FlightCreateComponent,
+    FlightDetailsComponent,
+    FlightEditComponent,
 
   ],
 

@@ -1,0 +1,71 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Editar Vuelo {{ flightData.numberFlight }}</h2>
+
+<form (ngSubmit)="onSubmit()" class="formulario row g-3">
+
+    <div class="form-group">
+        <label for="numberFlight">Número</label>
+        <input type="text" class="form-control" id="numberFlight" name="numberFlight" [(ngModel)]="flightData.numberFlight" required />
+    </div>
+
+    <div class="form-group">
+        <label for="companyFlight">ID Compañía</label>
+        <input type="text" class="form-control" id="companyFlight" name="companyFlight" [(ngModel)]="flightData.companyFlight" required />
+    </div>
+
+    <div class="form-group">
+        <label for="originFlight">Orígen (ICAO)</label>
+        <input type="text" class="form-control" id="originFlight" name="originFlight" [(ngModel)]="flightData.originFlight" required />
+    </div>
+
+    <div class="form-group">
+        <label for="stdFlight">Salida (Scheduled Time)</label>
+        <input type="datetime-local" class="form-control" id="stdFlight" name="stdFlight" [(ngModel)]="flightData.stdFlight" required />
+        <div class="warningInput"> Último STD Registrado: {{ formatDate(flightData.stdFlight) }} </div>
+    </div>
+
+    <div class="form-group">
+        <label for="etdFlight">Salida (Expected Time)</label>
+        <input type="datetime-local" class="form-control" id="etdFlight" name="etdFlight" [(ngModel)]="flightData.etdFlight" required />
+        <div class="warningInput"> Último ETD Registrado: {{ formatDate(flightData.etdFlight) }} </div>
+    </div>
+
+    <div class="form-group">
+        <label for="staFlight">Llegada (Scheduled Time)</label>
+        <input type="datetime-local" class="form-control" id="staFlight" name="staFlight" [(ngModel)]="flightData.staFlight" required />
+        <div class="warningInput"> Último STA Registrado: {{ formatDate(flightData.staFlight) }} </div>
+    </div>
+
+    <div class="form-group">
+        <label for="etaFlight">Llegada (Expected Time)</label>
+        <input type="datetime-local" class="form-control" id="etaFlight" name="etaFlight" [(ngModel)]="flightData.etaFlight" required />
+        <div class="warningInput"> Último ETA Registrado: {{ formatDate(flightData.etaFlight) }} </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="depTerminalFlight">Terminal (Departure)</label>
+        <input type="text" class="form-control" id="depTerminalFlight" name="depTerminalFlight" [(ngModel)]="flightData.depTerminalFlight" required />
+    </div>
+
+    <div class="form-group">
+        <label for="depGateFlight">Gate</label>
+        <input type="text" class="form-control" id="depGateFlight" name="depGateFlight" [(ngModel)]="flightData.depGateFlight" required />
+    </div>
+
+    <div class="form-group">
+        <label for="statusFlight">Status</label>
+        <select class="form-control" id="statusFlight" name="statusFlight" [(ngModel)]="flightData.statusFlight" required>
+            <option value="ontime">On Time</option>
+            <option value="delayed">Delayed</option>
+            <option value="cancelled">Cancelado</option>
+        </select>
+    </div>
+
+    <button class="buttonUpdate" (click)="openModal()">Actualizar</button>
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

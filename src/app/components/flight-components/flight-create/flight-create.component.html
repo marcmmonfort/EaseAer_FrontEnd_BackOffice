@@ -22,7 +22,7 @@
     </div>
 
     <div class="form-group">
-        <label for="originFlight">Origen (OACI)</label>
+        <label for="originFlight">Origen (ICAO)</label>
         <input type="string" id="originFlight" formControlName="originFlight" class="form-control" />
         <div *ngIf="flightForm.controls.originFlight.invalid && (flightForm.controls.originFlight.dirty || flightForm.controls.originFlight.touched)">
             <div *ngIf="flightForm.controls.originFlight.errors.required" class="warningInput">Campo obligatorio.</div>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group">
-        <label for="destinationFlight">Destino (OACI)</label>
+        <label for="destinationFlight">Destino (ICAO)</label>
         <input type="string" id="destinationFlight" formControlName="destinationFlight" class="form-control" />
         <div *ngIf="flightForm.controls.destinationFlight.invalid && (flightForm.controls.destinationFlight.dirty || flightForm.controls.destinationFlight.touched)">
             <div *ngIf="flightForm.controls.destinationFlight.errors.required" class="warningInput">Campo obligatorio.</div>
