@@ -57,6 +57,8 @@ import { FlightComponent } from './components/flight-components/flight/flight.co
 import { FlightCreateComponent } from './components/flight-components/flight-create/flight-create.component';
 import { FlightDetailsComponent } from './components/flight-components/flight-details/flight-details.component';
 import { FlightEditComponent } from './components/flight-components/flight-edit/flight-edit.component';
+import { BookingComponent } from './components/booking-components/booking/booking.component';
+import { BookingCreateComponent } from './components/booking-components/booking-create/booking-create.component';
 
 const routes: Routes = [
 
@@ -120,6 +122,9 @@ const routes: Routes = [
   { path: 'flights/create', component: FlightCreateComponent },
   { path: 'flights/details/:uuid', component: FlightDetailsComponent },
   { path: 'flights/edit/:uuid', component: FlightEditComponent },
+
+  { path: 'bookings', component: BookingComponent },
+  { path: 'bookings/create', component: BookingCreateComponent },
 
 ];
 
@@ -191,6 +196,9 @@ const routes: Routes = [
     FlightCreateComponent,
     FlightDetailsComponent,
     FlightEditComponent,
+    
+    BookingComponent,
+    BookingCreateComponent,
 
   ],
 

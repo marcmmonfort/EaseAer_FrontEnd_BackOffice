@@ -1,0 +1,63 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Nueva Reserva</h2>
+
+<form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+
+    <div class="form-group">
+        <label for="idUserBooking">ID Cliente Reserva</label>
+        <input type="string" id="idUserBooking" formControlName="idUserBooking" class="form-control" />
+        <div *ngIf="bookingForm.controls.idUserBooking.invalid && (bookingForm.controls.idUserBooking.dirty || bookingForm.controls.idUserBooking.touched)">
+            <div *ngIf="bookingForm.controls.idUserBooking.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="idOfferServiceBooking">ID Oferta / Servicio Reservad@</label>
+        <input type="string" id="idOfferServiceBooking" formControlName="idOfferServiceBooking" class="form-control" />
+        <div *ngIf="bookingForm.controls.idOfferServiceBooking.invalid && (bookingForm.controls.idOfferServiceBooking.dirty || bookingForm.controls.idOfferServiceBooking.touched)">
+            <div *ngIf="bookingForm.controls.idOfferServiceBooking.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="typeBooking">Oferta / Servicio</label>
+        <select id="typeBooking" formControlName="typeBooking" class="form-control">
+            <option value="offer">Oferta</option>
+            <option value="service">Servicio</option>
+        </select>
+    </div>
+
+    <div class="groupHoursDay"> 
+        <div class="form-group-2">
+            <label for="fromBooking">De</label>
+            <input type="datetime-local" id="fromBooking" formControlName="fromBooking" class="form-control" />
+            <div *ngIf="bookingForm.controls.fromBooking.invalid && (bookingForm.controls.fromBooking.dirty || bookingForm.controls.fromBooking.touched)">
+                <div *ngIf="bookingForm.controls.fromBooking.errors.required" class="warningInput">Campo obligatorio.</div>
+            </div>
+        </div>
+        <div class="form-group-2">
+            <label for="toBooking">A</label>
+            <input type="datetime-local" id="toBooking" formControlName="toBooking" class="form-control" />
+            <div *ngIf="bookingForm.controls.toBooking.invalid && (bookingForm.controls.toBooking.dirty || bookingForm.controls.toBooking.touched)">
+                <div *ngIf="bookingForm.controls.toBooking.errors.required" class="warningInput">Campo obligatorio.</div>
+            </div>
+        </div> 
+    </div>
+
+    <div class="form-group">
+        <label for="commentsBooking">Comentarios / Detalles</label>
+        <input type="string" id="commentsBooking" formControlName="commentsBooking" class="form-control" />
+        <div *ngIf="bookingForm.controls.commentsBooking.invalid && (bookingForm.controls.commentsBooking.dirty || bookingForm.controls.commentsBooking.touched)">
+            <div *ngIf="bookingForm.controls.commentsBooking.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <button class="buttonRegister" (click)="openModal()">Crear</button>
+
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

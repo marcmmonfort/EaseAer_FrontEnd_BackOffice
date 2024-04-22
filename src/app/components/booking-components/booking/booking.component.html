@@ -1,0 +1,66 @@
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Reservas</h2>
+
+<div class="bloque_funcionalidades_clase">
+    <button type="button" class="animated-word" routerLink="/bookings/create">Create</button>
+    <button type="button" class="animated-button" (click)="printeaByUser()">Get By User (ID)</button>
+    <form [formGroup]="bookingForm" (ngSubmit)="printeaByService()" class="formulario row g-3">
+        <input type="string" class="buscador" placeholder="User ID" id="ID_User" formControlName="ID_User" />
+    </form>
+    <button type="button" class="animated-button" (click)="printeaByShop()">Get By Shop (ID)</button>
+    <form [formGroup]="bookingForm" (ngSubmit)="printeaByService()" class="formulario row g-3">
+        <input type="string" class="buscador" placeholder="Shop ID" id="ID_Shop" formControlName="ID_Shop" />
+    </form>
+    <button type="button" class="animated-button" (click)="printeaByService()">Get By Service (ID)</button>
+    <form [formGroup]="bookingForm" (ngSubmit)="printeaByService()" class="formulario row g-3">
+        <input type="string" class="buscador" placeholder="Service ID" id="ID_Service" formControlName="ID_Service" />
+    </form>
+</div>
+
+<div class="input-group mb-3">
+</div>
+
+<div class="tableLocations">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="textTitleTable">ID Reserva</th>
+                <th class="textTitleTable">Tipo Reserva</th>
+                <th class="textTitleTable">ID Oferta / Servicio Reservado</th>
+                <th class="textTitleTable">ID Cliente</th>
+                <th class="textTitleTable">Dia / Hora(s)</th>
+                <th class="textTitleTable">Comentarios</th>
+                <th class="textTitleTable">Status</th>
+                <th class="textTitleTable">Detalles</th>
+                <th class="textTitleTable">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of filteredBookings">
+                <td class="text-center">{{ booking.uuid.slice(0, 4) }} ... {{ booking.uuid.slice(-4) }}</td>
+                <td class="text-center">
+                    <span *ngIf="booking.typeBooking === 'offer'">Oferta (Producto)</span>
+                    <span *ngIf="booking.typeBooking === 'service'">Servicio</span>
+                </td>
+                <td class="text-center">{{ booking.idOfferBooking.slice(0, 4) }} ... {{ booking.idOfferBooking.slice(-4) }}</td>
+                <td class="text-center">{{ booking.idUserBooking.slice(0, 4) }} ... {{ booking.idUserBooking.slice(-4) }}</td>
+                <td class="text-center">
+                    {{ booking.scheduleBooking.split('|')[0] | date: 'dd/MM/yyyy' }} | {{ booking.scheduleBooking.split('|')[0] | date: 'HH:mm' }} - {{ booking.scheduleBooking.split('|')[1] | date: 'HH:mm' }}
+                </td>
+                <td class="text-center">{{ booking.commentsBooking.slice(0, 36) }} ...</td>
+                <td class="text-center">
+                    <span *ngIf="booking.statusBooking === 'sent'">Enviada</span>
+                    <span *ngIf="booking.statusBooking === 'accepted'">Aceptada ✓</span>
+                    <span *ngIf="booking.statusBooking === 'rejected'">Rechazada ✗</span>
+                </td>
+                <td><a [routerLink]="['/bookings/details/', booking.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(booking)">Detalles</button></a></td>
+                <td><a [routerLink]="['/bookings/edit/', booking.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(booking)">Editar</button></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

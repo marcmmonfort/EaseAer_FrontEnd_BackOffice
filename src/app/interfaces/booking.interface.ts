@@ -3,6 +3,7 @@ export interface Booking {
     idUserBooking: string;
     idOfferBooking?: string;
     idServiceBooking?: string;
+    typeBooking: string;
     scheduleBooking: string;
     statusBooking: string;
     commentsBooking: string;

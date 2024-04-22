@@ -1,0 +1,247 @@
+.table td,
+.table th {
+  text-align: center;
+  vertical-align: middle;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
+}
+
+.table .badge {
+  padding: 2px 2px;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
+}
+
+.tableLocations {
+  margin-bottom: 0px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.formulario {
+  margin-top: 0px;
+  margin-left: 0px;
+}
+
+
+.textTitleTable{
+  color: #875a31;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.bloque_funcionalidades_clase{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: 0px;
+  margin-bottom: -20px;
+  padding: 0px;
+}
+
+.animated-word {
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: #321e29;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.15s ease-in-out;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
+  border-radius: 12px;
+  border-width: 0px;
+  height: 36px;
+  width: 80px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.animated-word:focus, .animated-word:hover {
+  background-color: #d8131b;
+  color: white;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+.animated-button {
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: #321e29;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.15s ease-in-out;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
+  border-radius: 12px;
+  border-width: 0px;
+  height: 36px;
+  width: 146px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.animated-button:focus, .animated-button:hover {
+  background-color: #d8131b;
+  color: white;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  }
+
+.pagButtonsContainer {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  margin-top: -4px;
+  margin-bottom: 56px;
+}
+
+.button-arounder {
+  background-color: #b3b0a1;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.15s ease-in-out;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 12px;
+  border-radius: 12px;
+  border-width: 0px;
+  height: 36px;
+  width: 36px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.button-arounder:hover {
+  background-color: #875a31;
+  color: white;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 10px;
+  border-radius: 12px;
+}
+
+.textoPag{
+  margin-top: 25px;
+  font-size: 14px;
+  font-family: 'TextFontType', sans-serif;
+  color:#d0871e;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.input-group{
+  margin-left: 25%;
+  width: 1000px;
+}
+
+h2 {
+  color: #343a40;
+  font-family: 'SubtitleFontType', sans-serif;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  font-weight: bold;
+}
+
+.fromToText {
+  font-family: 'TextFontType', sans-serif;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 8px;
+  color:#d0871e;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
+  border: none;
+  height: 36px;
+  width: auto;
+  outline: none;
+}
+
+.buscador {
+  font-family: 'TextFontType', sans-serif;
+  margin-left: 4px;
+  margin-right: 12px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
+  border: none;
+  height: 36px;
+  width: 120px;
+  outline: none;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.buscadorSelect {
+  font-family: 'TextFontType', sans-serif;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 14px;
+  border: none;
+  height: 36px;
+  width: 180px;
+  outline: none;
+  padding-left: 12px;
+  padding-right: 12px;
+  appearance: none;
+}
+
+.buttonDetailsEdit {
+  background-color: #321e29;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.15s ease-in-out;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 12px;
+  border-radius: 12px;
+  border-width: 0px;
+  width: 72px;
+  padding: 4px 8px;
+}
+
+.buttonDetailsEdit:hover {
+  background-color: #d8131b;
+  color: white;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 12px;
+  border-radius: 12px;
+}
