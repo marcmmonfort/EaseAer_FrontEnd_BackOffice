@@ -1,0 +1,45 @@
+<h2 *ngIf="bookingId" class="text-center">Información de Reserva</h2>
+
+<div class="container">
+    <div class="card my-5">
+        <div class="card-header">
+        <h3 class="text-center">{{ bookingData.uuid }}</h3>
+        </div>
+        <div class="card-body">
+        <div *ngIf="!bookingData" class="text-center mt-5">
+            <p>Cargando Información ...</p>
+        </div>
+        <div *ngIf="bookingData">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>ID Reserva </strong>{{ bookingData.uuid }}</li>
+                <li class="list-group-item"><strong>Tipo </strong> 
+                    <ng-container [ngSwitch]="bookingData.typeBooking">
+                        <ng-container *ngSwitchCase="'offer'">Oferta (Producto)</ng-container>
+                        <ng-container *ngSwitchCase="'service'">Servicio</ng-container>
+                        <ng-container *ngSwitchDefault>Error</ng-container>
+                    </ng-container>
+                </li>
+                <li class="list-group-item"><strong>ID Oferta / Servicio </strong>{{ bookingData.idOfferBooking }}</li>
+                <li class="list-group-item"><strong>ID Cliente </strong>{{ bookingData.idUserBooking }}</li>
+                <li class="list-group-item"><strong>Horario </strong>{{ bookingData.scheduleBooking.split('|')[0] | date: 'dd/MM/yyyy' }} | {{ bookingData.scheduleBooking.split('|')[0] | date: 'HH:mm' }} - {{ bookingData.scheduleBooking.split('|')[1] | date: 'HH:mm' }}</li>
+                <li class="list-group-item"><strong>Comentarios </strong>{{ bookingData.commentsBooking }}</li>
+                <li class="list-group-item"><strong>Estado </strong> 
+                    <ng-container [ngSwitch]="bookingData.statusBooking">
+                        <ng-container *ngSwitchCase="'sent'">Enviada</ng-container>
+                        <ng-container *ngSwitchCase="'accepted'">Aceptada ✓</ng-container>
+                        <ng-container *ngSwitchCase="'rejected'">Rechazada ✗</ng-container>
+                        <ng-container *ngSwitchDefault>Error</ng-container>
+                    </ng-container>
+                </li>
+                <li class="list-group-item"><strong>Fecha de Creación </strong> {{ bookingData.createdAt | date:'dd/MM/yyy' }}</li>
+                <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ bookingData.updatedAt | date:'dd/MM/yyy' }}</li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

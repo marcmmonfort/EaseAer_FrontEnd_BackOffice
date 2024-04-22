@@ -1,0 +1,46 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Editar Equipaje {{ luggageData.uuid }}</h2>
+
+<form (ngSubmit)="onSubmit()" class="formulario row g-3">
+
+    <div class="form-group">
+        <label for="idUserLuggage">ID Propietario</label>
+        <input type="text" class="form-control" id="idUserLuggage" name="idUserLuggage" [(ngModel)]="luggageData.idUserLuggage" required />
+    </div>
+
+    <div class="form-group">
+        <label for="idFlightLuggage">ID Vuelo</label>
+        <input type="text" class="form-control" id="idFlightLuggage" name="idFlightLuggage" [(ngModel)]="luggageData.idFlightLuggage" required />
+    </div>
+
+    <div class="form-group">
+        <label for="infoLuggage">Información / Detalles</label>
+        <input type="text" class="form-control" id="infoLuggage" name="infoLuggage" [(ngModel)]="luggageData.infoLuggage" required />
+    </div>
+
+    <div class="form-group">
+        <label for="statusLuggage">Status</label>
+        <select class="form-control" id="statusLuggage" name="statusLuggage" [(ngModel)]="luggageData.statusLuggage" required>
+            <option value="waiting">(1/7) Esperando</option>
+            <option value="admitted">(2/7) Admitido</option>
+            <option value="security">(3/7) Control de Seguridad</option>
+            <option value="presorting">(4/7) Pre-Clasificación</option>
+            <option value="finalsorting">(5/7) Clasificación Final</option>
+            <option value="handling">(6/7) Handling</option>
+            <option value="plane">(7/7) Avión</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="deletedLuggage">Equipaje Borrado</label>
+        <input type="checkbox" class="form-check-input" id="deletedLuggage" name="deletedLuggage" [(ngModel)]="luggageData.deletedLuggage" />
+    </div>
+
+    <button class="buttonUpdate" (click)="openModal()">Actualizar</button>
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

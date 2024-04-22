@@ -1,0 +1,61 @@
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Equipajes</h2>
+
+<div class="bloque_funcionalidades_clase">
+    <button type="button" class="animated-word" routerLink="/luggage/create">Create</button>
+    <button type="button" class="animated-button" (click)="printeaByID()">Get By ID</button>
+    <form [formGroup]="luggageForm" (ngSubmit)="printeaByID()" class="formulario row g-3">
+        <input type="string" class="buscador" placeholder="Luggage ID" id="ID_Luggage" formControlName="ID_Luggage" />
+    </form>
+    <button type="button" class="animated-button" (click)="printeaByFlight()">Get By Flight (ID)</button>
+    <form [formGroup]="luggageForm" (ngSubmit)="printeaByFlight()" class="formulario row g-3">
+        <input type="string" class="buscador" placeholder="Flight ID" id="ID_Flight" formControlName="ID_Flight" />
+    </form>
+    <button type="button" class="animated-button" (click)="printeaByUser()">Get By User (ID)</button>
+    <form [formGroup]="luggageForm" (ngSubmit)="printeaByUser()" class="formulario row g-3">
+        <input type="string" class="buscador" placeholder="User ID" id="ID_User" formControlName="ID_User" />
+    </form>
+</div>
+
+<div class="input-group mb-3">
+</div>
+
+<div class="tableLocations">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="textTitleTable">ID Equipaje</th>
+                <th class="textTitleTable">ID Propietario</th>
+                <th class="textTitleTable">ID Vuelo</th>
+                <th class="textTitleTable">Información / Detalles</th>
+                <th class="textTitleTable">Status</th>
+                <th class="textTitleTable">Detalles</th>
+                <th class="textTitleTable">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let luggage of filteredLuggage">
+                <td class="text-center">{{ luggage.uuid.slice(0, 4) }} ... {{ luggage.uuid.slice(-4) }}</td>
+                <td class="text-center">{{ luggage.idUserLuggage.slice(0, 4) }} ... {{ luggage.idUserLuggage.slice(-4) }}</td>
+                <td class="text-center">{{ luggage.idFlightLuggage.slice(0, 4) }} ... {{ luggage.idFlightLuggage.slice(-4) }}</td>
+                <td class="text-center">{{ luggage.infoLuggage.slice(0, 36) }} ...</td>
+                <td class="text-center">
+                    <span *ngIf="luggage.statusLuggage === 'waiting'">(1/7) Esperando</span>
+                    <span *ngIf="luggage.statusLuggage === 'admitted'">(2/7) Admitido</span>
+                    <span *ngIf="luggage.statusLuggage === 'security'">(3/7) Control de Seguridad</span>
+                    <span *ngIf="luggage.statusLuggage === 'presorting'">(4/7) Pre-Clasificación</span>
+                    <span *ngIf="luggage.statusLuggage === 'finalsorting'">(5/7) Clasificación Final</span>
+                    <span *ngIf="luggage.statusLuggage === 'handling'">(6/7) Handling</span>
+                    <span *ngIf="luggage.statusLuggage === 'plane'">(7/7) Avión</span>
+                </td>
+                <td><a [routerLink]="['/luggage/details/', luggage.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(luggage)">Detalles</button></a></td>
+                <td><a [routerLink]="['/luggage/edit/', luggage.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(luggage)">Editar</button></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

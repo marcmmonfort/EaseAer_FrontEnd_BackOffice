@@ -1,0 +1,38 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Nuevo Vuelo</h2>
+
+<form [formGroup]="luggageForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+  
+    <div class="form-group">
+        <label for="idUserLuggage">ID Pasajero</label>
+        <input type="string" id="idUserLuggage" formControlName="idUserLuggage" class="form-control" />
+        <div *ngIf="luggageForm.controls.idUserLuggage.invalid && (luggageForm.controls.idUserLuggage.dirty || luggageForm.controls.idUserLuggage.touched)">
+            <div *ngIf="luggageForm.controls.idUserLuggage.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="idFlightLuggage">ID Vuelo</label>
+        <input type="string" id="idFlightLuggage" formControlName="idFlightLuggage" class="form-control" />
+        <div *ngIf="luggageForm.controls.idFlightLuggage.invalid && (luggageForm.controls.idFlightLuggage.dirty || luggageForm.controls.idFlightLuggage.touched)">
+            <div *ngIf="luggageForm.controls.idFlightLuggage.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="infoLuggage">Información / Detalles</label>
+        <input type="string" id="infoLuggage" formControlName="infoLuggage" class="form-control" />
+        <div *ngIf="luggageForm.controls.infoLuggage.invalid && (luggageForm.controls.infoLuggage.dirty || luggageForm.controls.infoLuggage.touched)">
+            <div *ngIf="luggageForm.controls.infoLuggage.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <button class="buttonRegister" (click)="openModal()">Crear</button>
+
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

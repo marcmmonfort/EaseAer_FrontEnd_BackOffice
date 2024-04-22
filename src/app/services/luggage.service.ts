@@ -58,8 +58,8 @@ export class LuggageService {
     }
 
     // ROUTE 3: "/luggage/getbyflight/:flight" | getLuggageByFlight | apiURLLuggageGetByFlight
-    getLuggageByFlight(flight: string): Observable<Luggage> {
-        return this.http.get<Luggage>(this.apiURLLuggageGetByFlight + flight, {
+    getLuggageByFlight(flight: string): Observable<Luggage[]> {
+        return this.http.get<Luggage[]>(this.apiURLLuggageGetByFlight + flight, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + this.authService.getToken(),
@@ -68,8 +68,8 @@ export class LuggageService {
     }
 
     // ROUTE 4: "/luggage/getbyuser/:user" | getLuggageByUser | apiURLLuggageGetByUser
-    getLuggageByUser(user: string): Observable<Luggage> {
-        return this.http.get<Luggage>(this.apiURLLuggageGetByUser + user, {
+    getLuggageByUser(user: string): Observable<Luggage[]> {
+        return this.http.get<Luggage[]>(this.apiURLLuggageGetByUser + user, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + this.authService.getToken(),
@@ -98,7 +98,7 @@ export class LuggageService {
     }
 
     // ROUTE 7: "/luggage/delete/:uuid" | deleteLuggage | apiURLLuggageDelete
-    deleteIncident(uuid: string): Observable<Luggage> {
+    deleteLuggage(uuid: string): Observable<Luggage> {
         return this.http.delete<Luggage>(this.apiURLLuggageDelete + uuid, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',

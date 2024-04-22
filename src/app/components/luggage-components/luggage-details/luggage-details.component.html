@@ -1,0 +1,41 @@
+<h2 *ngIf="luggageId" class="text-center">Información de Equipaje</h2>
+
+<div class="container">
+    <div class="card my-5">
+        <div class="card-header">
+        <h3 class="text-center">{{ luggageData.uuid }}</h3>
+        </div>
+        <div class="card-body">
+        <div *ngIf="!luggageData" class="text-center mt-5">
+            <p>Cargando Información ...</p>
+        </div>
+        <div *ngIf="luggageData">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>ID Equipaje </strong>{{ luggageData.uuid }}</li>
+                <li class="list-group-item"><strong>ID Usuario </strong>{{ luggageData.idUserLuggage }}</li>
+                <li class="list-group-item"><strong>ID Vuelo </strong>{{ luggageData.idFlightLuggage }}</li>
+                <li class="list-group-item"><strong>Información </strong>{{ luggageData.infoLuggage }}</li>
+                <li class="list-group-item"><strong>Status </strong> 
+                    <ng-container [ngSwitch]="luggageData.statusLuggage">
+                        <ng-container *ngSwitchCase="'waiting'">Esperando</ng-container>
+                        <ng-container *ngSwitchCase="'admitted'">Admitido</ng-container>
+                        <ng-container *ngSwitchCase="'security'">Control de Seguridad</ng-container>
+                        <ng-container *ngSwitchCase="'presorting'">Pre-Clasificación</ng-container>
+                        <ng-container *ngSwitchCase="'finalsorting'">Clasificación Final</ng-container>
+                        <ng-container *ngSwitchCase="'handling'">Handling</ng-container>
+                        <ng-container *ngSwitchCase="'plane'">Avión</ng-container>
+                        <ng-container *ngSwitchDefault>Desconocido</ng-container>
+                    </ng-container>
+                </li>                
+                <li class="list-group-item"><strong>Fecha de Creación </strong> {{ luggageData.createdAt | date:'dd/MM/yyy' }}</li>
+                <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ luggageData.updatedAt | date:'dd/MM/yyy' }}</li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

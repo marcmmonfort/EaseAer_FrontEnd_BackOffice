@@ -59,6 +59,12 @@ import { FlightDetailsComponent } from './components/flight-components/flight-de
 import { FlightEditComponent } from './components/flight-components/flight-edit/flight-edit.component';
 import { BookingComponent } from './components/booking-components/booking/booking.component';
 import { BookingCreateComponent } from './components/booking-components/booking-create/booking-create.component';
+import { BookingDetailsComponent } from './components/booking-components/booking-details/booking-details.component';
+import { BookingEditComponent } from './components/booking-components/booking-edit/booking-edit.component';
+import { LuggageComponent } from './components/luggage-components/luggage/luggage.component';
+import { LuggageCreateComponent } from './components/luggage-components/luggage-create/luggage-create.component';
+import { LuggageDetailsComponent } from './components/luggage-components/luggage-details/luggage-details.component';
+import { LuggageEditComponent } from './components/luggage-components/luggage-edit/luggage-edit.component';
 
 const routes: Routes = [
 
@@ -125,6 +131,13 @@ const routes: Routes = [
 
   { path: 'bookings', component: BookingComponent },
   { path: 'bookings/create', component: BookingCreateComponent },
+  { path: 'bookings/details/:uuid', component: BookingDetailsComponent },
+  { path: 'bookings/edit/:uuid', component: BookingEditComponent },
+
+  { path: 'luggage', component: LuggageComponent },
+  { path: 'luggage/create', component: LuggageCreateComponent },
+  { path: 'luggage/details/:uuid', component: LuggageDetailsComponent },
+  { path: 'luggage/edit/:uuid', component: LuggageEditComponent },
 
 ];
 
@@ -199,6 +212,13 @@ const routes: Routes = [
     
     BookingComponent,
     BookingCreateComponent,
+    BookingDetailsComponent,
+    BookingEditComponent,
+
+    LuggageComponent,
+    LuggageCreateComponent,
+    LuggageDetailsComponent,
+    LuggageEditComponent,
 
   ],
 
