@@ -1,0 +1,105 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Nueva Pregunta</h2>
+
+<form [formGroup]="questionForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+  
+    <div class="form-group">
+        <label for="destinationQuestion">Destino (ICAO)</label>
+        <select id="destinationQuestion" formControlName="destinationQuestion" class="form-control">
+            <option value="EGKK">EGKK (Londres Gatwick)</option>
+            <option value="EGLL">EGLL (Londres Heathrow)</option>
+            <option value="EGSS">EGSS (Londres Stansted)</option>
+            <option value="EDDF">EDDF (Fráncfort del Meno - Frankfurt)</option>
+            <option value="EDDM">EDDM (Múnich Franz Josef Strauss)</option>
+            <option value="EDDT">EDDT (Berlín Tegel - cerrado)</option>
+            <option value="EHAM">EHAM (Ámsterdam Schiphol)</option>
+            <option value="EKCH">EKCH (Copenhague Kastrup)</option>
+            <option value="EIDW">EIDW (Dublín)</option>
+            <option value="ENGM">ENGM (Oslo Gardermoen)</option>
+            <option value="EPWA">EPWA (Varsovia Chopin)</option>
+            <option value="ESSA">ESSA (Estocolmo Arlanda)</option>
+            <option value="GCRR">GCRR (Lanzarote)</option>
+            <option value="GCGM">GCGM (La Gomera)</option>
+            <option value="GCXO">GCXO (Tenerife Norte - Los Rodeos)</option>
+            <option value="GCBX">GCBX (El Hierro)</option>
+            <option value="GCEF">GCEF (Fuerteventura)</option>
+            <option value="GCLA">GCLA (La Palma)</option>
+            <option value="GCTS">GCTS (Gran Canaria)</option>
+            <option value="LEBL">LEBL (Barcelona-El Prat)</option>
+            <option value="LEAL">LEAL (Alicante-Elche)</option>
+            <option value="LEGR">LEGR (Girona-Costa Brava)</option>
+            <option value="LELL">LELL (Sabadell)</option>
+            <option value="LEMD">LEMD (Madrid-Barajas Adolfo Suárez)</option>
+            <option value="LEZG">LEZG (Zaragoza)</option>
+            <option value="LERC">LERC (Cartagena)</option>
+            <option value="LESO">LESO (San Sebastián)</option>
+            <option value="LERE">LERE (Reus)</option>
+            <option value="LEZA">LEZA (Logroño)</option>
+            <option value="LEDA">LEDA (Lleida-Alguaire)</option>
+            <option value="LEHC">LEHC (Huesca-Pirineos)</option>
+            <option value="LESU">LESU (La Seu d'Urgell)</option>
+            <option value="LELL">LELL (Barcelona Sabadell)</option>
+            <option value="LERE">LERE (Reus-Tarragona)</option>
+            <option value="LGRP">LGRP (Santorini)</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="statementQuestion">Pregunta</label>
+        <input type="string" id="statementQuestion" formControlName="statementQuestion" class="form-control" />
+        <div *ngIf="questionForm.controls.statementQuestion.invalid && (questionForm.controls.statementQuestion.dirty || questionForm.controls.statementQuestion.touched)">
+            <div *ngIf="questionForm.controls.statementQuestion.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="ansAQuestion">Opción A</label>
+        <input type="string" id="ansAQuestion" formControlName="ansAQuestion" class="form-control" />
+        <div *ngIf="questionForm.controls.ansAQuestion.invalid && (questionForm.controls.ansAQuestion.dirty || questionForm.controls.ansAQuestion.touched)">
+            <div *ngIf="questionForm.controls.ansAQuestion.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="ansBQuestion">Opción B</label>
+        <input type="string" id="ansBQuestion" formControlName="ansBQuestion" class="form-control" />
+        <div *ngIf="questionForm.controls.ansBQuestion.invalid && (questionForm.controls.ansBQuestion.dirty || questionForm.controls.ansBQuestion.touched)">
+            <div *ngIf="questionForm.controls.ansBQuestion.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="ansCQuestion">Opción C</label>
+        <input type="string" id="ansCQuestion" formControlName="ansCQuestion" class="form-control" />
+        <div *ngIf="questionForm.controls.ansCQuestion.invalid && (questionForm.controls.ansCQuestion.dirty || questionForm.controls.ansCQuestion.touched)">
+            <div *ngIf="questionForm.controls.ansCQuestion.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="ansDQuestion">Opción D</label>
+        <input type="string" id="ansDQuestion" formControlName="ansDQuestion" class="form-control" />
+        <div *ngIf="questionForm.controls.ansDQuestion.invalid && (questionForm.controls.ansDQuestion.dirty || questionForm.controls.ansDQuestion.touched)">
+            <div *ngIf="questionForm.controls.ansDQuestion.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="correctAnsQuestion">Respuesta Correcta</label>
+        <select id="correctAnsQuestion" formControlName="correctAnsQuestion" class="form-control">
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            <option value="d">D</option>
+        </select>
+    </div>
+
+    <button class="buttonRegister" (click)="openModal()">Crear</button>
+
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

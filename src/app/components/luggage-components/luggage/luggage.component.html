@@ -4,10 +4,6 @@
 
 <div class="bloque_funcionalidades_clase">
     <button type="button" class="animated-word" routerLink="/luggage/create">Create</button>
-    <button type="button" class="animated-button" (click)="printeaByID()">Get By ID</button>
-    <form [formGroup]="luggageForm" (ngSubmit)="printeaByID()" class="formulario row g-3">
-        <input type="string" class="buscador" placeholder="Luggage ID" id="ID_Luggage" formControlName="ID_Luggage" />
-    </form>
     <button type="button" class="animated-button" (click)="printeaByFlight()">Get By Flight (ID)</button>
     <form [formGroup]="luggageForm" (ngSubmit)="printeaByFlight()" class="formulario row g-3">
         <input type="string" class="buscador" placeholder="Flight ID" id="ID_Flight" formControlName="ID_Flight" />
