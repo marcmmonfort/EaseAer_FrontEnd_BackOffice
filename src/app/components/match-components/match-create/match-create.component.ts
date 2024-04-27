@@ -1,53 +1,72 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LuggageService } from 'src/app/services/luggage.service';
+import { MatchService } from 'src/app/services/match.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-luggage-create',
-  templateUrl: './luggage-create.component.html',
-  styleUrls: ['./luggage-create.component.css']
+  selector: 'app-match-create',
+  templateUrl: './match-create.component.html',
+  styleUrls: ['./match-create.component.css']
 })
 
-export class LuggageCreateComponent {
+export class MatchCreateComponent {
 
-    luggageForm: FormGroup | any;
+    matchForm: FormGroup | any;
     isModalOpen:boolean=false;
     isNotificationOpen: boolean = false;
     modalText: string = '';
     showAdditionalOption: boolean = true;
+    idOther: string | any;
+    idMine: string | any;
 
-    constructor(private formBuilder: FormBuilder, private luggageService: LuggageService, private router: Router) { }
+    constructor(private formBuilder: FormBuilder, private matchService: MatchService, private router: Router) { }
 
     ngOnInit(): void {
 
-        this.luggageForm = this.formBuilder.group({
-            "idUserLuggage": ['', Validators.required],
-            "idFlightLuggage": ['', Validators.required],
-            "infoLuggage": ['', Validators.required],
-            "deletedLuggage": [false, Validators.required],
+        this.matchForm = this.formBuilder.group({
+            "idOtherUser": ['', Validators.required],
+            "showMatch": [false, Validators.required],
+            "deletedMatch": [false, Validators.required],
         });
     }
 
     get f() {
-        return this.luggageForm.controls;
+        return this.matchForm.controls;
     }
 
     onSubmit(): void {
-        if (this.luggageForm.invalid) {
-        this.openNotificationModal("¡Información Incorrecta!");
+        if (this.matchForm.invalid) {
+            this.openNotificationModal("¡Información Incorrecta!");
         }
         this.openModal();
     }
     
     confirmChanges(): void {
-        const luggageData = this.luggageForm.value;
+        const matchData = this.matchForm.value;
 
-        luggageData.statusLuggage = "waiting";
+        this.idOther = matchData.idOtherUser;
+        this.idMine = localStorage.getItem('ownId');
 
-        this.luggageService.createLuggage(luggageData).subscribe(
+        this.matchForm.removeControl('idOtherUser');
+
+        const newMatchData = this.matchForm.value;
+
+        // AÑADIR PARÁMETROS RESTANTES:
+
+        const currentDate = new Date();
+        const formattedDate = currentDate.toISOString();
+        newMatchData.dateMatch = formattedDate;
+
+        const ids: string[] = [this.idOther, this.idMine];
+        ids.sort((a, b) => a.localeCompare(b));
+        newMatchData.idUserAMatch = ids[0];
+        newMatchData.idUserBMatch = ids[1];
+
+        console.log("AMISTAD A CREAR: " + JSON.stringify(newMatchData));
+
+        this.matchService.createMatch(newMatchData).subscribe(
         (response) => {
-            this.openNotificationModal("¡Equipaje Creado!");
+            this.openNotificationModal("¡Amistad Solicitada!");
         },
         (error) => {
             this.openNotificationModal("¡Error!");
@@ -73,9 +92,9 @@ export class LuggageCreateComponent {
             this.isModalOpen = false;
             this.isNotificationOpen = false;
         }
-        if (this.modalText == "¡Equipaje Creado!"){
+        if (this.modalText == "¡Amistad Solicitada!"){
             this.modalText = "";
-            this.router.navigate(['/luggage']);
+            this.router.navigate(['/matches']);
             this.isModalOpen = false;
             this.isNotificationOpen = false;
         }

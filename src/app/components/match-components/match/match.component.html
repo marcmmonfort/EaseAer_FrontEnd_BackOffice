@@ -1,0 +1,59 @@
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Amistades</h2>
+
+<div class="bloque_funcionalidades_clase">
+    <button type="button" class="animated-word" routerLink="/matches/create">Create</button>
+
+    <button type="button" class="animated-button" (click)="printeaMine()">Get My Matches</button>
+    
+    <button type="button" class="animated-button" (click)="printeaByUserId()">Get By User (ID)</button>
+    <form [formGroup]="matchForm" (ngSubmit)="printeaByUserId()" class="formulario row g-3">
+        <input type="string" class="buscador" placeholder="User ID" id="ID_User" formControlName="ID_User" />
+    </form>
+</div>
+
+<div class="input-group mb-3">
+</div>
+
+<div class="tableLocations">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="textTitleTable">ID Amistad</th>
+                <th class="textTitleTable">ID Usuario A</th>
+                <th class="textTitleTable">ID Usuario B</th>
+                <th class="textTitleTable">Estado Amistad</th>
+                <th class="textTitleTable">Fecha De Conexión</th>
+                <th class="textTitleTable">Status</th>
+                <th class="textTitleTable">Detalles</th>
+                <th class="textTitleTable">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let match of filteredMatches">
+                <td class="text-center">{{ match.uuid.slice(0, 4) }} ... {{ match.uuid.slice(-4) }}</td>
+                <td class="text-center">{{ match.idUserAMatch.slice(0, 4) }} ... {{ match.idUserAMatch.slice(-4) }}</td>
+                <td class="text-center">{{ match.idUserAMatch.slice(0, 4) }} ... {{ match.idUserAMatch.slice(-4) }}</td>
+                <td class="text-center">
+                    <span *ngIf="match.showMatch === false">Pendiente</span>
+                    <span *ngIf="match.showMatch === true">Establecida</span>
+                </td>
+                <td class="text-center">
+                    <span *ngIf="match.showMatch === false">...</span>
+                    <span *ngIf="match.showMatch === true">{{ match.dateMatch }}</span>
+                </td>
+                <td class="text-center">
+                    <span *ngIf="match.deletedMatch === false">Activa</span>
+                    <span *ngIf="match.deletedMatch === true">Eliminada</span>
+                </td>
+                <td><a [routerLink]="['/matches/details/', match.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(match)">Detalles</button></a></td>
+                <td><a [routerLink]="['/matches/edit/', match.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(match)">Editar</button></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

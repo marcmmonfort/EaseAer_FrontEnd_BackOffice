@@ -1,0 +1,22 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Nueva Amistad</h2>
+
+<form [formGroup]="matchForm" (ngSubmit)="onSubmit()" class="formulario row g-3">
+  
+    <div class="form-group">
+        <label for="idOtherUser">ID Amig@</label>
+        <input type="string" id="idOtherUser" formControlName="idOtherUser" class="form-control" />
+        <div *ngIf="matchForm.controls.idOtherUser.invalid && (matchForm.controls.idOtherUser.dirty || matchForm.controls.idOtherUser.touched)">
+            <div *ngIf="matchForm.controls.idOtherUser.errors.required" class="warningInput">Campo obligatorio.</div>
+        </div>
+    </div>
+
+    <button class="buttonRegister" (click)="openModal()">Solicitar</button>
+
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

@@ -69,6 +69,8 @@ import { QuestionComponent } from './components/question-components/question/que
 import { QuestionCreateComponent } from './components/question-components/question-create/question-create.component';
 import { QuestionDetailsComponent } from './components/question-components/question-details/question-details.component';
 import { QuestionEditComponent } from './components/question-components/question-edit/question-edit.component';
+import { MatchComponent } from './components/match-components/match/match.component';
+import { MatchCreateComponent } from './components/match-components/match-create/match-create.component';
 
 const routes: Routes = [
 
@@ -147,6 +149,9 @@ const routes: Routes = [
   { path: 'questions/create', component: QuestionCreateComponent },
   { path: 'questions/details/:uuid', component: QuestionDetailsComponent },
   { path: 'questions/edit/:uuid', component: QuestionEditComponent },
+
+  { path: 'matches', component: MatchComponent },
+  { path: 'matches/create', component: MatchCreateComponent },
 
 ];
 
@@ -233,6 +238,9 @@ const routes: Routes = [
     QuestionCreateComponent,
     QuestionDetailsComponent,
     QuestionEditComponent,
+
+    MatchComponent,
+    MatchCreateComponent,
 
   ],
 
