@@ -1,0 +1,53 @@
+<confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
+<notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
+
+<h2 class="text-center">Editar Pregunta {{ questionData.uuid }}</h2>
+
+<form (ngSubmit)="onSubmit()" class="formulario row g-3">
+
+    <div class="form-group">
+        <label for="destinationQuestion">Destination</label>
+        <input type="text" class="form-control" id="destinationQuestion" name="destinationQuestion" [(ngModel)]="questionData.destinationQuestion" required />
+    </div>
+
+    <div class="form-group">
+        <label for="statementQuestion">Pregunta</label>
+        <input type="text" class="form-control" id="statementQuestion" name="statementQuestion" [(ngModel)]="questionData.statementQuestion" required />
+    </div>
+
+    <div class="form-group">
+        <label for="ansAQuestion">Respuesta A</label>
+        <input type="text" class="form-control" id="ansAQuestion" name="ansAQuestion" [(ngModel)]="questionData.ansAQuestion" required />
+    </div>
+
+    <div class="form-group">
+        <label for="ansBQuestion">Respuesta B</label>
+        <input type="text" class="form-control" id="ansBQuestion" name="ansBQuestion" [(ngModel)]="questionData.ansBQuestion" required />
+    </div>
+
+    <div class="form-group">
+        <label for="ansCQuestion">Respuesta C</label>
+        <input type="text" class="form-control" id="ansCQuestion" name="ansCQuestion" [(ngModel)]="questionData.ansCQuestion" required />
+    </div>
+
+    <div class="form-group">
+        <label for="ansDQuestion">Respuesta D</label>
+        <input type="text" class="form-control" id="ansDQuestion" name="ansDQuestion" [(ngModel)]="questionData.ansDQuestion" required />
+    </div>
+
+    <div class="form-group">
+        <label for="correctAnsQuestion">Solución</label>
+        <select class="form-control" id="correctAnsQuestion" name="correctAnsQuestion" [(ngModel)]="questionData.correctAnsQuestion" required>
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            <option value="d">D</option>
+        </select>
+     </div>
+
+    <button class="buttonUpdate" (click)="openModal()">Actualizar</button>
+</form>
+
+<footer>
+  <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+</footer>

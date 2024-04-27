@@ -68,6 +68,7 @@ import { LuggageEditComponent } from './components/luggage-components/luggage-ed
 import { QuestionComponent } from './components/question-components/question/question.component';
 import { QuestionCreateComponent } from './components/question-components/question-create/question-create.component';
 import { QuestionDetailsComponent } from './components/question-components/question-details/question-details.component';
+import { QuestionEditComponent } from './components/question-components/question-edit/question-edit.component';
 
 const routes: Routes = [
 
@@ -145,6 +146,7 @@ const routes: Routes = [
   { path: 'questions', component: QuestionComponent },
   { path: 'questions/create', component: QuestionCreateComponent },
   { path: 'questions/details/:uuid', component: QuestionDetailsComponent },
+  { path: 'questions/edit/:uuid', component: QuestionEditComponent },
 
 ];
 
@@ -230,6 +232,7 @@ const routes: Routes = [
     QuestionComponent,
     QuestionCreateComponent,
     QuestionDetailsComponent,
+    QuestionEditComponent,
 
   ],
 
