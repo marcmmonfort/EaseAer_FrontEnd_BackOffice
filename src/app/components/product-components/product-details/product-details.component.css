@@ -14,6 +14,19 @@ h2 {
     margin-top: 0px;
     margin-bottom: 0%;
   }
+
+  .loadingText {
+    font-family: 'TextFontType', sans-serif;
+    background-color: transparent;
+    border: transparent;
+    color: #d8131b;
+    margin-top: 0px;
+  }
+
+  .loadingBox{
+    margin-top: 15px;
+    text-align: center;
+  }
   
   .card {
     border-radius: 12px;

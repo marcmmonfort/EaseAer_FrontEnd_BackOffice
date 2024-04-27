@@ -24,6 +24,19 @@ h3 {
   border: none;
 }
 
+.loadingText {
+  font-family: 'TextFontType', sans-serif;
+  background-color: transparent;
+  border: transparent;
+  color: #d8131b;
+  margin-top: 0px;
+}
+
+.loadingBox{
+  margin-top: 15px;
+  text-align: center;
+}
+
 .container {
   background-color: transparent;
   padding: 0px 0px;

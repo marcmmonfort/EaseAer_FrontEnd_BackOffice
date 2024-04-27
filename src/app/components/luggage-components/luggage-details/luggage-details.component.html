@@ -6,8 +6,8 @@
         <h3 class="text-center">{{ luggageData.uuid }}</h3>
         </div>
         <div class="card-body">
-        <div *ngIf="!luggageData" class="text-center mt-5">
-            <p>Cargando Información ...</p>
+        <div *ngIf="!luggageData" class="loadingBox">
+            <p class="loadingText">↺ Cargando Información ↺</p>
         </div>
         <div *ngIf="luggageData">
             <ul class="list-group">

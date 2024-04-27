@@ -1,0 +1,33 @@
+<h2 *ngIf="questionId" class="text-center">Información de Pregunta</h2>
+
+<div class="container">
+    <div class="card my-5">
+        <div class="card-header">
+            <h3 class="text-center">{{ questionData.uuid }}</h3>
+        </div>
+        <div class="card-body">
+        <div *ngIf="!questionData" class="loadingBox">
+            <p class="loadingText">↺ Cargando Información ↺</p>
+        </div>
+        <div *ngIf="questionData">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>ID Pregunta </strong>{{ questionData.uuid }}</li>
+                <li class="list-group-item"><strong>Destino </strong>{{ questionData.destinationQuestion }}</li>
+                <li class="list-group-item"><strong>Pregunta </strong>{{ questionData.statementQuestion }}</li>
+                <li class="list-group-item"><strong>Respuesta A </strong>(a) {{ questionData.ansAQuestion }}</li>
+                <li class="list-group-item"><strong>Respuesta B </strong>(b) {{ questionData.ansBQuestion }}</li>
+                <li class="list-group-item"><strong>Respuesta C </strong>(c) {{ questionData.ansCQuestion }}</li>
+                <li class="list-group-item"><strong>Respuesta D </strong>(d) {{ questionData.ansDQuestion }}</li>
+                <li class="list-group-item"><strong>Solución </strong>{{ questionData.correctAnsQuestion }}</li>          
+                <li class="list-group-item"><strong>Fecha de Creación </strong> {{ questionData.createdAt | date:'dd/MM/yyy' }}</li>
+                <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ questionData.updatedAt | date:'dd/MM/yyy' }}</li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

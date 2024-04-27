@@ -6,8 +6,8 @@
       <h3 class="text-center">{{ locData.nameLocation }}</h3>
     </div>
     <div class="card-body">
-      <div *ngIf="!locData" class="text-center mt-5">
-        <p>Cargando Información ...</p>
+      <div *ngIf="!locData" class="loadingBox">
+        <p class="loadingText">↺ Cargando Información ↺</p>
       </div>
       <div *ngIf="locData">
         <ul class="list-group">

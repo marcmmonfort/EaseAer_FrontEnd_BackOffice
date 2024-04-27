@@ -6,8 +6,8 @@
       <h3 class="text-center">{{ serviceData.nameService }}</h3>
     </div>
     <div class="card-body">
-      <div *ngIf="!serviceData" class="text-center mt-5">
-        <p>Cargando Información ...</p>
+      <div *ngIf="!serviceData" class="loadingBox">
+        <p class="loadingText">↺ Cargando Información ↺</p>
       </div>
       <div *ngIf="serviceData">
         <ul class="list-group">

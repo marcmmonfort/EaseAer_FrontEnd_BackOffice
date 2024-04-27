@@ -52,6 +52,19 @@ h2 {
   .list-group{
     margin: 0px;
   }
+
+  .loadingText {
+    font-family: 'TextFontType', sans-serif;
+    background-color: transparent;
+    border: transparent;
+    color: #d8131b;
+    margin-top: 0px;
+  }
+
+  .loadingBox{
+    margin-top: 15px;
+    text-align: center;
+  }
   
   .card-body {
     background-color: white;
