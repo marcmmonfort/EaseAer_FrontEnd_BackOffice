@@ -34,14 +34,14 @@
             <tr *ngFor="let match of filteredMatches">
                 <td class="text-center">{{ match.uuid.slice(0, 4) }} ... {{ match.uuid.slice(-4) }}</td>
                 <td class="text-center">{{ match.idUserAMatch.slice(0, 4) }} ... {{ match.idUserAMatch.slice(-4) }}</td>
-                <td class="text-center">{{ match.idUserAMatch.slice(0, 4) }} ... {{ match.idUserAMatch.slice(-4) }}</td>
+                <td class="text-center">{{ match.idUserBMatch.slice(0, 4) }} ... {{ match.idUserBMatch.slice(-4) }}</td>
                 <td class="text-center">
                     <span *ngIf="match.showMatch === false">Pendiente</span>
                     <span *ngIf="match.showMatch === true">Establecida</span>
                 </td>
                 <td class="text-center">
-                    <span *ngIf="match.showMatch === false">...</span>
-                    <span *ngIf="match.showMatch === true">{{ match.dateMatch }}</span>
+                    <span *ngIf="match.showMatch === false">Pendiente</span>
+                    <span *ngIf="match.showMatch === true">{{ match.dateMatch | date:'dd/MM/yyy' }}</span>
                 </td>
                 <td class="text-center">
                     <span *ngIf="match.deletedMatch === false">Activa</span>

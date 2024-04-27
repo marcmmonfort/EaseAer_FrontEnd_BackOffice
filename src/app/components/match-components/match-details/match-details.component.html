@@ -1,0 +1,49 @@
+<h2 *ngIf="matchId" class="text-center">Información de Amistad</h2>
+
+<div class="container">
+    <div class="card my-5">
+        <div class="card-header">
+        <h3 class="text-center">{{ matchData.uuid }}</h3>
+        </div>
+        <div class="card-body">
+        <div *ngIf="!matchData" class="loadingBox">
+            <p class="loadingText">↺ Cargando Información ↺</p>
+        </div>
+        <div *ngIf="matchData">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>ID Amistad </strong>{{ matchData.uuid }}</li>
+                <li class="list-group-item"><strong>ID Usuario A </strong>{{ matchData.idUserAMatch }}</li>
+                <li class="list-group-item"><strong>ID Usuario B </strong>{{ matchData.idUserBMatch }}</li>
+                <li class="list-group-item"><strong>Estado Amistad </strong> 
+                    <ng-container [ngSwitch]="matchData.showMatch">
+                        <ng-container *ngSwitchCase="false">Pendiente</ng-container>
+                        <ng-container *ngSwitchCase="true">Establecida</ng-container>
+                        <ng-container *ngSwitchDefault>Error</ng-container>
+                    </ng-container>
+                </li>
+                <li class="list-group-item"><strong>Fecha De Conexión </strong> 
+                    <ng-container [ngSwitch]="matchData.showMatch">
+                        <ng-container *ngSwitchCase="false">Pendiente</ng-container>
+                        <ng-container *ngSwitchCase="true">{{ matchData.dateMatch | date:'dd/MM/yyy' }}</ng-container>
+                        <ng-container *ngSwitchDefault>Error</ng-container>
+                    </ng-container>
+                </li>
+                <li class="list-group-item"><strong>Status </strong> 
+                    <ng-container [ngSwitch]="matchData.deletedMatch">
+                        <ng-container *ngSwitchCase="false">Activa</ng-container>
+                        <ng-container *ngSwitchCase="true">Eliminada</ng-container>
+                        <ng-container *ngSwitchDefault>Error</ng-container>
+                    </ng-container>
+                </li>    
+                <li class="list-group-item"><strong>Fecha de Creación </strong> {{ matchData.createdAt | date:'dd/MM/yyy' }}</li>
+                <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ matchData.updatedAt | date:'dd/MM/yyy' }}</li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

@@ -71,6 +71,8 @@ import { QuestionDetailsComponent } from './components/question-components/quest
 import { QuestionEditComponent } from './components/question-components/question-edit/question-edit.component';
 import { MatchComponent } from './components/match-components/match/match.component';
 import { MatchCreateComponent } from './components/match-components/match-create/match-create.component';
+import { MatchDetailsComponent } from './components/match-components/match-details/match-details.component';
+import { MatchEditComponent } from './components/match-components/match-edit/match-edit.component';
 
 const routes: Routes = [
 
@@ -152,7 +154,8 @@ const routes: Routes = [
 
   { path: 'matches', component: MatchComponent },
   { path: 'matches/create', component: MatchCreateComponent },
-
+  { path: 'matches/details/:uuid', component: MatchDetailsComponent },
+  { path: 'matches/edit/:uuid', component: MatchEditComponent },
 ];
 
 @NgModule({
@@ -241,6 +244,8 @@ const routes: Routes = [
 
     MatchComponent,
     MatchCreateComponent,
+    MatchDetailsComponent,
+    MatchEditComponent,
 
   ],
 

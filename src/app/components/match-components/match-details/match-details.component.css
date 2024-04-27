@@ -1,0 +1,92 @@
+
+h2 {
+    color: #343a40;
+    font-family: 'SubtitleFontType', sans-serif;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    font-weight: bold;
+  }
+  
+  h3 {
+    color: white;
+    font-family: 'TextFontType', sans-serif;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 0%;
+  }
+  
+  .card {
+    border-radius: 12px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: transparent;
+    padding: 0px 0px;
+    border: none;
+  }
+  
+  .container {
+    background-color: transparent;
+    padding: 0px 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 12px;
+    border: none;
+    max-width: 600px;
+    margin-top: -26px;
+    margin-bottom: 68px;
+  }
+  
+  .u1 {
+    background-color: #321e29;
+  }
+  
+  .card-header {
+    background: #321e29;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    margin-top: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .list-group{
+    margin: 0px;
+  }
+
+  .loadingText {
+    font-family: 'TextFontType', sans-serif;
+    background-color: transparent;
+    border: transparent;
+    color: #d8131b;
+    margin-top: 0px;
+  }
+
+  .loadingBox{
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .card-body {
+    background-color: white;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-size: 14px;
+    border-radius: 12px;
+    margin-top: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding-left: 6px;
+  }
+  
+  .list-group-item {
+    font-family: 'TextFontType', sans-serif;
+    background-color: transparent;
+    border: transparent;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-left: 0px;
+  }
+  
+  .list-group-item strong {
+    font-family: 'TextFontType', sans-serif;
+    color: #b3b0a1;
+  }
