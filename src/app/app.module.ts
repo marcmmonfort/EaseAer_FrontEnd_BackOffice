@@ -73,6 +73,9 @@ import { MatchComponent } from './components/match-components/match/match.compon
 import { MatchCreateComponent } from './components/match-components/match-create/match-create.component';
 import { MatchDetailsComponent } from './components/match-components/match-details/match-details.component';
 import { MatchEditComponent } from './components/match-components/match-edit/match-edit.component';
+import { GameComponent } from './components/game-components/game/game.component';
+import { GameDetailsComponent } from './components/game-components/game-details/game-details.component';
+import { GameEditComponent } from './components/game-components/game-edit/game-edit.component';
 
 const routes: Routes = [
 
@@ -151,6 +154,10 @@ const routes: Routes = [
   { path: 'questions/create', component: QuestionCreateComponent },
   { path: 'questions/details/:uuid', component: QuestionDetailsComponent },
   { path: 'questions/edit/:uuid', component: QuestionEditComponent },
+
+  { path: 'games', component: GameComponent },
+  { path: 'games/details/:uuid', component: GameDetailsComponent },
+  { path: 'games/edit/:uuid', component: GameEditComponent },
 
   { path: 'matches', component: MatchComponent },
   { path: 'matches/create', component: MatchCreateComponent },
@@ -241,6 +248,10 @@ const routes: Routes = [
     QuestionCreateComponent,
     QuestionDetailsComponent,
     QuestionEditComponent,
+
+    GameComponent,
+    GameDetailsComponent,
+    GameEditComponent,
 
     MatchComponent,
     MatchCreateComponent,

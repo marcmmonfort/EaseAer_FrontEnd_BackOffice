@@ -1,0 +1,35 @@
+<h2 *ngIf="gameId" class="text-center">Información de Partida</h2>
+
+<div class="container">
+    <div class="card my-5">
+        <div class="card-header">
+            <h3 class="text-center">{{ gameData.uuid }}</h3>
+        </div>
+        <div class="card-body">
+        <div *ngIf="!gameData" class="loadingBox">
+            <p class="loadingText">↺ Cargando Información ↺</p>
+        </div>
+        <div *ngIf="gameData">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>ID Partida </strong>{{ gameData.uuid }}</li>
+                <li class="list-group-item"><strong>ID Jugador </strong>{{ gameData.idUserGame }}</li>
+                <li class="list-group-item"><strong>Destino </strong>{{ gameData.destinationGame }}</li>
+                <li class="list-group-item"><strong>Preguntas (ID): </strong>
+                    <ul>
+                        <li *ngFor="let questionId of gameData.questionsGame" class="list-group-item-option">{{ questionId }}</li>
+                    </ul>
+                </li>
+                <li class="list-group-item"><strong>Puntos </strong>{{ gameData.pointsGame }}</li>
+                <li class="list-group-item"><strong>Activa </strong> <span [ngClass]="{'text-danger': gameData.deletedGame, 'text-success': !gameData.deletedGame}">{{ gameData.deletedGame ? 'Desactivada' : 'Activada' }}</span></li>
+                <li class="list-group-item"><strong>Fecha de Creación </strong> {{ gameData.createdAt | date:'dd/MM/yyy' }}</li>
+                <li class="list-group-item"><strong>Fecha de Actualización </strong> {{ gameData.updatedAt | date:'dd/MM/yyy' }}</li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+
+  <footer>
+    <p>EaseAer &copy; 2024. Todos los derechos reservados.</p>
+  </footer>
+  

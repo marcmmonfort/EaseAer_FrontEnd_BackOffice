@@ -107,8 +107,7 @@ export class MatchComponent implements OnInit {
             this.modalText = "";
             this.router.navigate(['/matches']);
             this.isNotificationOpen = false;
-        }
-        else{
+        } else {
             this.modalText = "";
             this.isNotificationOpen = false;
         }
