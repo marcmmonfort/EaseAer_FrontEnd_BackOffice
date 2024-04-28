@@ -57,8 +57,16 @@
                     <span *ngIf="flight.statusFlight === 'delayed'">Delayed</span>
                     <span *ngIf="flight.statusFlight === 'cancelled'">Cancelado</span>
                 </td>
-                <td><a [routerLink]="['/flights/details/', flight.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(flight)">Detalles</button></a></td>
-                <td><a [routerLink]="['/flights/edit/', flight.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(flight)">Editar</button></a></td>
+                <td class="text-center">
+                    <div class="button-wrapper">
+                      <a class="animated-word-do" [routerLink]="['/flights/details/', flight.uuid]">Detalles</a>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <div class="button-wrapper">
+                      <a class="animated-word-do" [routerLink]="['/flights/edit/', flight.uuid]">Editar</a>
+                    </div>
+                  </td> 
             </tr>
         </tbody>
     </table>

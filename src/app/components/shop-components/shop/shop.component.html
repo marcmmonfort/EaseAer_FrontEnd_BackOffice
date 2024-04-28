@@ -35,8 +35,16 @@
         <td class="text-center">{{ shop.idLocationShop.slice(0, 4) }} ... {{ shop.idLocationShop.slice(-4) }}</td>
         <td class="text-center">{{ shop.descriptionShop.slice(0, 26) }} ...</td>
         <td class="text-center">{{ shop.webShop.slice(0, 40) }} ...</td>
-        <td><a [routerLink]="['/shops/details/', shop.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(shop)">Detalles</button></a></td>
-        <td><a [routerLink]="['/shops/edit/', shop.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(shop)">Editar</button></a></td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/shops/details/', shop.uuid]">Detalles</a>
+          </div>
+        </td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/shops/edit/', shop.uuid]">Editar</a>
+          </div>
+        </td>   
       </tr>
     </tbody>
   </table>

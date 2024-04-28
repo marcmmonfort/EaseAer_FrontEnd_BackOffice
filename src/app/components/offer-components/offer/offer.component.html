@@ -33,8 +33,16 @@
             <td class="text-center">{{ offer.idProductOffer.slice(0, 4) }} ... {{ offer.idProductOffer.slice(-4) }}</td>
             <td class="text-center">{{ offer.priceOffer }} €</td>
             <td class="text-center">{{ offer.dateEndOffer | date:'dd/MM/yyy' }}</td>
-            <td><a [routerLink]="['/offers/details/', offer.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(offer)">Detalles</button></a></td>
-            <td><a [routerLink]="['/offers/edit/', offer.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(offer)">Editar</button></a></td>
+            <td class="text-center">
+              <div class="button-wrapper">
+                <a class="animated-word-do" [routerLink]="['/offers/details/', offer.uuid]">Detalles</a>
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="button-wrapper">
+                <a class="animated-word-do" [routerLink]="['/offers/edit/', offer.uuid]">Editar</a>
+              </div>
+            </td> 
       </tr>
     </tbody>
   </table>

@@ -1,9 +1,9 @@
 <confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
 <notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
 
-<h2 class="text-center">Editar Vuelo {{ flightData.numberFlight }}</h2>
+<h2 *ngIf="flightData" class="text-center">Editar Vuelo {{ flightData.numberFlight }}</h2>
 
-<form (ngSubmit)="onSubmit()" class="formulario row g-3">
+<form *ngIf="flightData" (ngSubmit)="onSubmit()" class="formulario row g-3">
 
     <div class="form-group">
         <label for="numberFlight">Número</label>

@@ -1,6 +1,6 @@
-<h2 *ngIf="bookingId" class="text-center">Información de Reserva</h2>
+<h2 *ngIf="bookingData" class="text-center">Información de Reserva</h2>
 
-<div class="container">
+<div *ngIf="bookingData" class="container">
     <div class="card my-5">
         <div class="card-header">
         <h3 class="text-center">{{ bookingData.uuid }}</h3>

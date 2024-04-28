@@ -45,8 +45,16 @@
                     <span *ngIf="luggage.statusLuggage === 'handling'">(6/7) Handling</span>
                     <span *ngIf="luggage.statusLuggage === 'plane'">(7/7) Avión</span>
                 </td>
-                <td><a [routerLink]="['/luggage/details/', luggage.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(luggage)">Detalles</button></a></td>
-                <td><a [routerLink]="['/luggage/edit/', luggage.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(luggage)">Editar</button></a></td>
+                <td class="text-center">
+                    <div class="button-wrapper">
+                      <a class="animated-word-do" [routerLink]="['/luggage/details/', luggage.uuid]">Detalles</a>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="button-wrapper">
+                      <a class="animated-word-do" [routerLink]="['/luggage/edit/', luggage.uuid]">Editar</a>
+                    </div>
+                </td> 
             </tr>
         </tbody>
     </table>

@@ -1,6 +1,6 @@
-<h2 *ngIf="gameId" class="text-center">Información de Partida</h2>
+<h2 *ngIf="gameData" class="text-center">Información de Partida</h2>
 
-<div class="container">
+<div *ngIf="gameData" class="container">
     <div class="card my-5">
         <div class="card-header">
             <h3 class="text-center">{{ gameData.uuid }}</h3>

@@ -40,8 +40,16 @@
                     <span *ngIf="!game.deletedGame" class="badge badge-success"><i class="fas fa-check" style="color: green;"></i></span>
                     <span *ngIf="game.deletedGame" class="badge badge-danger" ><i class="fas fa-times" style="color: red;"></i></span>
                 </td>
-                <td><a [routerLink]="['/games/details/', game.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(game)">Detalles</button></a></td>
-                <td><a [routerLink]="['/games/edit/', game.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(game)">Editar</button></a></td>
+                <td class="text-center">
+                    <div class="button-wrapper">
+                      <a class="animated-word-do" [routerLink]="['/games/details/', game.uuid]">Detalles</a>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <div class="button-wrapper">
+                      <a class="animated-word-do" [routerLink]="['/games/edit/', game.uuid]">Editar</a>
+                    </div>
+                  </td>  
             </tr>
         </tbody>
     </table>

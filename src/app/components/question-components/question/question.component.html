@@ -45,8 +45,16 @@
                     <span *ngIf="question.correctAnsQuestion === 'c'">C</span>
                     <span *ngIf="question.correctAnsQuestion === 'd'">D</span>
                 </td>
-                <td><a [routerLink]="['/questions/details/', question.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(question)">Detalles</button></a></td>
-                <td><a [routerLink]="['/questions/edit/', question.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(question)">Editar</button></a></td>
+                <td class="text-center">
+                    <div class="button-wrapper">
+                      <a class="animated-word-do" [routerLink]="['/questions/details/', question.uuid]">Detalles</a>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <div class="button-wrapper">
+                      <a class="animated-word-do" [routerLink]="['/questions/edit/', question.uuid]">Editar</a>
+                    </div>
+                </td>  
             </tr>
         </tbody>
     </table>

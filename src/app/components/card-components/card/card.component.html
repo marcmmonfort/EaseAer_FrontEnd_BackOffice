@@ -43,8 +43,16 @@
           <span *ngIf="card.levelCard === 'captain'">Capitán (3)</span>
           <span *ngIf="card.levelCard === 'elite'">Élite (4)</span>
         </td>
-        <td><a [routerLink]="['/cards/details/', card.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(card)">Detalles</button></a></td>
-        <td><a [routerLink]="['/cards/edit/', card.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(card)">Editar</button></a></td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/cards/details/', card.uuid]">Detalles</a>
+          </div>
+        </td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/cards/edit/', card.uuid]">Editar</a>
+          </div>
+        </td>   
       </tr>
     </tbody>
   </table>

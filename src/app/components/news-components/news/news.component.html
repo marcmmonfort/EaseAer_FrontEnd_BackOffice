@@ -29,8 +29,16 @@
             <td class="text-center">{{ news.idUserAuthorNews.slice(0, 4) }} ... {{ news.idUserAuthorNews.slice(-4) }}</td>
             <td class="text-center">{{ news.titleNews }}</td>
             <td class="text-center">{{ news.subtitleNews.slice(0, 36) }} ...</td>
-            <td><a [routerLink]="['/news/details/', news.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(news)">Detalles</button></a></td>
-            <td><a [routerLink]="['/news/edit/', news.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(news)">Editar</button></a></td>
+            <td class="text-center">
+                <div class="button-wrapper">
+                  <a class="animated-word-do" [routerLink]="['/news/details/', news.uuid]">Detalles</a>
+                </div>
+              </td>
+              <td class="text-center">
+                <div class="button-wrapper">
+                  <a class="animated-word-do" [routerLink]="['/news/edit/', news.uuid]">Editar</a>
+                </div>
+              </td> 
         </tr>
         </tbody>
     </table>

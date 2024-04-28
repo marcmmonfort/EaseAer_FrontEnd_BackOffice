@@ -1,6 +1,6 @@
-<h2 *ngIf="questionId" class="text-center">Información de Pregunta</h2>
+<h2 *ngIf="questionData" class="text-center">Información de Pregunta</h2>
 
-<div class="container">
+<div *ngIf="questionData" class="container">
     <div class="card my-5">
         <div class="card-header">
             <h3 class="text-center">{{ questionData.uuid }}</h3>

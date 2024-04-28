@@ -1,6 +1,6 @@
-<h2 *ngIf="serviceId" class="text-center">Información de Servicio</h2>
+<h2 *ngIf="serviceData" class="text-center">Información de Servicio</h2>
 
-<div class="container">
+<div *ngIf="serviceData" class="container">
   <div class="card my-5">
     <div class="card-header">
       <h3 class="text-center">{{ serviceData.nameService }}</h3>

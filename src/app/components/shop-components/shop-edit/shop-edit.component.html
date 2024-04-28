@@ -1,9 +1,9 @@
 <confirmation-modal [isOpen]="isModalOpen" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></confirmation-modal>
 <notification-modal [isOpen]="isNotificationOpen" [modalText]="modalText" (acceptChanges)="onAcceptChanges()" (cancelChanges)="onCancelChanges()"></notification-modal>
 
-<h2 class="text-center">Editar Datos de {{ shopData.uuid }}</h2>
+<h2 *ngIf="shopData" class="text-center">Editar Datos de {{ shopData.uuid }}</h2>
 
-<form (ngSubmit)="onSubmit()" class="formulario row g-3">
+<form *ngIf="shopData" (ngSubmit)="onSubmit()" class="formulario row g-3">
     <div class="form-group">
         <label for="idCompanyShop">ID Compañía</label>
         <input type="text" class="form-control" id="idCompanyShop" name="idCompanyShop" [(ngModel)]="shopData.idCompanyShop" required />

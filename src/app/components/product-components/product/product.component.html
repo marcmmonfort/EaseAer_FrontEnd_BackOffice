@@ -28,8 +28,16 @@
         <td class="text-center">{{ product.nameProduct }}</td>
         <td class="text-center">{{ product.descriptionProduct.slice(0, 36) }} ...</td>
         <td class="text-center">{{ product.codeProduct.slice(0, 4) }} ... {{ product.codeProduct.slice(-4) }}</td>
-        <td><a [routerLink]="['/products/details/', product.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(product)">Detalles</button></a></td>
-        <td><a [routerLink]="['/products/edit/', product.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(product)">Editar</button></a></td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/products/details/', product.uuid]">Detalles</a>
+          </div>
+        </td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/products/edit/', product.uuid]">Editar</a>
+          </div>
+        </td>   
       </tr>
     </tbody>
   </table>

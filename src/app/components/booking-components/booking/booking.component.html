@@ -54,8 +54,16 @@
                     <span *ngIf="booking.statusBooking === 'accepted'">Aceptada ✓</span>
                     <span *ngIf="booking.statusBooking === 'rejected'">Rechazada ✗</span>
                 </td>
-                <td><a [routerLink]="['/bookings/details/', booking.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(booking)">Detalles</button></a></td>
-                <td><a [routerLink]="['/bookings/edit/', booking.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(booking)">Editar</button></a></td>
+                <td class="text-center">
+                    <div class="button-wrapper">
+                      <a class="animated-word-do" [routerLink]="['/bookings/details/', booking.uuid]">Detalles</a>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="button-wrapper">
+                      <a class="animated-word-do" [routerLink]="['/bookings/edit/', booking.uuid]">Editar</a>
+                    </div>
+                </td> 
             </tr>
         </tbody>
     </table>

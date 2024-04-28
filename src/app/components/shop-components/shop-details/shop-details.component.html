@@ -1,6 +1,6 @@
-<h2 *ngIf="shopId" class="text-center">Información de Tienda</h2>
+<h2 *ngIf="shopData" class="text-center">Información de Tienda</h2>
 
-<div class="container">
+<div *ngIf="shopData" class="container">
   <div class="card my-5">
     <div class="card-header">
       <h3 class="text-center">{{ shopData.uuid }}</h3>

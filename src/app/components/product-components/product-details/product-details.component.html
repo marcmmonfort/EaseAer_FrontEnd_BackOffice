@@ -1,6 +1,6 @@
-<h2 *ngIf="productId" class="text-center">Información de Producto</h2>
+<h2 *ngIf="productData" class="text-center">Información de Producto</h2>
 
-<div class="container">
+<div *ngIf="productData" class="container">
   <div class="card my-5">
     <div class="card-header">
       <h3 class="text-center">{{ productData.nameProduct }}</h3>

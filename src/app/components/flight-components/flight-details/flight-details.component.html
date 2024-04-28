@@ -1,6 +1,6 @@
-<h2 *ngIf="flightId" class="text-center">Información de Vuelo</h2>
+<h2 *ngIf="flightData" class="text-center">Información de Vuelo</h2>
 
-<div class="container">
+<div *ngIf="flightData" class="container">
     <div class="card my-5">
         <div class="card-header">
         <h3 class="text-center">{{ flightData.numberFlight }}</h3>

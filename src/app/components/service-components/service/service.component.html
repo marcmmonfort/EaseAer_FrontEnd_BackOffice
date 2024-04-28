@@ -48,8 +48,16 @@
             <span *ngIf="service.typeService === 'room'">Sala</span>
             <span *ngIf="service.typeService === 'other'">Otr@</span>
         </td>
-        <td><a [routerLink]="['/services/details/', service.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(service)">Detalles</button></a></td>
-        <td><a [routerLink]="['/services/edit/', service.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(service)">Editar</button></a></td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/services/details/', service.uuid]">Detalles</a>
+          </div>
+        </td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/services/edit/', service.uuid]">Editar</a>
+          </div>
+        </td>   
       </tr>
     </tbody>
   </table>

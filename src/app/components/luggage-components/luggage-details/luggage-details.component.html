@@ -1,6 +1,6 @@
-<h2 *ngIf="luggageId" class="text-center">Información de Equipaje</h2>
+<h2 *ngIf="luggageData" class="text-center">Información de Equipaje</h2>
 
-<div class="container">
+<div *ngIf="luggageData" class="container">
     <div class="card my-5">
         <div class="card-header">
         <h3 class="text-center">{{ luggageData.uuid }}</h3>

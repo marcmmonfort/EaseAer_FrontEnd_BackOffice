@@ -206,6 +206,37 @@ h2 {
   padding-right: 12px;
 }
 
+.animated-word-do {
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: white;
+  font-size: 12px;
+  color: #d0871e;
+  font-weight: bold;
+  transition: background-color 0.15s ease-in-out;
+  font-family: 'TextFontType', sans-serif;
+  border-radius: 12px;
+  border-width: 0px;
+  height: 26px;
+  width: 76px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-decoration: none;
+}
+.animated-word-do:focus, .animated-word-do:hover {
+  background-color: #d0871e;
+  color: white;
+  font-family: 'TextFontType', sans-serif;
+  font-size: 12px;
+  border-radius: 12px;
+  text-decoration: none;
+}
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .buscadorSelect {
   font-family: 'TextFontType', sans-serif;
   margin-left: 4px;

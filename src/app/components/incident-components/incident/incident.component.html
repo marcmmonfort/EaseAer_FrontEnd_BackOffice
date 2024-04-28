@@ -67,8 +67,16 @@
                 <span *ngIf="incident.collectivesIncident === 'tech'">Equipo Técnico</span>
                 <span *ngIf="incident.collectivesIncident === 'other'">Otr@</span>
             </td>
-            <td><a [routerLink]="['/incidents/details/', incident.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(incident)">Detalles</button></a></td>
-            <td><a [routerLink]="['/incidents/edit/', incident.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(incident)">Editar</button></a></td>
+            <td class="text-center">
+              <div class="button-wrapper">
+                <a class="animated-word-do" [routerLink]="['/incidents/details/', incident.uuid]">Detalles</a>
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="button-wrapper">
+                <a class="animated-word-do" [routerLink]="['/incidents/edit/', incident.uuid]">Editar</a>
+              </div>
+            </td> 
       </tr>
     </tbody>
   </table>

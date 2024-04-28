@@ -1,6 +1,6 @@
-<h2 *ngIf="newsId" class="text-center">Información de Noticia</h2>
+<h2 *ngIf="newsData" class="text-center">Información de Noticia</h2>
 
-<div class="container">
+<div *ngIf="newsData" class="container">
   <div class="card my-5">
     <div class="card-header">
       <h3 class="text-center">{{ newsData.titleNews }}</h3>

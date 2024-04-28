@@ -1,6 +1,6 @@
-<h2 *ngIf="locationId" class="text-center">Información de {{ locData.nameLocation }}</h2>
+<h2 *ngIf="locData" class="text-center">Información de {{ locData.nameLocation }}</h2>
 
-<div class="container">
+<div *ngIf="locData" class="container">
   <div class="card my-5">
     <div class="card-header">
       <h3 class="text-center">{{ locData.nameLocation }}</h3>

@@ -36,8 +36,16 @@
         <td class="text-center">{{ prize.idShopPrize.slice(0, 4) }} ... {{ prize.idShopPrize.slice(-4) }}</td>
         <td class="text-center">{{ prize.dateEndPrize | date:'dd/MM/yyy' }}</td>
         <td class="text-center">{{ prize.codePrize }}</td>
-        <td><a [routerLink]="['/prizes/details/', prize.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(prize)">Detalles</button></a></td>
-        <td><a [routerLink]="['/prizes/edit/', prize.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(prize)">Editar</button></a></td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/prizes/details/', prize.uuid]">Detalles</a>
+          </div>
+        </td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/prizes/edit/', prize.uuid]">Editar</a>
+          </div>
+        </td>   
       </tr>
     </tbody>
   </table>

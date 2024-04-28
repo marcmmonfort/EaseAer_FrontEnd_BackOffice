@@ -1,6 +1,6 @@
-<h2 *ngIf="incidentId" class="text-center">Información de Incidente</h2>
+<h2 *ngIf="incidentData" class="text-center">Información de Incidente</h2>
 
-<div class="container">
+<div *ngIf="incidentData" class="container">
   <div class="card my-5">
     <div class="card-header">
       <h3 class="text-center">{{ incidentData.uuid }}</h3>

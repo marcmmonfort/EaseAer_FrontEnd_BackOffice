@@ -50,8 +50,16 @@
           <span *ngIf="location.typeLocation === 'shop'">Comercio</span>
           <span *ngIf="location.typeLocation === 'service'">Servicio</span>
         </td>
-        <td><a [routerLink]="['/locations/details/', location.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(location)">Detalles</button></a></td>
-        <td><a [routerLink]="['/locations/edit/', location.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(location)">Editar</button></a></td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/locations/details/', location.uuid]">Detalles</a>
+          </div>
+        </td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/locations/edit/', location.uuid]">Editar</a>
+          </div>
+        </td>   
       </tr>
     </tbody>
   </table>

@@ -1,6 +1,6 @@
-<h2 *ngIf="prizeId" class="text-center">Información de Premio</h2>
+<h2 *ngIf="prizeData" class="text-center">Información de Premio</h2>
 
-<div class="container">
+<div *ngIf="prizeData" class="container">
   <div class="card my-5">
     <div class="card-header">
       <h3 class="text-center">{{ prizeData.namePrize }}</h3>
