@@ -45,8 +45,16 @@
           <span *ngIf="!user.deletedUser" class="badge badge-success"><i class="fas fa-check" style="color: green;"></i></span>
           <span *ngIf="user.deletedUser" class="badge badge-danger" ><i class="fas fa-times" style="color: red;"></i></span>
         </td>
-        <td><a [routerLink]="['/users/details/', user.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showDetails(user)">Detalles</button></a></td>
-        <td><a [routerLink]="['/users/edit/', user.uuid]"><button type="button" class="buttonDetailsEdit" (click)="showEdit(user)">Editar</button></a></td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/users/details/', user.uuid]">Detalles</a>
+          </div>
+        </td>
+        <td class="text-center">
+          <div class="button-wrapper">
+            <a class="animated-word-do" [routerLink]="['/users/edit/', user.uuid]">Editar</a>
+          </div>
+        </td>        
       </tr>
     </tbody>
   </table>
