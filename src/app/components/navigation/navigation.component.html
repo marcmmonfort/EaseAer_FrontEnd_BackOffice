@@ -33,24 +33,25 @@
         <div class="menu">
             <nav>
               <ul *ngIf="userKnown" class="navbar__init">
-                <li><a routerLink="/home"><i class="fas fa-home"></i></a></li> <!-- Home -->
-                <li><a routerLink="/users"><i class="fas fa-users"></i></a></li> <!-- Users -->
-                <li><a routerLink="/locations"><i class="fas fa-map-marker-alt"></i></a></li> <!-- Locations -->
-                <li><a routerLink="/cards"><i class="fas fa-credit-card"></i></a></li> <!-- Cards -->
-                <li><a routerLink="/prizes"><i class="fas fa-gift"></i></a></li> <!-- Prizes -->
-                <li><a routerLink="/shops"><i class="fas fa-store"></i></a></li> <!-- Shops -->
-                <li><a routerLink="/services"><i class="fas fa-toilet"></i></a></li> <!-- Services -->
-                <li><a routerLink="/products"><i class="fas fa-shopping-basket"></i></a></li> <!-- Products -->
-                <li><a routerLink="/offers"><i class="fas fa-tags"></i></a></li> <!-- Offers -->
-                <li><a routerLink="/incidents"><i class="fas fa-exclamation-circle"></i></a></li> <!-- Incidents -->
-                <li><a routerLink="/news"><i class="fas fa-newspaper"></i></a></li> <!-- News -->
-                <li><a routerLink="/flights"><i class="fas fa-plane-departure"></i></a></li> <!-- Flights -->
-                <li><a routerLink="/bookings"><i class="fas fa-calendar-alt"></i></a></li> <!-- Bookings -->
-                <li><a routerLink="/luggage"><i class="fas fa-suitcase"></i></a></li> <!-- Luggage -->
-                <li><a routerLink="/matches"><i class="fas fa-heart"></i></a></li> <!-- Matches -->
-                <li><a routerLink="/games"><i class="fas fa-chess"></i></a></li> <!-- Games -->
-                <li><a routerLink="/questions"><i class="fas fa-question-circle"></i></a></li> <!-- Question -->
-                <li><a routerLink="/statistics"><i class="fas fa-chart-bar"></i></a></li> <!-- Statistics -->
+                <li *ngIf="securityLevel1"><a routerLink="/home"><i class="fas fa-home"></i></a></li> <!-- Home -->
+
+                <li *ngIf="securityLevel2"><a routerLink="/users"><i class="fas fa-users"></i></a></li> <!-- Users -->
+                <li *ngIf="securityLevel2"><a routerLink="/locations"><i class="fas fa-map-marker-alt"></i></a></li> <!-- Locations -->
+                <li *ngIf="securityLevel2"><a routerLink="/cards"><i class="fas fa-credit-card"></i></a></li> <!-- Cards -->
+                <li *ngIf="securityLevel1"><a routerLink="/prizes"><i class="fas fa-gift"></i></a></li> <!-- Prizes -->
+                <li *ngIf="securityLevel2"><a routerLink="/shops"><i class="fas fa-store"></i></a></li> <!-- Shops -->
+                <li *ngIf="securityLevel2"><a routerLink="/services"><i class="fas fa-toilet"></i></a></li> <!-- Services -->
+                <li *ngIf="securityLevel2"><a routerLink="/products"><i class="fas fa-shopping-basket"></i></a></li> <!-- Products -->
+                <li *ngIf="securityLevel2"><a routerLink="/offers"><i class="fas fa-tags"></i></a></li> <!-- Offers -->
+                <li *ngIf="securityLevel3"><a routerLink="/incidents"><i class="fas fa-exclamation-circle"></i></a></li> <!-- Incidents -->
+                <li *ngIf="securityLevel2"><a routerLink="/news"><i class="fas fa-newspaper"></i></a></li> <!-- News -->
+                <li *ngIf="securityLevel1"><a routerLink="/flights"><i class="fas fa-plane-departure"></i></a></li> <!-- Flights -->
+                <li *ngIf="securityLevel2"><a routerLink="/bookings"><i class="fas fa-calendar-alt"></i></a></li> <!-- Bookings -->
+                <li *ngIf="securityLevel2"><a routerLink="/luggage"><i class="fas fa-suitcase"></i></a></li> <!-- Luggage -->
+                <li *ngIf="securityLevel3"><a routerLink="/matches"><i class="fas fa-heart"></i></a></li> <!-- Matches -->
+                <li *ngIf="securityLevel3"><a routerLink="/games"><i class="fas fa-chess"></i></a></li> <!-- Games -->
+                <li *ngIf="securityLevel3"><a routerLink="/questions"><i class="fas fa-question-circle"></i></a></li> <!-- Question -->
+                <li *ngIf="securityLevel3"><a routerLink="/statistics"><i class="fas fa-chart-bar"></i></a></li> <!-- Statistics -->
                 
                 <li><a id="log-out" routerLink="/" (click)="LogOut()"><i class="fas fa-sign-out-alt"></i></a></li> <!-- Icono de salir -->
               </ul>

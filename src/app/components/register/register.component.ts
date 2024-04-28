@@ -70,13 +70,13 @@ export class RegisterComponent {
     let allowedAccess = false;
 
     if (userData.roleUser == "company" || userData.roleUser == "admin" || userData.roleUser == "tech"){
-      if ((userData.roleUser == "company") && (userData.code == "ea_bcn_company_0324")){
+      if ((userData.roleUser == "company") && (userData.code == "ea_bcn_company_0624")){
         allowedAccess = true;
       }
-      if ((userData.roleUser == "admin") && (userData.code == "ea_bcn_admin_0324_B8F3G5M2")){
+      if ((userData.roleUser == "admin") && (userData.code == "ea_bcn_admin_0624_B8F3G5M2")){
         allowedAccess = true;
       }
-      if ((userData.roleUser == "tech") && (userData.code == "ea_bcn_tech_0324_N1U7D9K4")){
+      if ((userData.roleUser == "tech") && (userData.code == "ea_bcn_tech_0624_N1U7D9K4")){
         allowedAccess = true;
       }
     }

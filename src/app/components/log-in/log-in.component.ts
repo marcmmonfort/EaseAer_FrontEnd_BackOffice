@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class LogInComponent {
   loginForm: FormGroup | any;
   userKnown:boolean=false;
+  securityLevel: number = 1;
   isModalOpen:boolean=false;
   isNotificationOpen: boolean = false;
   modalText: string = '';
@@ -29,8 +30,12 @@ export class LogInComponent {
   
   ngOnInit(): void {
     localStorage.setItem('token','');
+    localStorage.setItem('role','');
     this.knownService.getUserKnown().subscribe(userKnown => {
       this.userKnown = userKnown;
+    });
+    this.knownService.getSecurityLevel().subscribe(securityLevel => {
+      this.securityLevel = securityLevel;
     });
   }
   
@@ -57,6 +62,27 @@ export class LogInComponent {
             if (response.uuid){
               console.log("ENTRA CON ID: " + response.uuid);
               localStorage.setItem('ownId', response.uuid);
+              localStorage.setItem('role', response.roleUser);
+
+              this.knownService.updateUserKnown(true);
+
+              console.log("ROL LOCAL STORAGE: " + localStorage.getItem('role'));
+              console.log("ROL INTERNO: " + response.roleUser);
+
+              if (localStorage.getItem('role')==="pax"){
+                this.knownService.updateSecurityLevel(1);
+              }
+              if (localStorage.getItem('role')==="company"){
+                this.knownService.updateSecurityLevel(2);
+              }
+              if (localStorage.getItem('role')==="admin"){
+                this.knownService.updateSecurityLevel(3);
+              }
+              if (localStorage.getItem('role')==="tech"){
+                this.knownService.updateSecurityLevel(4);
+              }
+      
+              this.openNotificationModal("¡Bienvenid@!");
             }
             else {
               this.openNotificationModal("¡Error!");
@@ -66,9 +92,6 @@ export class LogInComponent {
             this.openNotificationModal("¡Error!");
           }
         );
-        
-        this.knownService.updateUserKnown(true);
-        this.openNotificationModal("¡Bienvenid@!");
 
       },(error:any)=>{
         console.log(error.status);

@@ -76,93 +76,97 @@ import { MatchEditComponent } from './components/match-components/match-edit/mat
 import { GameComponent } from './components/game-components/game/game.component';
 import { GameDetailsComponent } from './components/game-components/game-details/game-details.component';
 import { GameEditComponent } from './components/game-components/game-edit/game-edit.component';
+import { Level1Guard } from './shared/level1.guard';
+import { Level2Guard } from './shared/level2.guard';
+import { Level3Guard } from './shared/level3.guard';
+import { Level4Guard } from './shared/level4.guard';
 
 const routes: Routes = [
 
   { path: '', component: FrontPageComponent },
-
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent },
 
-  { path: 'users', component: ListUserComponent },
-  { path: 'users/create', component: UserCreateComponent },
-  { path: 'users/details/:uuid', component: UserDetailsComponent },
-  { path: 'users/edit/:uuid', component: UserEditComponent },
+  { path: 'home', component: HomeComponent, canActivate:[AuthGuard, Level1Guard] },
 
-  { path: 'locations', component: LocationComponent },
-  { path: 'locations/create', component: LocationCreateComponent },
-  { path: 'locations/details/:uuid', component: LocationDetailsComponent },
-  { path: 'locations/edit/:uuid', component: LocationEditComponent },
+  { path: 'users', component: ListUserComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'users/create', component: UserCreateComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'users/details/:uuid', component: UserDetailsComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'users/edit/:uuid', component: UserEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'cards', component: CardComponent },
-  { path: 'cards/create', component: CardCreateComponent },
-  { path: 'cards/details/:uuid', component: CardDetailsComponent },
-  { path: 'cards/edit/:uuid', component: CardEditComponent },
+  { path: 'locations', component: LocationComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'locations/create', component: LocationCreateComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'locations/details/:uuid', component: LocationDetailsComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'locations/edit/:uuid', component: LocationEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'prizes', component: PrizeComponent },
-  { path: 'prizes/create', component: PrizeCreateComponent },
-  { path: 'prizes/details/:uuid', component: PrizeDetailsComponent },
-  { path: 'prizes/edit/:uuid', component: PrizeEditComponent },
+  { path: 'cards', component: CardComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'cards/create', component: CardCreateComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'cards/details/:uuid', component: CardDetailsComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'cards/edit/:uuid', component: CardEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'shops', component: ShopComponent },
-  { path: 'shops/create', component: ShopCreateComponent },
-  { path: 'shops/details/:uuid', component: ShopDetailsComponent },
-  { path: 'shops/edit/:uuid', component: ShopEditComponent },
+  { path: 'prizes', component: PrizeComponent, canActivate:[AuthGuard, Level1Guard] },
+  { path: 'prizes/create', component: PrizeCreateComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'prizes/details/:uuid', component: PrizeDetailsComponent, canActivate:[AuthGuard, Level1Guard] },
+  { path: 'prizes/edit/:uuid', component: PrizeEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'services', component: ServiceComponent },
-  { path: 'services/create', component: ServiceCreateComponent },
-  { path: 'services/details/:uuid', component: ServiceDetailsComponent },
-  { path: 'services/edit/:uuid', component: ServiceEditComponent },
+  { path: 'shops', component: ShopComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'shops/create', component: ShopCreateComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'shops/details/:uuid', component: ShopDetailsComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'shops/edit/:uuid', component: ShopEditComponent, canActivate:[AuthGuard, Level3Guard] },
+
+  { path: 'services', component: ServiceComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'services/create', component: ServiceCreateComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'services/details/:uuid', component: ServiceDetailsComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'services/edit/:uuid', component: ServiceEditComponent, canActivate:[AuthGuard, Level3Guard] },
   
-  { path: 'products', component: ProductComponent },
-  { path: 'products/create', component: ProductCreateComponent },
-  { path: 'products/details/:uuid', component: ProductDetailsComponent },
-  { path: 'products/edit/:uuid', component: ProductEditComponent },
+  { path: 'products', component: ProductComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'products/create', component: ProductCreateComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'products/details/:uuid', component: ProductDetailsComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'products/edit/:uuid', component: ProductEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'offers', component: OfferComponent },
-  { path: 'offers/create', component: OfferCreateComponent },
-  { path: 'offers/details/:uuid', component: OfferDetailsComponent },
-  { path: 'offers/edit/:uuid', component: OfferEditComponent },
+  { path: 'offers', component: OfferComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'offers/create', component: OfferCreateComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'offers/details/:uuid', component: OfferDetailsComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'offers/edit/:uuid', component: OfferEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'incidents', component: IncidentComponent },
-  { path: 'incidents/create', component: IncidentCreateComponent },
-  { path: 'incidents/details/:uuid', component: IncidentDetailsComponent },
-  { path: 'incidents/edit/:uuid', component: IncidentEditComponent },
+  { path: 'incidents', component: IncidentComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'incidents/create', component: IncidentCreateComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'incidents/details/:uuid', component: IncidentDetailsComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'incidents/edit/:uuid', component: IncidentEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'news', component: NewsComponent },
-  { path: 'news/create', component: NewsCreateComponent },
-  { path: 'news/details/:uuid', component: NewsDetailsComponent },
-  { path: 'news/edit/:uuid', component: NewsEditComponent },
+  { path: 'news', component: NewsComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'news/create', component: NewsCreateComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'news/details/:uuid', component: NewsDetailsComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'news/edit/:uuid', component: NewsEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'flights', component: FlightComponent },
-  { path: 'flights/create', component: FlightCreateComponent },
-  { path: 'flights/details/:uuid', component: FlightDetailsComponent },
-  { path: 'flights/edit/:uuid', component: FlightEditComponent },
+  { path: 'flights', component: FlightComponent, canActivate:[AuthGuard, Level1Guard] },
+  { path: 'flights/create', component: FlightCreateComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'flights/details/:uuid', component: FlightDetailsComponent, canActivate:[AuthGuard, Level1Guard] },
+  { path: 'flights/edit/:uuid', component: FlightEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'bookings', component: BookingComponent },
-  { path: 'bookings/create', component: BookingCreateComponent },
-  { path: 'bookings/details/:uuid', component: BookingDetailsComponent },
-  { path: 'bookings/edit/:uuid', component: BookingEditComponent },
+  { path: 'bookings', component: BookingComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'bookings/create', component: BookingCreateComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'bookings/details/:uuid', component: BookingDetailsComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'bookings/edit/:uuid', component: BookingEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'luggage', component: LuggageComponent },
-  { path: 'luggage/create', component: LuggageCreateComponent },
-  { path: 'luggage/details/:uuid', component: LuggageDetailsComponent },
-  { path: 'luggage/edit/:uuid', component: LuggageEditComponent },
+  { path: 'luggage', component: LuggageComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'luggage/create', component: LuggageCreateComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'luggage/details/:uuid', component: LuggageDetailsComponent, canActivate:[AuthGuard, Level2Guard] },
+  { path: 'luggage/edit/:uuid', component: LuggageEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'questions', component: QuestionComponent },
-  { path: 'questions/create', component: QuestionCreateComponent },
-  { path: 'questions/details/:uuid', component: QuestionDetailsComponent },
-  { path: 'questions/edit/:uuid', component: QuestionEditComponent },
+  { path: 'questions', component: QuestionComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'questions/create', component: QuestionCreateComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'questions/details/:uuid', component: QuestionDetailsComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'questions/edit/:uuid', component: QuestionEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'games', component: GameComponent },
-  { path: 'games/details/:uuid', component: GameDetailsComponent },
-  { path: 'games/edit/:uuid', component: GameEditComponent },
+  { path: 'games', component: GameComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'games/details/:uuid', component: GameDetailsComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'games/edit/:uuid', component: GameEditComponent, canActivate:[AuthGuard, Level3Guard] },
 
-  { path: 'matches', component: MatchComponent },
-  { path: 'matches/create', component: MatchCreateComponent },
-  { path: 'matches/details/:uuid', component: MatchDetailsComponent },
-  { path: 'matches/edit/:uuid', component: MatchEditComponent },
+  { path: 'matches', component: MatchComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'matches/create', component: MatchCreateComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'matches/details/:uuid', component: MatchDetailsComponent, canActivate:[AuthGuard, Level3Guard] },
+  { path: 'matches/edit/:uuid', component: MatchEditComponent, canActivate:[AuthGuard, Level3Guard] },
 ];
 
 @NgModule({
@@ -267,7 +271,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, Level1Guard, Level2Guard, Level3Guard, Level4Guard],
   bootstrap: [AppComponent]
 })
 

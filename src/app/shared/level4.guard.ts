@@ -9,30 +9,17 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 
-export class AuthGuard implements CanActivate {
+export class Level4Guard implements CanActivate {
   userRole: string | any;
 
   constructor(private auth:AuthService, private router:Router){  }
 
   canActivate(){
-    if (this.auth.isLoggedIn()) {
-      console.log(this.auth.isLoggedIn());
-      return true;
-    } else {
-      this.router.navigate(['/login']);
-      return false;
-    }
-  }
-
-}
-
-/*
-isUserAPax(){
     this.userRole = localStorage.getItem('role');
-    if (this.userRole=='pax') {
+    if (this.userRole=='tech') {
       return true;
     } else {
       return false;
     }
   }
-*/
+}

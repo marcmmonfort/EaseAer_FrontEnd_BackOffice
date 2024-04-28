@@ -6,12 +6,21 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class KnownService {
   private userKnown = new BehaviorSubject<boolean>(false);
-
-  updateUserKnown(userKnown: boolean): void {
-    this.userKnown.next(userKnown);
-  }
+  private securityLevel = new BehaviorSubject<number>(1);
 
   getUserKnown(): Observable<boolean> {
     return this.userKnown.asObservable();
   }
+  updateUserKnown(userKnown: boolean): void {
+    this.userKnown.next(userKnown);
+  }
+
+  getSecurityLevel(): Observable<number> {
+    return this.securityLevel.asObservable();
+  }
+  updateSecurityLevel(securityLevel: number): void {
+    this.securityLevel.next(securityLevel);
+    console.log("NIVEL ACTUALIZADO");
+  }
+
 }
